@@ -10,4 +10,14 @@ import UIKit
 
 class JoinVC: UIViewController {
     
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var confrimPasswordTextField: UITextField!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
 }
