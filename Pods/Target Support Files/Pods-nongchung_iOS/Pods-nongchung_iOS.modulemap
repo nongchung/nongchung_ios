@@ -1,6 +1,0 @@
-framework module Pods_nongchung_iOS {
-  umbrella header "Pods-nongchung_iOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
