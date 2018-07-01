@@ -14,5 +14,5 @@ class NetworkModel {
         self.view = vc
     }
     
-    let baseURL = ""
+    let baseURL = "http://13.125.216.198:3000"
 }
