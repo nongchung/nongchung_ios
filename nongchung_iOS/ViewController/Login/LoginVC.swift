@@ -60,7 +60,7 @@ class LoginVC: UIViewController, NetworkCallback {
     
     func networkResult(resultData: Any, code: String) {
         if code == "success"{
-            let token = resultData as? String
+            let token = resultData as! String
             ud.setValue(gsno(token), forKey: "token")
             ud.synchronize()
             print(token)
