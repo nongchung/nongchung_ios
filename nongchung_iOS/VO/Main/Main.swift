@@ -13,6 +13,6 @@ struct Main: Codable {
     let farm_name : String?
     let farm_img : String?
     let nh_price : String?
-    let ng_period : String?
+    let nh_period : String?
     let star : String?
 }
