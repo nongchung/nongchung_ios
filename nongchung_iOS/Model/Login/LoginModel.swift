@@ -11,12 +11,12 @@ import AlamofireObjectMapper
 
 class LoginModel : NetworkModel{
     
-    func login(user_mail: String, user_pw: String) {
+    func login(email: String, password: String) {
         
         let URL = "\(baseURL)/api/signin"
         let body : [String:String] = [
-            "user_mail": user_mail,
-            "user_pw": user_pw
+            "email": email,
+            "password": password
         ]
         
         Alamofire.request(

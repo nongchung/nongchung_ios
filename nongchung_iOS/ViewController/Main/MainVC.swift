@@ -29,17 +29,17 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         mainFirstCollectionView.delegate = self; mainFirstCollectionView.dataSource = self
         mainSecondCollectionView.delegate = self; mainSecondCollectionView.dataSource = self
         
-        MainService.mainInit { (MainData) in
-            self.mains = MainData
-            self.mainAds = MainData
-            self.mainFirstCollectionView.reloadData()
-            self.mainSecondCollectionView.reloadData()
-        }
-        
-        BoardService.boardInit { (boardData) in
-            self.boards = boardData
-            self.boardCollectionView.reloadData()
-        }
+//        MainService.mainInit { (MainData) in
+//            self.mains = MainData
+//            self.mainAds = MainData
+//            self.mainFirstCollectionView.reloadData()
+//            self.mainSecondCollectionView.reloadData()
+//        }
+//
+//        BoardService.boardInit { (boardData) in
+//            self.boards = boardData
+//            self.boardCollectionView.reloadData()
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

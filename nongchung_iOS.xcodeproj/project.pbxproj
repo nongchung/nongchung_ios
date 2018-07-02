@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3D8FC8CD6848CD11FC38C790 /* Pods_nongchung_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15ECCE609D89927B7FDAA84 /* Pods_nongchung_iOS.framework */; };
 		4C0EA55720E86CF900CB70ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA55620E86CF900CB70ED /* AppDelegate.swift */; };
-		4C0EA55920E86CF900CB70ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA55820E86CF900CB70ED /* ViewController.swift */; };
 		4C0EA55C20E86CF900CB70ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0EA55A20E86CF900CB70ED /* Main.storyboard */; };
 		4C0EA55F20E86CF900CB70ED /* nongchung_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA55D20E86CF900CB70ED /* nongchung_iOS.xcdatamodeld */; };
 		4C0EA56120E86CFB00CB70ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C0EA56020E86CFB00CB70ED /* Assets.xcassets */; };
@@ -23,6 +22,9 @@
 		4C0EA59620E8714C00CB70ED /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA59520E8714C00CB70ED /* Extension.swift */; };
 		4C0EA59E20E873E800CB70ED /* LoginVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA59D20E873E800CB70ED /* LoginVO.swift */; };
 		4C0EA5A120E8799600CB70ED /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA5A020E8799600CB70ED /* JoinVC.swift */; };
+		4C0EA5A320E8BDAB00CB70ED /* JoinVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA5A220E8BDAB00CB70ED /* JoinVC2.swift */; };
+		4C0EA5A620E8D58100CB70ED /* JoinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA5A520E8D58100CB70ED /* JoinModel.swift */; };
+		4C0EA5A920E8D66D00CB70ED /* DuplicateVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA5A820E8D66D00CB70ED /* DuplicateVO.swift */; };
 		B698B3B3D3A6657655ACEC08 /* Pods_nongchung_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE6756A3BEE07570D35D072 /* Pods_nongchung_iOSTests.framework */; };
 		BA43D3B720E8864D00786D4E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43D3B620E8864D00786D4E /* MainVC.swift */; };
 		BA43D3B920E8869500786D4E /* MainFirstCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43D3B820E8869500786D4E /* MainFirstCollectionViewCell.swift */; };
@@ -58,7 +60,6 @@
 		3DE6756A3BEE07570D35D072 /* Pods_nongchung_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nongchung_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0EA55320E86CF900CB70ED /* nongchung_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nongchung_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C0EA55620E86CF900CB70ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C0EA55820E86CF900CB70ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4C0EA55B20E86CF900CB70ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C0EA55E20E86CF900CB70ED /* nongchung_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = nongchung_iOS.xcdatamodel; sourceTree = "<group>"; };
 		4C0EA56020E86CFB00CB70ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +78,9 @@
 		4C0EA59520E8714C00CB70ED /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		4C0EA59D20E873E800CB70ED /* LoginVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVO.swift; sourceTree = "<group>"; };
 		4C0EA5A020E8799600CB70ED /* JoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
+		4C0EA5A220E8BDAB00CB70ED /* JoinVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC2.swift; sourceTree = "<group>"; };
+		4C0EA5A520E8D58100CB70ED /* JoinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinModel.swift; sourceTree = "<group>"; };
+		4C0EA5A820E8D66D00CB70ED /* DuplicateVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateVO.swift; sourceTree = "<group>"; };
 		4FEA88DF39A4473E578321B5 /* Pods_nongchung_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nongchung_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		703D2453D691E76992FDE4D9 /* Pods-nongchung_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOSTests/Pods-nongchung_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EC82056829108DFFEB305CA /* Pods-nongchung_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOS/Pods-nongchung_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -207,7 +211,6 @@
 				BA43D3B520E8860C00786D4E /* Main */,
 				4C0EA59F20E8798900CB70ED /* Join */,
 				4C0EA59220E86F8F00CB70ED /* Login */,
-				4C0EA55820E86CF900CB70ED /* ViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			children = (
 				4C0EA58E20E86EBF00CB70ED /* NetworkModel.swift */,
 				4C0EA59720E8724400CB70ED /* Login */,
+				4C0EA5A420E8D57000CB70ED /* Join */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +228,7 @@
 		4C0EA58A20E86E1D00CB70ED /* VO */ = {
 			isa = PBXGroup;
 			children = (
+				4C0EA5A720E8D65B00CB70ED /* Join */,
 				4C0EA59A20E873AB00CB70ED /* Login */,
 				BA43D3BC20E8874100786D4E /* Main */,
 			);
@@ -266,6 +271,23 @@
 			isa = PBXGroup;
 			children = (
 				4C0EA5A020E8799600CB70ED /* JoinVC.swift */,
+				4C0EA5A220E8BDAB00CB70ED /* JoinVC2.swift */,
+			);
+			path = Join;
+			sourceTree = "<group>";
+		};
+		4C0EA5A420E8D57000CB70ED /* Join */ = {
+			isa = PBXGroup;
+			children = (
+				4C0EA5A520E8D58100CB70ED /* JoinModel.swift */,
+			);
+			path = Join;
+			sourceTree = "<group>";
+		};
+		4C0EA5A720E8D65B00CB70ED /* Join */ = {
+			isa = PBXGroup;
+			children = (
+				4C0EA5A820E8D66D00CB70ED /* DuplicateVO.swift */,
 			);
 			path = Join;
 			sourceTree = "<group>";
@@ -540,14 +562,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA43D3B920E8869500786D4E /* MainFirstCollectionViewCell.swift in Sources */,
+				4C0EA5A320E8BDAB00CB70ED /* JoinVC2.swift in Sources */,
 				BA43D3C020E8887700786D4E /* LoginModel.swift in Sources */,
-				4C0EA55920E86CF900CB70ED /* ViewController.swift in Sources */,
 				BA43D3B720E8864D00786D4E /* MainVC.swift in Sources */,
 				4C0EA55F20E86CF900CB70ED /* nongchung_iOS.xcdatamodeld in Sources */,
 				4C0EA59620E8714C00CB70ED /* Extension.swift in Sources */,
 				BA43D3C220E8891400786D4E /* MainData.swift in Sources */,
 				4C0EA59420E86FA300CB70ED /* LoginVC.swift in Sources */,
+				4C0EA5A920E8D66D00CB70ED /* DuplicateVO.swift in Sources */,
 				BA43D3CA20E88C5700786D4E /* MainService.swift in Sources */,
+				4C0EA5A620E8D58100CB70ED /* JoinModel.swift in Sources */,
 				BA43D3BB20E886A400786D4E /* MainSecondCollectionViewCell.swift in Sources */,
 				4C0EA5A120E8799600CB70ED /* JoinVC.swift in Sources */,
 				BA43D3C620E88A3500786D4E /* Main.swift in Sources */,
