@@ -9,6 +9,7 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //MARK: GoogleMaps
+        GMSServices.provideAPIKey("AIzaSyB72n7AdK1MIqQ_ucKAcPXumn9WdMWGV-c")
+        
         return true
     }
 
@@ -89,6 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+}
 
+extension UIApplication {
+    var statusBarView : UIView?{
+        return value(forKey: "statusBar") as? UIView
+    }
 }
 

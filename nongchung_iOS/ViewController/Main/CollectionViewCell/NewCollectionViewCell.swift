@@ -9,13 +9,14 @@
 import UIKit
 
 class NewCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var periodLabel: UILabel!
+
+    @IBOutlet var periodImageView: UIImageView!
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var newLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var newImageView: UIImageView!
     
     
 }

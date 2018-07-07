@@ -12,15 +12,20 @@ extension Notification.Name{
     static let goBackLogin = Notification.Name("goBackLogin")
 }
 
-class LoginVC: UIViewController, NetworkCallback {
+class LoginVC: UIViewController, NetworkCallback, UIGestureRecognizerDelegate {
     
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var signupButton: UIButton!
     @IBOutlet var animateView: UIView!
+    @IBOutlet var loginCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet var loginStackView: UIStackView!
+    @IBOutlet var logoImageView: UIImageView!
+    
     
     let ud = UserDefaults.standard
+    var check = true
     
     @IBAction func unwindToSplash(segue:UIStoryboardSegue) { }
     
@@ -59,13 +64,25 @@ class LoginVC: UIViewController, NetworkCallback {
         unableLoginBtn()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_:)))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
         
         NotificationCenter.default.addObserver(self,selector: #selector(goBackLogin),name: .goBackLogin,object: nil)
+        
+        let backImage = UIImage(named: "back_icon")
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationController?.navigationBar.tintColor = UIColor.black
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyboardNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
-        
+        registerForKeyboardNotifications()
     }
     
     func networkResult(resultData: Any, code: String) {
@@ -115,11 +132,76 @@ extension LoginVC {
         }
     }
     
-    // 카테고리 종료 Notification 알림
+    //MARK: 카테고리 종료 Notification 알림
     @objc func goBackLogin(notification: NSNotification){
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1.0){
             self.animateView.fadeIn()
             //NotificationCenter.default.removeObserver(self)
         }
+    }
+    
+    //MARK: Keyboard Up Method
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldReceive touch: UITouch
+        ) -> Bool {
+        if(touch.view?.isDescendant(of: loginStackView))!{
+            return false
+        }
+        return true
+    }
+    @objc func handleTap_mainview(_ sender: UITapGestureRecognizer?){
+        self.loginStackView.becomeFirstResponder()
+        self.loginStackView.resignFirstResponder()
+        
+    }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillShow),
+            name: .UIKeyboardWillShow,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillHide),
+            name: .UIKeyboardWillHide,
+            object: nil
+        )
+    }
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name:.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name:.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if check {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+                as? NSValue)?.cgRectValue {
+                loginCenterYConstraint.constant = -100
+                check = false
+                logoImageView.isHidden = true
+                view.layoutIfNeeded()
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+            as? NSValue)?.cgRectValue {
+            loginCenterYConstraint.constant = 67.5
+            check = true
+            logoImageView.isHidden = false
+            view.layoutIfNeeded()
+        }
+    }
+    
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }

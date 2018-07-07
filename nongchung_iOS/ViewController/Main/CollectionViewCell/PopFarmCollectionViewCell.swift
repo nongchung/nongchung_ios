@@ -11,7 +11,6 @@ import UIKit
 class PopFarmCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
 }

@@ -9,45 +9,39 @@
 import UIKit
 
 class NewTableViewCell: UITableViewCell {
-    @IBOutlet weak var newCollectionView: UICollectionView!
     
+    @IBOutlet weak var newCollectionView: UICollectionView!
     @IBOutlet weak var allButton: UIButton!
+    
+    var newNhData : [NewNhVO]? = nil{
+        didSet{
+            newCollectionView.reloadData()
+        }
+    }
     
     func setCollectionViewDataSourceDelegate(forRow row: Int) {
         newCollectionView.delegate = self
         newCollectionView.dataSource = self
+        newCollectionView.backgroundColor = UIColor.white
         newCollectionView.tag = row
         newCollectionView.reloadData()
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
 }
 
 extension NewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return (newNhData?.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewCollectionViewCell", for: indexPath) as! NewCollectionViewCell
-        
-        cell.imageView.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
-        cell.periodLabel.text = "1박2일"
-        cell.newLabel.text = "new"
-        cell.titleLabel.text = "제주 감귤 농장"
-        cell.addressLabel.text = "제주 서귀포시"
-        cell.priceLabel.text = "20,000원"
+        let index = newNhData![indexPath.row]
+        cell.imageView.imageFromUrl(index.img, defaultImgPath: "")
+        cell.periodImageView.image = UIImage(named: periodCalculator(period: index.period!))
+        cell.titleLabel.text = index.name
+        cell.addressLabel.text = index.addr
+        cell.priceLabel.text = index.price
         
         return cell
     }

@@ -9,8 +9,8 @@
 import UIKit
 
 class ThemeTableViewCell: UITableViewCell {
-    @IBOutlet weak var allButton: UIButton!
     
+    @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var themeCollectionView: UICollectionView!
     
     func setCollectionViewDataSourceDelegate(forRow row: Int) {
@@ -19,21 +19,26 @@ class ThemeTableViewCell: UITableViewCell {
         themeCollectionView.tag = row
         themeCollectionView.reloadData()
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
 
-extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    //MARK: CollectionView Centering
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var closestCell : UICollectionViewCell = themeCollectionView.visibleCells[0];
+        for cell in themeCollectionView!.visibleCells as [UICollectionViewCell] {
+            let closestCellDelta = abs(closestCell.center.x - themeCollectionView.bounds.size.width/2.0 - themeCollectionView.contentOffset.x)
+            let cellDelta = abs(cell.center.x - themeCollectionView.bounds.size.width/2.0 - themeCollectionView.contentOffset.x)
+            if (cellDelta < closestCellDelta){
+                closestCell = cell
+            }
+        }
+        let indexPath = themeCollectionView.indexPath(for: closestCell)
+        themeCollectionView.scrollToItem(at: indexPath!, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+    }
+    
+    //MARK: CollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -42,9 +47,6 @@ extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemeCollectionViewCell", for: indexPath) as! ThemeCollectionViewCell
         
-        cell.imageView.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
-        cell.subLabel.text = "어쩌고"
-        cell.mainLabel.text = "저쩌구"
         
         return cell
     }

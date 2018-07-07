@@ -9,9 +9,15 @@
 import UIKit
 
 class PopFarmTableViewCell: UITableViewCell {
-    @IBOutlet weak var allButton: UIButton!
     
+    @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var popFarmCollectionView: UICollectionView!
+    
+    var populFarmData : [PopulFarmVO]? = nil{
+        didSet{
+            popFarmCollectionView.reloadData()
+        }
+    }
     
     func setCollectionViewDataSourceDelegate(forRow row: Int) {
         popFarmCollectionView.delegate = self
@@ -19,21 +25,11 @@ class PopFarmTableViewCell: UITableViewCell {
         popFarmCollectionView.tag = row
         popFarmCollectionView.reloadData()
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
 
 extension PopFarmTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
@@ -41,11 +37,11 @@ extension PopFarmTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopFarmCollectionViewCell", for: indexPath) as! PopFarmCollectionViewCell
-        
-        cell.imageView.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
-        cell.titleLabel.text = "제주 감귤 농장"
-        cell.addressLabel.text = "제주 서귀포시"
-        cell.profileImageView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        let index = populFarmData![indexPath.row]
+        cell.titleLabel.text = index.name
+        cell.addressLabel.text = index.addr
+        cell.profileImageView.layer.masksToBounds = true
+        cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.width / 2
         
         return cell
     }

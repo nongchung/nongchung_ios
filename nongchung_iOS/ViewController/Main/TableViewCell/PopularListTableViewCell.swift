@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import SJSegmentedScrollView
 
 class PopularListTableViewCell: UITableViewCell {
-    @IBOutlet weak var popularCollectionView: UICollectionView!
     
+    @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var allButton: UIButton!
+    
+    var idx : Int?
+    
+    var populNhData : [PopulNhVO]? = nil{
+        didSet{
+            popularCollectionView.reloadData()
+        }
+    }
     
     func setCollectionViewDataSourceDelegate(forRow row: Int) {
         popularCollectionView.delegate = self
@@ -19,36 +28,32 @@ class PopularListTableViewCell: UITableViewCell {
         popularCollectionView.tag = row
         popularCollectionView.reloadData()
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
 }
 
 extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    //MARK: CollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return (populNhData?.count)!
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularListCollectionViewCell", for: indexPath) as! PopularListCollectionViewCell
-        
-        cell.imageView.backgroundColor = #colorLiteral(red: 0.862745098, green: 0.862745098, blue: 0.862745098, alpha: 1)
-        cell.periodLabel.text = "1박2일"
-        cell.starLabel.text = "4.5"
-        cell.titleLabel.text = "제주 감귤 농장"
-        cell.addressLabel.text = "제주 서귀포시"
-        cell.priceLabel.text = "20,000원"
+        let index = populNhData![indexPath.row]
+        cell.imageView.imageFromUrl(index.img, defaultImgPath: "")
+        cell.periodImageView.image = UIImage(named: periodCalculator(period: index.period!))
+        cell.starImage.image = UIImage(named: starCalculator(star: index.star!))
+        cell.starLabel.text = "\(String(describing: index.star))"
+        cell.titleLabel.text = index.name
+        cell.addressLabel.text = index.addr
+        cell.priceLabel.text = index.price
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = populNhData![indexPath.row]
+        NotificationCenter.default.post(name: .gotoIntroduce, object: nil, userInfo: ["idx" : index.idx!])
+    }
 }
-

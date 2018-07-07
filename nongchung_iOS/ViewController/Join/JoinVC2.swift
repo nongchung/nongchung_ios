@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoinVC2: UIViewController, NetworkCallback{
+class JoinVC2: UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     
     //MARK: JoinVC Data
     var email : String?
@@ -24,6 +24,10 @@ class JoinVC2: UIViewController, NetworkCallback{
     var birth : String?
     var genderArray = ["남자", "여자"]
     
+    var check = true
+    let genderPickerView = UIPickerView()
+    let datePickerView = UIDatePicker()
+    
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var nicknameTextField: UITextField!
     @IBOutlet var birthTextField: UITextField!
@@ -31,22 +35,80 @@ class JoinVC2: UIViewController, NetworkCallback{
     @IBOutlet var doneButton: UIButton!
     @IBOutlet var duplicateLabel: UILabel!
     @IBOutlet var phoneTextField: UITextField!
+    @IBOutlet var centerStackView: UIStackView!
+    @IBOutlet var centerYConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap_mainview(_:)))
+        tap.delegate = self
+        self.view.addGestureRecognizer(tap)
         initAddTarget()
         unableDoneBtn()
         duplicateLabel.text = ""
-        let genderPickerView = UIPickerView()
-        genderPickerView.delegate = self
+        
+        nameTextField.delegate = self
+        nicknameTextField.delegate = self
+        birthTextField.delegate = self
+        genderTextField.delegate = self
         phoneTextField.delegate = self
+        
+        nameTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1))
+        nicknameTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1))
+        birthTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1))
+        genderTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1))
+        phoneTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1))
+        
+        genderPickerView.delegate = self
+        genderPickerView.dataSource = self
+        genderPickerView.backgroundColor = UIColor.white
+        genderPickerView.showsSelectionIndicator = true
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "확인", style: UIBarButtonItemStyle.done, target: self, action: #selector(donePicker))
+        let cancelButton = UIBarButtonItem(title: "취소", style: UIBarButtonItemStyle.plain, target: self, action: #selector(donePicker))
+        
+        toolBar.setItems([cancelButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
         genderTextField.inputView = genderPickerView
+        genderTextField.inputAccessoryView = toolBar
+        
+        birthTextField.inputAccessoryView = toolBar
+        
+        self.title = "회원가입"
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerForKeyboardNotifications()
+        navigationSetting()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        unregisterForKeyboardNotifications()
+    }
+    
+    func navigationSetting(){
+        navigationController?.navigationBar.topItem?.title = "회원가입"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "NanumSquareRoundB", size: 18)!]
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        
     }
     
     //MARK: Birth TextField Editing Action
     @IBAction func birthPickerEditing(_ sender: UITextField) {
-        let datePickerView:UIDatePicker = UIDatePicker()
+        datePickerView.backgroundColor = UIColor.white
         datePickerView.datePickerMode = UIDatePickerMode.date
+        datePickerView.maximumDate = Calendar.current.date(byAdding: .year, value: -16, to: Date())
+        datePickerView.minimumDate = Calendar.current.date(byAdding: .year, value: -100, to: Date())
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
     }
@@ -78,16 +140,26 @@ class JoinVC2: UIViewController, NetworkCallback{
         
         //MARK: Duplication Networking Result
         if code == "duplication"{
-            duplicateLabel.text = resultData as? String
+            duplicateLabel.text = "중복된 닉네임 입니다."
+            nicknameTextField.textColor = UIColor.red
+            duplicateLabel.textColor = UIColor.red
         }
         else if code == "available"{
-            duplicateLabel.text = resultData as? String
+            duplicateLabel.text = ""
+            nicknameTextField.textColor = UIColor.black
         }
+        isValid()
         
         //MARK: Sign Up Networking Result
         if code == "Success To Sign Up"{
-            performSegue(withIdentifier: "unwindToSplash", sender: self)
-            NotificationCenter.default.post(name: .goBackLogin, object: nil)
+            UIView.animate(withDuration: 2.0) {
+                guard let joinVC = self.storyboard?.instantiateViewController(
+                    withIdentifier : "JoinVC3"
+                    ) as? JoinVC3
+                    else{return}
+                joinVC.modalTransitionStyle = .crossDissolve
+                self.present(joinVC, animated: true, completion: nil)
+            }
         }
         else if code == "Null Value"{
             let errmsg = resultData as? String
@@ -155,7 +227,7 @@ extension JoinVC2 : UIPickerViewDataSource, UIPickerViewDelegate {
     
     //MARK: TextField isEmpty 검사
     @objc func isValid(){
-        if !((nameTextField.text?.isEmpty)! || (nicknameTextField.text?.isEmpty)! || (birthTextField.text?.isEmpty)! ||  (genderTextField.text?.isEmpty)! || (phoneTextField.text?.isEmpty)! || duplicateLabel.isHidden == true) {
+        if !((nameTextField.text?.isEmpty)! || (nicknameTextField.text?.isEmpty)! || (birthTextField.text?.isEmpty)! ||  (genderTextField.text?.isEmpty)! || (phoneTextField.text?.isEmpty)! || duplicateLabel.text == "중복된 닉네임 입니다.") {
             enableDoneBtn()
         }
         else {
@@ -171,6 +243,87 @@ extension JoinVC2 : UIPickerViewDataSource, UIPickerViewDelegate {
         let newString: NSString =
             currentString.replacingCharacters(in: range, with: string) as NSString
         return newString.length <= maxLength
+    }
+    
+    //MARK: Keyboard Up Method
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldReceive touch: UITouch
+        ) -> Bool {
+        if(touch.view?.isDescendant(of: centerStackView))!{
+            return false
+        }
+        return true
+    }
+    @objc func handleTap_mainview(_ sender: UITapGestureRecognizer?){
+        self.centerStackView.becomeFirstResponder()
+        self.centerStackView.resignFirstResponder()
+        
+    }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillShow),
+            name: .UIKeyboardWillShow,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector:#selector(keyboardWillHide),
+            name: .UIKeyboardWillHide,
+            object: nil
+        )
+    }
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name:.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name:.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if check {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+                as? NSValue)?.cgRectValue {
+                centerYConstraint.constant = -70
+                check = false
+                view.layoutIfNeeded()
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]
+            as? NSValue)?.cgRectValue {
+            centerYConstraint.constant = -3.5
+            check = true
+            view.layoutIfNeeded()
+        }
+    }
+    
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameTextField {
+            nicknameTextField.becomeFirstResponder()
+        } else if textField == nicknameTextField {
+            birthTextField.becomeFirstResponder()
+        } else if textField == birthTextField{
+            genderTextField.becomeFirstResponder()
+        } else if textField == genderTextField{
+            phoneTextField.becomeFirstResponder()
+        } else if textField == phoneTextField{
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    @objc func donePicker() {
+        genderTextField.resignFirstResponder()
+        birthTextField.resignFirstResponder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == genderTextField{
+            self.genderPickerView.selectRow(0, inComponent: 0, animated: true)
+            self.pickerView(genderPickerView, didSelectRow: 0, inComponent: 0)
+        }
     }
 }
 
