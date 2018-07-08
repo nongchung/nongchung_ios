@@ -11,11 +11,13 @@ import ObjectMapper
 class LoginVO : Mappable {
     var message : String?
     var token : String?
+    var data : [UserDataVO]?
     
     required init?(map:Map){}
     
     func mapping(map: Map) {
         message <- map["message"]
         token <- map["token"]
+        data <- map["data"]
     }
 }

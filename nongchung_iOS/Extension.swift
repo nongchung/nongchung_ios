@@ -24,7 +24,7 @@ extension UITableViewCell{
 extension UITextField {
     func addBorderBottom(height: CGFloat, color: UIColor) {
         let border = CALayer()
-        border.frame = CGRect(x: 0, y: self.frame.height-height, width: self.frame.width, height: height)
+        border.frame = CGRect(x: 0, y: self.frame.height-height+5, width: self.frame.width, height: height)
         border.backgroundColor = color.cgColor
         self.layer.addSublayer(border)
     }
@@ -104,6 +104,22 @@ extension UITableViewCell{
 }
 
 extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
+    
+    func loginAlert(){
+        let alert = UIAlertController(title: "농활청춘", message: "로그인이 필요합니다. 로그인 하시겠습니까?", preferredStyle: .alert)
+        let loginAction = UIAlertAction(title: "로그인", style: .default) { (UIAlertAction) in
+            let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+            guard let loginVC = loginStoryboard.instantiateViewController(
+                withIdentifier : "LoginVC"
+                ) as? LoginVC
+                else{return}
+            self.present(loginVC, animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(cancelAction)
+        alert.addAction(loginAction)
+        present(alert, animated: true)
+    }
     
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

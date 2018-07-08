@@ -19,8 +19,7 @@ class DetailViewController : UIViewController {
     @IBOutlet var datePickerButton: UIButton!
     @IBOutlet var applyButton: UIButton!
     @IBOutlet var grayBackgroundButton: UIButton!
-    
-    
+
     var responseMessage : IntroduceVO?
     
     let segmentedController = SJSegmentedViewController()
@@ -119,18 +118,6 @@ extension DetailViewController: SJSegmentedViewControllerDelegate {
             selectedSegment?.titleColor(#colorLiteral(red: 0.03921568627, green: 0.7411764706, blue: 0.6156862745, alpha: 1))
         }
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        offsetY = scrollView.contentOffset.y
-        
-        if scrollView.contentOffset.y > 200 {
-            UIApplication.shared.statusBarStyle = .default
-        } else {
-            UIApplication.shared.statusBarStyle = .lightContent
-        }
-        self.navigationController?.navigationBar.alpha = 1.0-(250-scrollView.contentOffset.y)/250
-        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "detailMainScroll"), object: self, userInfo: ["scroll":scrollView.contentOffset.y])
-    }
 }
 
 extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
@@ -165,12 +152,24 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! PopupCell
+        let index = responseMessage?.allStartDate![indexPath.row]
         datePickerButton.setTitle(cell.periodLabel.text, for: .normal)
+        
     }
 }
 
 extension DetailViewController {
     
+    //MARK: Apply Button Action
+    @objc func applyButtonClickAction(){
+        guard let applyVC = self.storyboard?.instantiateViewController(
+            withIdentifier : "ApplyViewController"
+            ) as? ApplyViewController
+            else{return}
+        self.present(applyVC, animated: true, completion: nil)
+    }
+    
+    //MARK: Date Choose Button
     @objc func datePickerButtonClickAction(){
         grayBackgroundButton.isHidden = false
         

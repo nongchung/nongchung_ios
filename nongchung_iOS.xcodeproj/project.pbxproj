@@ -106,6 +106,9 @@
 		4CAB38A120F107010057F4C0 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389B20F107000057F4C0 /* APIService.swift */; };
 		4CAB38A220F107010057F4C0 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389D20F107000057F4C0 /* ProfileService.swift */; };
 		4CAB38A320F107010057F4C0 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389F20F107000057F4C0 /* MainService.swift */; };
+		4CAB38A520F1216B0057F4C0 /* ApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38A420F1216B0057F4C0 /* ApplyViewController.swift */; };
+		4CAB38A720F138F80057F4C0 /* ApplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38A620F138F80057F4C0 /* ApplyModel.swift */; };
+		4CAB38A920F13B550057F4C0 /* UserDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38A820F13B550057F4C0 /* UserDataVO.swift */; };
 		B698B3B3D3A6657655ACEC08 /* Pods_nongchung_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE6756A3BEE07570D35D072 /* Pods_nongchung_iOSTests.framework */; };
 		BA43D3C020E8887700786D4E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43D3BF20E8887700786D4E /* LoginModel.swift */; };
 		BA84841920E904B800BC706E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84841820E904B800BC706E /* MainViewController.swift */; };
@@ -236,6 +239,9 @@
 		4CAB389B20F107000057F4C0 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		4CAB389D20F107000057F4C0 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		4CAB389F20F107000057F4C0 /* MainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
+		4CAB38A420F1216B0057F4C0 /* ApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewController.swift; sourceTree = "<group>"; };
+		4CAB38A620F138F80057F4C0 /* ApplyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyModel.swift; sourceTree = "<group>"; };
+		4CAB38A820F13B550057F4C0 /* UserDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataVO.swift; sourceTree = "<group>"; };
 		4FEA88DF39A4473E578321B5 /* Pods_nongchung_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nongchung_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		703D2453D691E76992FDE4D9 /* Pods-nongchung_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOSTests/Pods-nongchung_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EC82056829108DFFEB305CA /* Pods-nongchung_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOS/Pods-nongchung_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -376,6 +382,7 @@
 				BA43D3BF20E8887700786D4E /* LoginModel.swift */,
 				4C30130820EB48AA001B2728 /* MainModel.swift */,
 				4C7DC5E620EDEA5900CCA950 /* IntroduceModel.swift */,
+				4CAB38A620F138F80057F4C0 /* ApplyModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0EA59D20E873E800CB70ED /* LoginVO.swift */,
+				4CAB38A820F13B550057F4C0 /* UserDataVO.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -446,6 +454,7 @@
 				4C7DC5D320ECB89100CCA950 /* ReviewTableViewController.swift */,
 				4C7DC5D520ECD6F900CCA950 /* InformationCell */,
 				4CAB384420F0D4A80057F4C0 /* Popup */,
+				4CAB38A420F1216B0057F4C0 /* ApplyViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -928,6 +937,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CAB389320F0F6660057F4C0 /* Main.swift in Sources */,
+				4CAB38A920F13B550057F4C0 /* UserDataVO.swift in Sources */,
 				4C7DC5E520ECE08C00CCA950 /* PolicyCell.swift in Sources */,
 				4C7DC5F020EDEBAF00CCA950 /* ScheduleVO.swift in Sources */,
 				4CAB386B20F0F52B0057F4C0 /* PushViewController.swift in Sources */,
@@ -952,6 +962,7 @@
 				4C30130F20EB4AC5001B2728 /* AdsVO.swift in Sources */,
 				4C7DC60520EFAD2700CCA950 /* HeaderCollectionViewCell.swift in Sources */,
 				4CAB387620F0F52B0057F4C0 /* ProfileViewController.swift in Sources */,
+				4CAB38A520F1216B0057F4C0 /* ApplyViewController.swift in Sources */,
 				4CAB388020F0F5500057F4C0 /* ProfileData.swift in Sources */,
 				4CAB387220F0F52B0057F4C0 /* PushTableViewCell.swift in Sources */,
 				4C7DC60120EF91BB00CCA950 /* AllStartDateVO.swift in Sources */,
@@ -976,6 +987,7 @@
 				4C98B4F020EA4DAF0038866E /* PopFarmCollectionViewCell.swift in Sources */,
 				4C7DC5EA20EDEADC00CCA950 /* IntroduceVO.swift in Sources */,
 				4CAB387B20F0F5460057F4C0 /* Heart.swift in Sources */,
+				4CAB38A720F138F80057F4C0 /* ApplyModel.swift in Sources */,
 				4CAB389220F0F6660057F4C0 /* MainData.swift in Sources */,
 				4C98B4ED20EA4DAF0038866E /* AdTableViewCell.swift in Sources */,
 				4C0EA5A120E8799600CB70ED /* JoinVC.swift in Sources */,

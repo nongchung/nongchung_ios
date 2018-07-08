@@ -13,6 +13,7 @@ class LoginModel : NetworkModel{
     
     func login(email: String, password: String) {
         
+        let ud = UserDefaults.standard
         let URL = "\(baseURL)/api/signin"
         let body : [String:String] = [
             "email": email,
@@ -35,7 +36,20 @@ class LoginModel : NetworkModel{
                     }
                     if responseMessage.message == "Success To Sign In" {
                         if let token = responseMessage.token{
-                            self.view.networkResult(resultData: token, code: "Success To Sign In")
+                            ud.setValue(token, forKey: "token")
+                            ud.synchronize()
+                        }
+                        if let data = responseMessage.data{
+                            ud.setValue(data[0].name, forKey: "name")
+                            ud.setValue(data[0].mail, forKey: "mail")
+                            ud.setValue(data[0].point, forKey: "point")
+                            ud.setValue(data[0].img, forKey: "img")
+                            ud.setValue(data[0].nickname, forKey: "nickname")
+                            ud.setValue(data[0].age, forKey: "age")
+                            ud.setValue(data[0].birth, forKey: "birth")
+                            ud.setValue(data[0].hp, forKey: "hp")
+                            ud.setValue(data[0].sex, forKey: "sex")
+                            ud.synchronize()
                         }
                     }
                     else if responseMessage.message == "Null Value" {
