@@ -1,5 +1,5 @@
 //
-//  ReviewVO.swift
+//  ReviewEditVO.swift
 //  nongchung_iOS
 //
 //  Created by 권민하 on 2018. 7. 11..
@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct ReviewVO: Codable {
-    let message: String?
-    let rvListInfo: [ReviewDataVO]?
+struct ReviewEditVO: Codable {
+    let message: String
+    let data: ReviewEditDataVO
 }
-

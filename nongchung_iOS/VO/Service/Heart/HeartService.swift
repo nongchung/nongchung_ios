@@ -73,5 +73,34 @@ struct HeartService : APIService {
     }
     
     
+    static func likeAddNetworking(nhIdx: Int, completion: @escaping ()->Void) {
+        let URL = url("/api/bookmark")
+        
+        let userdefault = UserDefaults.standard
+        guard let token = userdefault.string(forKey: "token") else { return }
+        let body: [String : Int] = [
+            "nhIdx" : nhIdx]
+        
+        Alamofire.request(URL, method: .post, parameters: body, encoding: JSONEncoding.default, headers: ["token" : token]).responseData() { res in
+            switch res.result {
+            case .success:
+                if let value = res.result.value {
+                    let message = JSON(value)["message"].string
+                    
+                    if message == "Success to Add" {
+                        completion()
+                    }
+                }
+                break
+            case .failure(let err):
+                print(err.localizedDescription)
+                break
+            }
+        }
+        
+        
+    }
+    
+    
     
 }

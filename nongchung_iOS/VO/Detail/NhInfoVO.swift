@@ -10,6 +10,7 @@ import ObjectMapper
 
 class NhInfoVO : Mappable{
     
+    var nhIdx : String?
     var addr : String?
     var name : String?
     var star : Int?
@@ -20,6 +21,7 @@ class NhInfoVO : Mappable{
     required init?(map: Map) {}
     
     func mapping(map: Map) {
+        nhIdx <- map["nhIdx"]
         addr <- map["addr"]
         name <- map["name"]
         star <- map["star"]

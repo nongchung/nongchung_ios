@@ -22,6 +22,7 @@ class MyActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var endDate: UILabel!
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var reviewView: UIView!
+
     @IBOutlet weak var reviewButton: UIButton!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var progress: UIProgressView!
@@ -34,7 +35,6 @@ class MyActivityTableViewCell: UITableViewCell {
         super.awakeFromNib()
         progress.transform = progress.transform.scaledBy(x: 1, y: 2)
         //        progress.layer.cornerRadius = progress.layer.frame.height / 2.0
-        //        //progress.layer.cornerRadius = progress.layer.frame.height / 2.0
         //        progress.clipsToBounds = true
         //        progress.layer.sublayers![1].cornerRadius = progress.layer.frame.height / 2.0
         //        progress.subviews[1].clipsToBounds = true
@@ -46,12 +46,8 @@ class MyActivityTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
-    
     @IBAction func reviewButton(_ sender: UIButton) {
-        delegate?.myActivityTableViewReviewButton(self)
-        
-        print("w22togn2323")
+                delegate?.myActivityTableViewReviewButton(self)
     }
     
     

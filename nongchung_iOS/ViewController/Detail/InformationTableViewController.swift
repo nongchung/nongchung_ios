@@ -32,6 +32,12 @@ class InformationTableViewController : UIViewController {
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
         print(scrollView.contentOffset.y)
     }
+    @objc func farmerButtonClickAction(_ sender: UIButton) {
+        guard let farmerVC = self.storyboard?.instantiateViewController(withIdentifier: "FarmerViewController") as? FarmerViewController else { return }
+        farmerVC.nhIdx = sender.tag
+        self.navigationController?.pushViewController(farmerVC, animated: true)
+        
+    }
 }
 
 extension InformationTableViewController : UITableViewDelegate, UITableViewDataSource {
@@ -67,6 +73,9 @@ extension InformationTableViewController : UITableViewDelegate, UITableViewDataS
             cell.farmerImageView.imageFromUrl(farmerInfoData?.img, defaultImgPath: "")
             cell.farmerNameLabel.text = farmerInfoData?.name
             cell.introduceLabel.text = farmerInfoData?.comment
+            
+            cell.farmerProfileButton.tag = Int(gsno(nhInfoData?.nhIdx))!
+            cell.farmerProfileButton.addTarget(self, action: #selector(farmerButtonClickAction(_:)), for: .touchUpInside)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCell

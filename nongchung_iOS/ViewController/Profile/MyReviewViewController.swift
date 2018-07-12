@@ -12,31 +12,34 @@ class MyReviewViewController: UIViewController {
     
     @IBOutlet weak var myReviewTableView: UITableView!
     
-    var reviews: [ReviewDataVO] = [ReviewDataVO]()
+    var reviews: [MyReviewDataVO] = [MyReviewDataVO]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.isHidden = true
         myReviewTableView.delegate = self
         myReviewTableView.dataSource = self
         
         myReviewTableView.separatorStyle = .none
         myReviewTableView.rowHeight = UITableViewAutomaticDimension
         
-        reviewInit()
+        myReviewInit()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        self.tabBarController?.tabBar.isHidden = false
     }
     
-    func reviewInit() {
-        ReviewService.reviewInit(completion: { (reviewData) in
+    func myReviewInit() {
+        ReviewService.myReviewInit(completion: { (reviewData) in
             self.reviews = reviewData
             self.myReviewTableView.reloadData()
         })

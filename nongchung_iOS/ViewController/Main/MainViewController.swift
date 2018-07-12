@@ -13,6 +13,8 @@ import NotificationBannerSwift
 extension Notification.Name{
     static let gotoIntroduce = Notification.Name("gotoIntroduce")
     static let gotoMain = Notification.Name("gotoMain")
+    static let noLoginUser = Notification.Name("noLoginUser")
+    static let gotoTheme = Notification.Name("gotoTheme")
 }
 
 class MainViewController: UIViewController, NetworkCallback {
@@ -42,6 +44,7 @@ class MainViewController: UIViewController, NetworkCallback {
     
     var nhIdx : Int?
     let ud = UserDefaults.standard
+    var themeIdx : Int?
     
     var indicator = UIActivityIndicatorView()
     let segmentedController = SJSegmentedViewController()
@@ -81,8 +84,40 @@ class MainViewController: UIViewController, NetworkCallback {
         }
     }
     
+    //MARK: 테마별 농활 Notification
+    @objc func gotoThemeNoti(notification: NSNotification){
+        themeIdx = gino(notification.userInfo!["themeIdx"] as? Int)
+        
+        guard let themeVC = storyboard?.instantiateViewController(
+            withIdentifier : "ThemeViewController"
+            ) as? ThemeViewController
+            else{return}
+        
+        themeVC.themeIdx = themeIdx
+        self.navigationController?.pushViewController(themeVC, animated: true)
+    }
+    
+    @objc func noLoginUser(notification: NSNotification){
+        loginAlert()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         mainTableView.reloadData()
+        
+        //MARK: Navigationbar remove back button text
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //MARK: Navigationbar back button image setting
+        let backImage = UIImage(named: "back_icon")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+        //MARK: Navigationbar color setting
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        //MARK: Navigationbar font setting
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
     }
     
     override func viewDidLoad() {
@@ -90,6 +125,8 @@ class MainViewController: UIViewController, NetworkCallback {
         navigationController?.isNavigationBarHidden = true
         NotificationCenter.default.addObserver(self,selector: #selector(gotoIntroduce),name: .gotoIntroduce,object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(gotoMain), name: .gotoMain, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(noLoginUser), name: .noLoginUser, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gotoThemeNoti), name: .gotoTheme, object: nil)
         
         //MARK: TableView Layout Setting
         mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
@@ -116,6 +153,8 @@ class MainViewController: UIViewController, NetworkCallback {
         model.home(token: gsno(ud.string(forKey: "token")))
         
     }
+    
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default

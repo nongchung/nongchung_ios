@@ -1,15 +1,13 @@
 //
-//  ReviewVO.swift
+//  EditReviewCollectionViewCell.swift
 //  nongchung_iOS
 //
 //  Created by 권민하 on 2018. 7. 11..
 //  Copyright © 2018년 농활청춘. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct ReviewVO: Codable {
-    let message: String?
-    let rvListInfo: [ReviewDataVO]?
+class EditReviewCollectionViewCell: UICollectionViewCell {
+    
 }
-

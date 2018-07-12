@@ -51,24 +51,39 @@ class MyActivityViewController: UIViewController {
 }
 
 extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, MyActivityViewCellDelegate {
-    
     func myActivityTableViewReviewButton(_ sender: MyActivityTableViewCell) {
         guard let tappedIndexPath = myActivityTableView.indexPath(for: sender) else { return }
         
-        guard let reviewWriteVC = self.storyboard?.instantiateViewController(
-            withIdentifier : "ReviewWriteViewController"
-            ) as? ReviewWriteViewController
-            else{ return }
-        
-        reviewWriteVC.reviewTitle = activitys[tappedIndexPath.row].name
-        reviewWriteVC.startDate = activitys[tappedIndexPath.row].startDate
-        reviewWriteVC.endDate = activitys[tappedIndexPath.row].endDate
-        reviewWriteVC.period = activitys[tappedIndexPath.row].period
-        reviewWriteVC.idx = activitys[tappedIndexPath.row].idx
-        
-        self.navigationController?.pushViewController(reviewWriteVC, animated: true)
-        
-        
+        //MARK: 후기가 없는 경우 (작성)
+        if activitys[tappedIndexPath.row].rState == 0 {
+            guard let reviewWriteVC = self.storyboard?.instantiateViewController(
+                withIdentifier : "ReviewWriteViewController"
+                ) as? ReviewWriteViewController
+                else{ return }
+            
+            reviewWriteVC.reviewTitle = activitys[tappedIndexPath.row].name
+            reviewWriteVC.startDate = activitys[tappedIndexPath.row].startDate
+            reviewWriteVC.endDate = activitys[tappedIndexPath.row].endDate
+            reviewWriteVC.period = activitys[tappedIndexPath.row].period
+            reviewWriteVC.idx = activitys[tappedIndexPath.row].idx
+            
+            self.navigationController?.pushViewController(reviewWriteVC, animated: true)
+        }
+        //MARK: 후기가 있는 경우 (수정)
+        else {
+            guard let reviewEditVC = self.storyboard?.instantiateViewController(
+                withIdentifier : "ReviewEditViewController"
+                ) as? ReviewEditViewController
+                else{ return }
+            
+//            reviewWriteVC.reviewTitle = activitys[tappedIndexPath.row].name
+//            reviewWriteVC.startDate = activitys[tappedIndexPath.row].startDate
+//            reviewWriteVC.endDate = activitys[tappedIndexPath.row].endDate
+//            reviewWriteVC.period = activitys[tappedIndexPath.row].period
+//            reviewWriteVC.idx = activitys[tappedIndexPath.row].idx
+            
+            self.navigationController?.pushViewController(reviewEditVC, animated: true)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -140,19 +155,12 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 // 후기를 썼을 경우
                 if activityRow.rState == 1 {
                     cell.reviewButton.setTitle("후기수정", for: .normal)
-                    
                     cell.delegate = self
-                    
-                    //cell.reviewButton.addTarget(self, action: #selector(reviewClickAction(_:)), for: .touchUpInside)
-                    //cell.reviewButton.tag = idx
                 }
                     // 후기를 안 썼을 경우
                 else {
                     cell.reviewButton.setTitle("후기작성", for: .normal)
-                    
-                    //                    let idx = activityRow.idx
-                    //                    cell.reviewButton.addTarget(self, action: #selector(reviewClickAction(_:)), for: .touchUpInside)
-                    //                    cell.reviewButton.tag = idx
+                    cell.delegate = self
                 }
             }
             return cell

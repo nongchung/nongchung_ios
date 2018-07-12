@@ -20,6 +20,8 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var contentLabel: UITextView!
     @IBOutlet weak var titleLable: UILabel!
     var images: NSArray! = []
+    var reviewImage: NSArray! = []
+    var isImage: Bool = false
     
     var reviewTitle: String?
     var startDate: String?
@@ -29,31 +31,14 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     
     var placeholderLabel : UILabel!
     
+    var reviews: ReviewEditDataVO?
+    
+    
     @IBAction func presentPhotoPicker(_ sender: AnyObject) {
-        //        if self.numberOfPhotoSelectionTextField.text!.count > 0
-        //            && UInt(self.numberOfPhotoSelectionTextField.text!) != 1 {
-        //            let pickerViewController = YMSPhotoPickerViewController.init()
-        //
-        //            pickerViewController.numberOfPhotoToSelect = UInt(self.numberOfPhotoSelectionTextField.text!)!
-        //
-        //            let customColor = UIColor.init(red:248.0/255.0, green:217.0/255.0, blue:44.0/255.0, alpha:1.0)
-        //
-        //            pickerViewController.theme.titleLabelTextColor = UIColor.black
-        //            pickerViewController.theme.navigationBarBackgroundColor = customColor
-        //            pickerViewController.theme.tintColor = UIColor.black
-        //            pickerViewController.theme.orderTintColor = customColor
-        //            pickerViewController.theme.orderLabelTextColor = UIColor.black
-        //            pickerViewController.theme.cameraVeilColor = customColor
-        //            pickerViewController.theme.cameraIconColor = UIColor.white
-        //            pickerViewController.theme.statusBarStyle = .default
-        //
-        //            self.yms_presentCustomAlbumPhotoView(pickerViewController, delegate: self)
-        //        }
-        //        else {
-        
         let pickerViewController = YMSPhotoPickerViewController.init()
         
-        pickerViewController.numberOfPhotoToSelect = 5
+        //MARK: 사진 선택 개수 제한
+        pickerViewController.numberOfPhotoToSelect = 20
         self.yms_presentCustomAlbumPhotoView(pickerViewController, delegate: self)
     }
     
@@ -61,6 +46,7 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     @objc func deletePhotoImage(_ sender: UIButton!) {
         let mutableImages: NSMutableArray! = NSMutableArray.init(array: images)
         print(sender.tag)
+        print(images)
         mutableImages.removeObject(at: sender.tag)
         
         self.images = NSArray.init(array: mutableImages)
@@ -73,9 +59,9 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     
     // 네비게이션바의 완료 버튼을 눌렀을 때
     @objc func addTapped(){
-        //        if let originPw = originPwLabel.text, let newPw = newPwLabel.text {
-        //            editPassword(password: originPw, newpw: newPw)
-        //        }
+        ReviewService.writeImageReview(rImages: images as! [UIImage], content: contentLabel.text, scheIdx: String(idx!), star: ratingLabel.text!) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     
@@ -91,9 +77,11 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
         cosmosView.didFinishTouchingCosmos = didFinishTouchingCosmos
         updateRating()
         
-        titleLable.text = reviewTitle
+        self.titleLable.text = reviewTitle
+        let date = "\(gsno(startDate)) ~ \(gsno(endDate)) (\(gsno(period)))"
+        self.dateLabel.text = date
         
-        // TextView Placeholder
+        //MARK: TextView Placeholder
         contentLabel.delegate = self
         placeholderLabel = UILabel()
         placeholderLabel.text = "내용을 입력하세요"
@@ -103,6 +91,7 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentLabel.font?.pointSize)! / 2)
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.isHidden = !contentLabel.text.isEmpty
+        
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -209,7 +198,6 @@ extension ReviewWriteViewController: UICollectionViewDataSource, UICollectionVie
         
         cell.photoImageView.image =  self.images.object(at: (indexPath as NSIndexPath).item) as? UIImage
         cell.deleteButton.tag = (indexPath as NSIndexPath).item
-        print((indexPath as NSIndexPath).item)
         cell.deleteButton.addTarget(self, action: #selector(ReviewWriteViewController.deletePhotoImage(_:)), for: .touchUpInside)
         
         return cell

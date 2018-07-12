@@ -22,4 +22,5 @@ struct MyActivity: Codable {
     let idx: Int
     let img: String?
     let rState: Int?
+    let rIdx: Int?
 }
