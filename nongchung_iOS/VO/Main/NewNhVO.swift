@@ -18,6 +18,7 @@ class NewNhVO : Mappable {
     var price : String?
     var period : String?
     var star : Double?
+    var isBooked : Int?
     
     required init?(map: Map) {}
     
@@ -30,5 +31,6 @@ class NewNhVO : Mappable {
         price <- map["price"]
         period <- map["period"]
         star <- map["star"]
+        isBooked <- map["isBooked"]
     }
 }

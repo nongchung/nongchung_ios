@@ -9,8 +9,9 @@
 import UIKit
 
 class QnAExpansionTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var answearLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var ALabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

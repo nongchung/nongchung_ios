@@ -21,17 +21,12 @@ struct FarmerService : APIService {
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers:  ["token" : token!]).responseData() { res in
             switch res.result {
             case .success:
-                print(342342342332)
                 if let value = res.result.value {
                     let decoder = JSONDecoder()
                     
                     do {
-                        print("do")
                         let farmerData = try decoder.decode(FarmerVO.self, from: value)
-                         print("d33333o")
-                        print(farmerData.message)
                         if farmerData.message == "success TO show farmer profile" {
-                             print("do23323r23")
                             completion(farmerData.farmerInfo!, farmerData.data!)
                         }
                         

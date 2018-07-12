@@ -47,32 +47,21 @@ extension ScheduleCell : UITableViewDelegate, UITableViewDataSource {
         let index = scheduleData![indexPath.row]
         cell.timeLabel.text = index.time
         cell.activityLabel.text = index.activity
-        cell.scheduleImageView.image = UIImage(named: "intro_schedule_icon")
-        cell.scheduleTopLineImageView.isHidden = true
-        if indexPath.row == (scheduleData?.count)! - 1{
-            cell.scheduleBottomLineImageView.isHidden = true
-            print((scheduleData?.count)! - 1)
-        } else if indexPath.row == 0{
-            cell.scheduleTopLineImageView.isHidden = true
-        } else{
-            cell.scheduleTopLineImageView.isHidden = true
+        cell.scheduleImageView.image = UIImage(named: "intro_schedule_circle_icon")
+        cell.scheduleTopLineImageView.image = UIImage(named: "intro_schedule_white_line")
+        if indexPath.row == (scheduleData?.count)! - 1 && scheduleData?.count != 1{
+            cell.scheduleBottomLineImageView.image = UIImage(named: "intro_schedule_white_line")
+            cell.scheduleTopLineImageView.image = UIImage(named: "intro_schedule_line")
+        } else if indexPath.row == 0 && scheduleData?.count != 1{
+            cell.scheduleTopLineImageView.image = UIImage(named: "intro_schedule_white_line")
+            cell.scheduleBottomLineImageView.image = UIImage(named: "intro_schedule_line")
+        } else if indexPath.row == (scheduleData?.count)! - 1 && scheduleData?.count == 1{
+            cell.scheduleBottomLineImageView.image = UIImage(named: "intro_schedule_white_line")
+            cell.scheduleTopLineImageView.image = UIImage(named: "intro_schedule_white_line")
+        } else {
+            cell.scheduleTopLineImageView.image = UIImage(named: "intro_schedule_line")
+            cell.scheduleBottomLineImageView.image = UIImage(named: "intro_schedule_line")
         }
         return cell
     }
-    
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
-//        let index = scheduleData![indexPath.row]
-//        cell.timeLabel.text = index.time
-//        cell.activityLabel.text = index.activity
-//        if indexPath.row == (scheduleData?.count)! - 1{
-//            cell.scheduleImageView.image = UIImage(named: "intro_schedule_icon2")
-//            print((scheduleData?.count)! - 1)
-//        } else{
-//            cell.scheduleImageView.image = UIImage(named: "intro_schedule_icon")
-//        }
-//    }
-    
-    
-    
 }

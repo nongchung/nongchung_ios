@@ -34,7 +34,7 @@ class InformationTableViewController : UIViewController {
     }
     @objc func farmerButtonClickAction(_ sender: UIButton) {
         guard let farmerVC = self.storyboard?.instantiateViewController(withIdentifier: "FarmerViewController") as? FarmerViewController else { return }
-        farmerVC.nhIdx = sender.tag
+        farmerVC.nhIdx = Int(gsno(nhInfoData?.nhIdx))
         self.navigationController?.pushViewController(farmerVC, animated: true)
         
     }
@@ -61,6 +61,7 @@ extension InformationTableViewController : UITableViewDelegate, UITableViewDataS
             cell.introduceLabel.text = nhInfoData?.description
             cell.priceLabel.text = "\((nhInfoData?.price)!)원"
             cell.periodLabel.text = nhInfoData?.period
+            cell.starImageView.image = UIImage(named: cell.starCalculator(star: (nhInfoData?.star)!))
             return cell
         case 1:
             
@@ -73,8 +74,7 @@ extension InformationTableViewController : UITableViewDelegate, UITableViewDataS
             cell.farmerImageView.imageFromUrl(farmerInfoData?.img, defaultImgPath: "")
             cell.farmerNameLabel.text = farmerInfoData?.name
             cell.introduceLabel.text = farmerInfoData?.comment
-            
-            cell.farmerProfileButton.tag = Int(gsno(nhInfoData?.nhIdx))!
+            cell.farmerStatusLabel.text = "농장주"
             cell.farmerProfileButton.addTarget(self, action: #selector(farmerButtonClickAction(_:)), for: .touchUpInside)
             return cell
         case 3:

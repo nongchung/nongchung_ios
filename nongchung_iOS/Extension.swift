@@ -98,30 +98,39 @@ extension UITableViewCell{
     
     //MARK: Star 계산기
     public func starCalculator(star: Double) -> String{
-        if star <= 1{
-            return "star0_icon_small"
-        } else if star > 1 && star <= 2{
-            return "star1_icon_small"
-        } else if star > 2 && star <= 3{
-            return "star1_icon_small"
-        } else if star > 3 && star <= 4{
-            return "star2_icon_small"
-        } else if star > 4 && star <= 5{
-            return "star2_icon_small"
-        } else if star > 5 && star <= 6{
-            return "star3_icon_small"
-        } else if star > 6 && star <= 7{
-            return "star3_icon_small"
-        } else if star > 7 && star <= 8{
-            return "star4_icon_small"
-        } else if star > 8 && star <= 9{
-            return "star4_icon_small"
-        } else if star > 9 && star <= 10{
-            return "star5_icon_small"
-        } else{
+        if star >= 0 && star < 1{
             return "star0_icon_small"
         }
-        
+        else if star >= 1 && star < 2{
+            return "star0.5_icon_small"
+        }
+        else if star >= 2 && star < 3{
+            return "star1_icon_small"
+        }
+        else if star >= 3 && star < 4{
+            return "star1.5_icon_small"
+        }
+        else if star >= 4 && star < 5{
+            return "star2_icon_small"
+        }
+        else if star >= 5 && star < 6{
+            return "star2.5_icon_small"
+        }
+        else if star >= 6 && star < 7{
+            return "star3_icon_small"
+        }
+        else if star >= 7 && star < 8{
+            return "star3.5_icon_small"
+        }
+        else if star >= 8 && star < 9{
+            return "star4_icon_small"
+        }
+        else if star >= 9 && star < 10{
+            return "star4.5_icon_small"
+        }
+        else {
+            return "star5_icon_small"
+        }
     }
 }
 

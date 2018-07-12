@@ -20,9 +20,6 @@ extension Notification.Name{
 class MainViewController: UIViewController, NetworkCallback {
     
     @IBOutlet weak var mainTableView: UITableView!
-    @IBAction func imsi(_ sender: Any) {
-
-    }
     
     //MARK: From Server Data - 홈
     var homeResultData : MainVO?
@@ -94,11 +91,27 @@ class MainViewController: UIViewController, NetworkCallback {
             else{return}
         
         themeVC.themeIdx = themeIdx
-        self.navigationController?.pushViewController(themeVC, animated: true)
+        themeVC.modalTransitionStyle = .crossDissolve
+        
+        let navigationControlr = UINavigationController(rootViewController: themeVC)
+        self.present(navigationControlr, animated: true, completion: nil)
     }
     
     @objc func noLoginUser(notification: NSNotification){
         loginAlert()
+    }
+    
+    @objc func clickAllButton (sender: UIButton) {
+        let allListVC = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "AllListViewController") as! AllListViewController
+        if sender.tag == 1 {
+            allListVC.viewName = "인기"
+        } else {
+            allListVC.viewName = "뉴"
+        }
+        allListVC.modalTransitionStyle = .crossDissolve
+        
+        let navigationControlr = UINavigationController(rootViewController: allListVC)
+        self.present(navigationControlr, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,7 +135,6 @@ class MainViewController: UIViewController, NetworkCallback {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.isNavigationBarHidden = true
         NotificationCenter.default.addObserver(self,selector: #selector(gotoIntroduce),name: .gotoIntroduce,object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(gotoMain), name: .gotoMain, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(noLoginUser), name: .noLoginUser, object: nil)
@@ -239,6 +251,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
             if populNhData != nil{
                 cell.populNhData = populNhData
             }
+            
+            cell.allButton.tag = 1
+            cell.allButton.addTarget(self, action: #selector(clickAllButton(sender:)), for: .touchUpInside)
+            
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NewTableViewCell", for: indexPath) as! NewTableViewCell
@@ -246,6 +262,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
             if newNhData != nil{
                 cell.newNhData = newNhData
             }
+            
+            cell.allButton.tag = 2
+            cell.allButton.addTarget(self, action: #selector(clickAllButton(sender:)), for: .touchUpInside)
             return cell
         } else if indexPath.section == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeTableViewCell", for: indexPath) as! ThemeTableViewCell

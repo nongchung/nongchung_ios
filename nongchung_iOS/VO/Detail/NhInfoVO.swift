@@ -13,10 +13,11 @@ class NhInfoVO : Mappable{
     var nhIdx : String?
     var addr : String?
     var name : String?
-    var star : Int?
+    var star : Double?
     var description : String?
     var price : Int?
     var period : String?
+    var isBooked : Int?
     
     required init?(map: Map) {}
     
@@ -28,5 +29,6 @@ class NhInfoVO : Mappable{
         description <- map["description"]
         price <- map["price"]
         period <- map["period"]
+        isBooked <- map["isBooked"]
     }
 }

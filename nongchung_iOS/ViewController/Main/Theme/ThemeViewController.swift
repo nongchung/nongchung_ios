@@ -19,9 +19,15 @@ class ThemeViewController: UIViewController {
     
     var imageArray = [#imageLiteral(resourceName: "main_image4"), #imageLiteral(resourceName: "main_theme3"), #imageLiteral(resourceName: "main_theme2"), #imageLiteral(resourceName: "main_theme5"), #imageLiteral(resourceName: "main_theme4"), #imageLiteral(resourceName: "main_theme1")]
     
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBarSetting()
         themeTableView.delegate = self
         themeTableView.dataSource = self
     }
@@ -39,6 +45,15 @@ class ThemeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    func navigationBarSetting(){
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.view.backgroundColor = UIColor.white
     }
 
     func themeInit() {
@@ -73,7 +88,6 @@ extension ThemeViewController: UITableViewDataSource, UITableViewDelegate {
             let index = themes[indexPath.row]
             
             cell.mainImageView.kf.setImage(with: URL(string: gsno(index.fImage)), placeholder: #imageLiteral(resourceName: "main_image3"))
-            cell.prifileImageView.kf.setImage(with: URL(string: gsno(index.farmerImg)), placeholder: #imageLiteral(resourceName: "mian_profile_circle"))
             cell.titleLabel.text = index.name
             cell.addressLabel.text = index.addr
             cell.priceLabel.text = String(gino(index.price))

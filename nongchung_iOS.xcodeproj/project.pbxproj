@@ -29,9 +29,6 @@
 		4C23FAE620F4CC2D00676796 /* SearchVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAE520F4CC2D00676796 /* SearchVO.swift */; };
 		4C23FAE820F4CC3A00676796 /* SearchDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAE720F4CC3A00676796 /* SearchDataVO.swift */; };
 		4C23FAEA20F4CDCB00676796 /* SearchFiliteredDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAE920F4CDCB00676796 /* SearchFiliteredDataCell.swift */; };
-		4C23FAEE20F4E3DF00676796 /* QnaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAEB20F4E3DE00676796 /* QnaData.swift */; };
-		4C23FAEF20F4E3DF00676796 /* QnAExpansionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAEC20F4E3DE00676796 /* QnAExpansionTableViewCell.swift */; };
-		4C23FAF020F4E3DF00676796 /* QnATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAED20F4E3DE00676796 /* QnATableViewCell.swift */; };
 		4C23FAF320F4E46500676796 /* MyActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAF220F4E46500676796 /* MyActivityService.swift */; };
 		4C23FB0320F4E5C700676796 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB0220F4E5C700676796 /* ReviewService.swift */; };
 		4C23FB1020F553B900676796 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB0F20F553B900676796 /* Utility.swift */; };
@@ -88,9 +85,12 @@
 		4C56068320F7D0160063C800 /* ThemeVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56068120F7D0160063C800 /* ThemeVO.swift */; };
 		4C56068420F7D0160063C800 /* ThemeDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56068220F7D0160063C800 /* ThemeDataVO.swift */; };
 		4C56068720F7D02A0063C800 /* ThemeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56068620F7D02A0063C800 /* ThemeService.swift */; };
+		4C56068B20F7D1B80063C800 /* AllListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56068920F7D1B70063C800 /* AllListTableViewCell.swift */; };
+		4C56068C20F7D1B80063C800 /* AllListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56068A20F7D1B80063C800 /* AllListViewController.swift */; };
+		4C56069020F7D1DB0063C800 /* AllListVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56068E20F7D1DB0063C800 /* AllListVO.swift */; };
+		4C56069120F7D1DB0063C800 /* AllListDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56068F20F7D1DB0063C800 /* AllListDataVO.swift */; };
+		4C56069420F7D1FF0063C800 /* AllListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56069320F7D1FF0063C800 /* AllListService.swift */; };
 		4C7DC5D020ECA69F00CCA950 /* InformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7DC5CF20ECA69F00CCA950 /* InformationTableViewController.swift */; };
-		4C7DC5D220ECA71D00CCA950 /* QnATableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7DC5D120ECA71D00CCA950 /* QnATableViewController.swift */; };
-		4C7DC5D420ECB89100CCA950 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7DC5D320ECB89100CCA950 /* ReviewTableViewController.swift */; };
 		4C7DC5D720ECD72D00CCA950 /* IntroduceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7DC5D620ECD72D00CCA950 /* IntroduceCell.swift */; };
 		4C7DC5D920ECDC8F00CCA950 /* FarmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7DC5D820ECDC8F00CCA950 /* FarmerCell.swift */; };
 		4C7DC5DB20ECDE4B00CCA950 /* VolunteerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7DC5DA20ECDE4B00CCA950 /* VolunteerCell.swift */; };
@@ -130,9 +130,7 @@
 		4C98B4F120EA4DAF0038866E /* NewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E720EA4DAF0038866E /* NewCollectionViewCell.swift */; };
 		4C98B4F220EA4DAF0038866E /* PopularListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E820EA4DAF0038866E /* PopularListCollectionViewCell.swift */; };
 		4C98B4FA20EA4ED60038866E /* DuplicateVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4F920EA4ED60038866E /* DuplicateVO.swift */; };
-		4C98B4FE20EA56000038866E /* AllShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4FD20EA56000038866E /* AllShowViewController.swift */; };
 		4CAB384620F0D5280057F4C0 /* PopupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB384520F0D5280057F4C0 /* PopupCell.swift */; };
-		4CAB384820F0F50F0057F4C0 /* AllListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB384720F0F50E0057F4C0 /* AllListTableViewCell.swift */; };
 		4CAB386220F0F52B0057F4C0 /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB384A20F0F52A0057F4C0 /* HeartTableViewCell.swift */; };
 		4CAB386320F0F52B0057F4C0 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB384B20F0F52A0057F4C0 /* HeartViewController.swift */; };
 		4CAB386920F0F52B0057F4C0 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB385320F0F52B0057F4C0 /* NoticeTableViewController.swift */; };
@@ -160,6 +158,15 @@
 		4CAB38AB20F2156E0057F4C0 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */; };
 		4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */; };
 		4CAB38B520F294840057F4C0 /* ApplyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38B420F294840057F4C0 /* ApplyVO.swift */; };
+		4CDE4BE820F7D664006FEFCA /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE020F7D660006FEFCA /* ReviewTableViewCell.swift */; };
+		4CDE4BE920F7D664006FEFCA /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE120F7D660006FEFCA /* ReviewCollectionViewCell.swift */; };
+		4CDE4BEA20F7D664006FEFCA /* ReviewStarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE220F7D661006FEFCA /* ReviewStarTableViewCell.swift */; };
+		4CDE4BEB20F7D664006FEFCA /* QnaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE320F7D662006FEFCA /* QnaData.swift */; };
+		4CDE4BEC20F7D664006FEFCA /* QnAExpansionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE420F7D662006FEFCA /* QnAExpansionTableViewCell.swift */; };
+		4CDE4BED20F7D664006FEFCA /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE520F7D662006FEFCA /* ReviewTableViewController.swift */; };
+		4CDE4BEE20F7D664006FEFCA /* QnATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE620F7D663006FEFCA /* QnATableViewCell.swift */; };
+		4CDE4BEF20F7D664006FEFCA /* QnALastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE720F7D663006FEFCA /* QnALastTableViewCell.swift */; };
+		4CDE4BF120F7D67A006FEFCA /* QnATableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BF020F7D67A006FEFCA /* QnATableViewController.swift */; };
 		B698B3B3D3A6657655ACEC08 /* Pods_nongchung_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE6756A3BEE07570D35D072 /* Pods_nongchung_iOSTests.framework */; };
 		BA43D3C020E8887700786D4E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43D3BF20E8887700786D4E /* LoginModel.swift */; };
 		BA84841920E904B800BC706E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84841820E904B800BC706E /* MainViewController.swift */; };
@@ -214,9 +221,6 @@
 		4C23FAE520F4CC2D00676796 /* SearchVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVO.swift; sourceTree = "<group>"; };
 		4C23FAE720F4CC3A00676796 /* SearchDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataVO.swift; sourceTree = "<group>"; };
 		4C23FAE920F4CDCB00676796 /* SearchFiliteredDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiliteredDataCell.swift; sourceTree = "<group>"; };
-		4C23FAEB20F4E3DE00676796 /* QnaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnaData.swift; sourceTree = "<group>"; };
-		4C23FAEC20F4E3DE00676796 /* QnAExpansionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnAExpansionTableViewCell.swift; sourceTree = "<group>"; };
-		4C23FAED20F4E3DE00676796 /* QnATableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnATableViewCell.swift; sourceTree = "<group>"; };
 		4C23FAF220F4E46500676796 /* MyActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityService.swift; sourceTree = "<group>"; };
 		4C23FB0220F4E5C700676796 /* ReviewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
 		4C23FB0F20F553B900676796 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
@@ -273,9 +277,12 @@
 		4C56068120F7D0160063C800 /* ThemeVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeVO.swift; sourceTree = "<group>"; };
 		4C56068220F7D0160063C800 /* ThemeDataVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeDataVO.swift; sourceTree = "<group>"; };
 		4C56068620F7D02A0063C800 /* ThemeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeService.swift; sourceTree = "<group>"; };
+		4C56068920F7D1B70063C800 /* AllListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListTableViewCell.swift; sourceTree = "<group>"; };
+		4C56068A20F7D1B80063C800 /* AllListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListViewController.swift; sourceTree = "<group>"; };
+		4C56068E20F7D1DB0063C800 /* AllListVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListVO.swift; sourceTree = "<group>"; };
+		4C56068F20F7D1DB0063C800 /* AllListDataVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListDataVO.swift; sourceTree = "<group>"; };
+		4C56069320F7D1FF0063C800 /* AllListService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListService.swift; sourceTree = "<group>"; };
 		4C7DC5CF20ECA69F00CCA950 /* InformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewController.swift; sourceTree = "<group>"; };
-		4C7DC5D120ECA71D00CCA950 /* QnATableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnATableViewController.swift; sourceTree = "<group>"; };
-		4C7DC5D320ECB89100CCA950 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		4C7DC5D620ECD72D00CCA950 /* IntroduceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceCell.swift; sourceTree = "<group>"; };
 		4C7DC5D820ECDC8F00CCA950 /* FarmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmerCell.swift; sourceTree = "<group>"; };
 		4C7DC5DA20ECDE4B00CCA950 /* VolunteerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerCell.swift; sourceTree = "<group>"; };
@@ -315,9 +322,7 @@
 		4C98B4E720EA4DAF0038866E /* NewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E820EA4DAF0038866E /* PopularListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularListCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4F920EA4ED60038866E /* DuplicateVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateVO.swift; sourceTree = "<group>"; };
-		4C98B4FD20EA56000038866E /* AllShowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllShowViewController.swift; sourceTree = "<group>"; };
 		4CAB384520F0D5280057F4C0 /* PopupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupCell.swift; sourceTree = "<group>"; };
-		4CAB384720F0F50E0057F4C0 /* AllListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllListTableViewCell.swift; sourceTree = "<group>"; };
 		4CAB384A20F0F52A0057F4C0 /* HeartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
 		4CAB384B20F0F52A0057F4C0 /* HeartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
 		4CAB385320F0F52B0057F4C0 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
@@ -345,6 +350,15 @@
 		4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneApplyViewController.swift; sourceTree = "<group>"; };
 		4CAB38B420F294840057F4C0 /* ApplyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyVO.swift; sourceTree = "<group>"; };
+		4CDE4BE020F7D660006FEFCA /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		4CDE4BE120F7D660006FEFCA /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		4CDE4BE220F7D661006FEFCA /* ReviewStarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewStarTableViewCell.swift; sourceTree = "<group>"; };
+		4CDE4BE320F7D662006FEFCA /* QnaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnaData.swift; sourceTree = "<group>"; };
+		4CDE4BE420F7D662006FEFCA /* QnAExpansionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnAExpansionTableViewCell.swift; sourceTree = "<group>"; };
+		4CDE4BE520F7D662006FEFCA /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
+		4CDE4BE620F7D663006FEFCA /* QnATableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnATableViewCell.swift; sourceTree = "<group>"; };
+		4CDE4BE720F7D663006FEFCA /* QnALastTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnALastTableViewCell.swift; sourceTree = "<group>"; };
+		4CDE4BF020F7D67A006FEFCA /* QnATableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnATableViewController.swift; sourceTree = "<group>"; };
 		4FEA88DF39A4473E578321B5 /* Pods_nongchung_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nongchung_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		703D2453D691E76992FDE4D9 /* Pods-nongchung_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOSTests/Pods-nongchung_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EC82056829108DFFEB305CA /* Pods-nongchung_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOS/Pods-nongchung_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -473,15 +487,15 @@
 		4C0EA58820E86E0D00CB70ED /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BA43D3B520E8860C00786D4E /* Main */,
+				4C7DC5CC20ECA55400CCA950 /* Detail */,
 				4C56066820F7CE660063C800 /* Farmer */,
 				4C56063B20F78D7B0063C800 /* Splash */,
 				4CAB384920F0F52A0057F4C0 /* Heart */,
 				4CAB384C20F0F52A0057F4C0 /* MyActivity */,
 				4CAB385220F0F52B0057F4C0 /* Profile */,
-				4C7DC5CC20ECA55400CCA950 /* Detail */,
 				4C0EA59F20E8798900CB70ED /* Join */,
 				4C0EA59220E86F8F00CB70ED /* Login */,
-				BA43D3B520E8860C00786D4E /* Main */,
 				4C30131620EB6E3A001B2728 /* Mypage */,
 				4C98B4C120EA32230038866E /* Search */,
 			);
@@ -506,6 +520,7 @@
 		4C0EA58A20E86E1D00CB70ED /* VO */ = {
 			isa = PBXGroup;
 			children = (
+				4C56068D20F7D1CC0063C800 /* AllList */,
 				4C56068020F7D0030063C800 /* Theme */,
 				4C56066F20F7CE7F0063C800 /* Farmer */,
 				4C56063620F78B8B0063C800 /* APNs */,
@@ -699,6 +714,32 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		4C56068820F7D1990063C800 /* AllList */ = {
+			isa = PBXGroup;
+			children = (
+				4C56068920F7D1B70063C800 /* AllListTableViewCell.swift */,
+				4C56068A20F7D1B80063C800 /* AllListViewController.swift */,
+			);
+			path = AllList;
+			sourceTree = "<group>";
+		};
+		4C56068D20F7D1CC0063C800 /* AllList */ = {
+			isa = PBXGroup;
+			children = (
+				4C56068F20F7D1DB0063C800 /* AllListDataVO.swift */,
+				4C56068E20F7D1DB0063C800 /* AllListVO.swift */,
+			);
+			path = AllList;
+			sourceTree = "<group>";
+		};
+		4C56069220F7D1E40063C800 /* AllList */ = {
+			isa = PBXGroup;
+			children = (
+				4C56069320F7D1FF0063C800 /* AllListService.swift */,
+			);
+			path = AllList;
+			sourceTree = "<group>";
+		};
 		4C7DC5CC20ECA55400CCA950 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,11 +747,15 @@
 				4C7DC64720F0A43700CCA950 /* HeaderViewController.swift */,
 				4C7DC60420EFAD2700CCA950 /* HeaderCollectionViewCell.swift */,
 				4C7DC5CF20ECA69F00CCA950 /* InformationTableViewController.swift */,
-				4C7DC5D120ECA71D00CCA950 /* QnATableViewController.swift */,
-				4C23FAED20F4E3DE00676796 /* QnATableViewCell.swift */,
-				4C23FAEC20F4E3DE00676796 /* QnAExpansionTableViewCell.swift */,
-				4C23FAEB20F4E3DE00676796 /* QnaData.swift */,
-				4C7DC5D320ECB89100CCA950 /* ReviewTableViewController.swift */,
+				4CDE4BF020F7D67A006FEFCA /* QnATableViewController.swift */,
+				4CDE4BE320F7D662006FEFCA /* QnaData.swift */,
+				4CDE4BE420F7D662006FEFCA /* QnAExpansionTableViewCell.swift */,
+				4CDE4BE720F7D663006FEFCA /* QnALastTableViewCell.swift */,
+				4CDE4BE620F7D663006FEFCA /* QnATableViewCell.swift */,
+				4CDE4BE120F7D660006FEFCA /* ReviewCollectionViewCell.swift */,
+				4CDE4BE220F7D661006FEFCA /* ReviewStarTableViewCell.swift */,
+				4CDE4BE020F7D660006FEFCA /* ReviewTableViewCell.swift */,
+				4CDE4BE520F7D662006FEFCA /* ReviewTableViewController.swift */,
 				4C7DC5D520ECD6F900CCA950 /* InformationCell */,
 				4CAB384420F0D4A80057F4C0 /* Popup */,
 				4CAB38A420F1216B0057F4C0 /* ApplyViewController.swift */,
@@ -780,7 +825,6 @@
 				4C98B4E120EA4DAF0038866E /* NewTableViewCell.swift */,
 				4C98B4DF20EA4DAF0038866E /* ThemeTableViewCell.swift */,
 				4C98B4E020EA4DAF0038866E /* PopFarmTableViewCell.swift */,
-				4CAB384720F0F50E0057F4C0 /* AllListTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -888,6 +932,7 @@
 				4C23FAF120F4E45700676796 /* MyActivity */,
 				4CAB389920F107000057F4C0 /* Heart */,
 				4CAB389C20F107000057F4C0 /* Profile */,
+				4C56069220F7D1E40063C800 /* AllList */,
 			);
 			name = Service;
 			path = VO/Service;
@@ -914,10 +959,10 @@
 			children = (
 				4C98B4BF20EA29550038866E /* TabBarController.swift */,
 				BA84841820E904B800BC706E /* MainViewController.swift */,
-				4C98B4FD20EA56000038866E /* AllShowViewController.swift */,
 				4C98B4DD20EA4DAF0038866E /* TableViewCell */,
 				4C98B4E320EA4DAF0038866E /* CollectionViewCell */,
 				4C56067920F7CFDB0063C800 /* Theme */,
+				4C56068820F7D1990063C800 /* AllList */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1137,7 +1182,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
-				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
@@ -1152,7 +1197,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
@@ -1214,15 +1259,17 @@
 			files = (
 				4C56065D20F7CBEB0063C800 /* ReviewVO.swift in Sources */,
 				4C56065B20F7CBEB0063C800 /* MyReviewDataVO.swift in Sources */,
+				4CDE4BEB20F7D664006FEFCA /* QnaData.swift in Sources */,
 				4C56066720F7CCCD0063C800 /* MyReviewImageCollectionViewCell.swift in Sources */,
 				4C23FAEA20F4CDCB00676796 /* SearchFiliteredDataCell.swift in Sources */,
 				4CAB38A920F13B550057F4C0 /* UserDataVO.swift in Sources */,
+				4CDE4BEE20F7D664006FEFCA /* QnATableViewCell.swift in Sources */,
 				4C7DC5E520ECE08C00CCA950 /* PolicyCell.swift in Sources */,
+				4CDE4BF120F7D67A006FEFCA /* QnATableViewController.swift in Sources */,
 				4C7DC5F020EDEBAF00CCA950 /* ScheduleVO.swift in Sources */,
 				4CAB386B20F0F52B0057F4C0 /* PushViewController.swift in Sources */,
 				4C7DC5E320ECE06A00CCA950 /* MapCell.swift in Sources */,
 				4C7DC5D020ECA69F00CCA950 /* InformationTableViewController.swift in Sources */,
-				4C7DC5D420ECB89100CCA950 /* ReviewTableViewController.swift in Sources */,
 				4C56064520F7CB3D0063C800 /* ReviewEditViewController.swift in Sources */,
 				4C23FB1020F553B900676796 /* Utility.swift in Sources */,
 				4C7DC5FF20EF911E00CCA950 /* FriendsInfoVO.swift in Sources */,
@@ -1243,14 +1290,16 @@
 				BA43D3C020E8887700786D4E /* LoginModel.swift in Sources */,
 				4C0EA55F20E86CF900CB70ED /* nongchung_iOS.xcdatamodeld in Sources */,
 				4C0EA59620E8714C00CB70ED /* Extension.swift in Sources */,
+				4CDE4BEF20F7D664006FEFCA /* QnALastTableViewCell.swift in Sources */,
 				4C56063520F78B340063C800 /* APNSModel.swift in Sources */,
 				4C23FB1920F5563000676796 /* DatePickerHeader.swift in Sources */,
 				4C30130F20EB4AC5001B2728 /* AdsVO.swift in Sources */,
+				4C56069120F7D1DB0063C800 /* AllListDataVO.swift in Sources */,
+				4CDE4BED20F7D664006FEFCA /* ReviewTableViewController.swift in Sources */,
 				4C7DC60520EFAD2700CCA950 /* HeaderCollectionViewCell.swift in Sources */,
 				4CAB387620F0F52B0057F4C0 /* ProfileViewController.swift in Sources */,
 				4CAB38A520F1216B0057F4C0 /* ApplyViewController.swift in Sources */,
 				4CAB388020F0F5500057F4C0 /* ProfileData.swift in Sources */,
-				4C23FAEE20F4E3DF00676796 /* QnaData.swift in Sources */,
 				4C7DC60120EF91BB00CCA950 /* AllStartDateVO.swift in Sources */,
 				4CAB38A220F107010057F4C0 /* ProfileService.swift in Sources */,
 				4C7DC60920EFF52B00CCA950 /* DetailViewController.swift in Sources */,
@@ -1262,6 +1311,7 @@
 				4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */,
 				4C98B4B520EA1F370038866E /* JoinModel.swift in Sources */,
 				4C56066520F7CCCD0063C800 /* MyReviewTableViewCell.swift in Sources */,
+				4C56068B20F7D1B80063C800 /* AllListTableViewCell.swift in Sources */,
 				4CAB387420F0F52B0057F4C0 /* NoticeTableViewCell.swift in Sources */,
 				4C7DC5FD20EF8CD700CCA950 /* VolunteerCollectionViewCell.swift in Sources */,
 				4C56068320F7D0160063C800 /* ThemeVO.swift in Sources */,
@@ -1276,15 +1326,17 @@
 				4C7DC5FB20EE477300CCA950 /* JoinVC3.swift in Sources */,
 				4C98B4EF20EA4DAF0038866E /* ThemeCollectionViewCell.swift in Sources */,
 				4C56066420F7CCCD0063C800 /* MyReviewClickViewController.swift in Sources */,
-				4C7DC5D220ECA71D00CCA950 /* QnATableViewController.swift in Sources */,
+				4CDE4BE820F7D664006FEFCA /* ReviewTableViewCell.swift in Sources */,
 				4C56065C20F7CBEB0063C800 /* MyReviewVO.swift in Sources */,
 				4C56067420F7CE900063C800 /* FarmerDataVO.swift in Sources */,
 				4C0EA59420E86FA300CB70ED /* LoginVC.swift in Sources */,
+				4C56069020F7D1DB0063C800 /* AllListVO.swift in Sources */,
 				4CAB384620F0D5280057F4C0 /* PopupCell.swift in Sources */,
 				4C98B4F020EA4DAF0038866E /* PopFarmCollectionViewCell.swift in Sources */,
 				4C7DC5EA20EDEADC00CCA950 /* IntroduceVO.swift in Sources */,
 				4CAB387B20F0F5460057F4C0 /* Heart.swift in Sources */,
 				4CAB38A720F138F80057F4C0 /* ApplyModel.swift in Sources */,
+				4C56069420F7D1FF0063C800 /* AllListService.swift in Sources */,
 				4C98B4ED20EA4DAF0038866E /* AdTableViewCell.swift in Sources */,
 				4C56064920F7CB3D0063C800 /* EditReviewCollectionViewCell.swift in Sources */,
 				4C0EA5A120E8799600CB70ED /* JoinVC.swift in Sources */,
@@ -1298,7 +1350,6 @@
 				4CAB387120F0F52B0057F4C0 /* ButtonHeaderTableViewCell.swift in Sources */,
 				4CAB38AB20F2156E0057F4C0 /* LoginNavigationController.swift in Sources */,
 				4CAB386A20F0F52B0057F4C0 /* ProfileTableViewCell.swift in Sources */,
-				4C98B4FE20EA56000038866E /* AllShowViewController.swift in Sources */,
 				4C56064820F7CB3D0063C800 /* MyActivityTableViewCell.swift in Sources */,
 				4C23FB1E20F5563000676796 /* DatePickerMonthHeader.swift in Sources */,
 				4C30131120EB4B2D001B2728 /* PopulNhVO.swift in Sources */,
@@ -1308,10 +1359,10 @@
 				4C7DC64820F0A43700CCA950 /* HeaderViewController.swift in Sources */,
 				4C23FB1A20F5563000676796 /* DatePickerFooter.swift in Sources */,
 				4C23FB1F20F5563000676796 /* DatePickerCell.swift in Sources */,
+				4C56068C20F7D1B80063C800 /* AllListViewController.swift in Sources */,
+				4CDE4BEA20F7D664006FEFCA /* ReviewStarTableViewCell.swift in Sources */,
 				4C56066620F7CCCD0063C800 /* MyReviewViewController.swift in Sources */,
 				4C7DC60320EFA18900CCA950 /* ContactCell.swift in Sources */,
-				4C23FAEF20F4E3DF00676796 /* QnAExpansionTableViewCell.swift in Sources */,
-				4CAB384820F0F50F0057F4C0 /* AllListTableViewCell.swift in Sources */,
 				4C23FAD420F4915C00676796 /* ScheduleTableViewCell.swift in Sources */,
 				4C7DC5D720ECD72D00CCA950 /* IntroduceCell.swift in Sources */,
 				4C98B4E920EA4DAF0038866E /* PopularListTableViewCell.swift in Sources */,
@@ -1334,12 +1385,12 @@
 				4C98B4C020EA29550038866E /* TabBarController.swift in Sources */,
 				4C98B4EB20EA4DAF0038866E /* PopFarmTableViewCell.swift in Sources */,
 				4CAB387020F0F52B0057F4C0 /* NoticeExpansionTableViewCell.swift in Sources */,
+				4CDE4BEC20F7D664006FEFCA /* QnAExpansionTableViewCell.swift in Sources */,
 				4C56068720F7D02A0063C800 /* ThemeService.swift in Sources */,
 				4CAB386320F0F52B0057F4C0 /* HeartViewController.swift in Sources */,
 				4C98B4B120EA1F180038866E /* JoinVC2.swift in Sources */,
 				4C56064620F7CB3D0063C800 /* MyActivityHeaderTableViewCell.swift in Sources */,
 				4C56067E20F7CFF60063C800 /* ThemeImageTableViewCell.swift in Sources */,
-				4C23FAF020F4E3DF00676796 /* QnATableViewCell.swift in Sources */,
 				4CAB386920F0F52B0057F4C0 /* NoticeTableViewController.swift in Sources */,
 				4CAB387C20F0F5460057F4C0 /* HeartData.swift in Sources */,
 				4C0EA58D20E86EAA00CB70ED /* NetworkCallback.swift in Sources */,
@@ -1348,6 +1399,7 @@
 				4C23FB0320F4E5C700676796 /* ReviewService.swift in Sources */,
 				4C98B4FA20EA4ED60038866E /* DuplicateVO.swift in Sources */,
 				4C56064B20F7CB3D0063C800 /* ReviewWriteViewController.swift in Sources */,
+				4CDE4BE920F7D664006FEFCA /* ReviewCollectionViewCell.swift in Sources */,
 				4C7DC5DF20ECDFAD00CCA950 /* ScheduleCell.swift in Sources */,
 				4C23FB2220F5564500676796 /* DatePickerViewController.swift in Sources */,
 				4C98B4EA20EA4DAF0038866E /* ThemeTableViewCell.swift in Sources */,
@@ -1459,7 +1511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1513,7 +1565,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

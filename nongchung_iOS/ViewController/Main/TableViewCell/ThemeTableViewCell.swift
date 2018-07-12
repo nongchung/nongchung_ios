@@ -10,8 +10,8 @@ import UIKit
 
 class ThemeTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var themeCollectionView: UICollectionView!
+    var imageArray = [#imageLiteral(resourceName: "main_image4"), #imageLiteral(resourceName: "main_theme3"), #imageLiteral(resourceName: "main_theme2"), #imageLiteral(resourceName: "main_theme5"), #imageLiteral(resourceName: "main_theme4"), #imageLiteral(resourceName: "main_theme1")]
     
     func setCollectionViewDataSourceDelegate(forRow row: Int) {
         themeCollectionView.delegate = self
@@ -19,7 +19,7 @@ class ThemeTableViewCell: UITableViewCell {
         themeCollectionView.tag = row
         themeCollectionView.reloadData()
     }
-
+    
 }
 
 extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -40,14 +40,22 @@ extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
     
     //MARK: CollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemeCollectionViewCell", for: indexPath) as! ThemeCollectionViewCell
         
+        cell.imageView.image = imageArray[indexPath.row]
+        
+        //        let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        //        cell.imageView.isUserInteractionEnabled = true
+        //        cell.imageView.addGestureRecognizer(gesture)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        NotificationCenter.default.post(name: .gotoTheme, object: nil, userInfo: ["themeIdx":indexPath.row])
     }
 }

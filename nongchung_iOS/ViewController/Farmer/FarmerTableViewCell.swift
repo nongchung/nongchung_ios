@@ -17,6 +17,7 @@ class FarmerTableViewCell: UITableViewCell {
     @IBOutlet weak var heartButton: UIButton!
     @IBOutlet weak var newImageView: UIImageView!
     @IBOutlet weak var periodImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

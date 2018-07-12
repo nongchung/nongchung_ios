@@ -33,7 +33,7 @@ class FarmerViewController: UIViewController {
         
         farmerTableView.delegate = self
         farmerTableView.dataSource = self
-        
+        print(nhIdx)
         farmerInit()
 
     }
@@ -78,7 +78,7 @@ extension FarmerViewController: UITableViewDelegate, UITableViewDataSource {
             cell.phoneLabel.text = fphone
             cell.addressLabel.text = addr
             cell.contentLabel.text = comment
-            cell.profileImageView.kf.setImage(with: URL(string: gsno(farmerImg)), placeholder: #imageLiteral(resourceName: "main_profile_circle"))
+            cell.profileImageView.imageFromUrl(gsno(farmerImg), defaultImgPath: "intro_profile_circle")
             
             return cell
         } else {
@@ -87,7 +87,7 @@ extension FarmerViewController: UITableViewDelegate, UITableViewDataSource {
             cell.titleLabel.text = index.nhName
             cell.addressLabel.text = index.farmAddr
             cell.priceLabel.text = String("\(gino(index.price))원")
-            cell.mainImageView.kf.setImage(with: URL(string: index.farmImg!), placeholder: #imageLiteral(resourceName: "main_image2"))
+            cell.mainImageView.imageFromUrl(gsno(index.farmImg), defaultImgPath: "intro_image1")
             
             cell.heartButton.tag = index.nhIdx!
             cell.heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)

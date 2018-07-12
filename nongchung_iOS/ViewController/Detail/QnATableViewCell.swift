@@ -9,8 +9,10 @@
 import UIKit
 
 class QnATableViewCell: UITableViewCell {
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var QLabel: UILabel!
+    @IBOutlet weak var arrowImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

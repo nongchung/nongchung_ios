@@ -14,7 +14,6 @@ class ThemeListTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var prifileImageView: UIImageView!
     @IBOutlet weak var periodImageView: UIImageView!
     @IBOutlet weak var mainImageView: UIImageView!
     

@@ -15,6 +15,7 @@ class PopularListTableViewCell: UITableViewCell {
     @IBOutlet weak var allButton: UIButton!
     
     var idx : Int?
+    let ud = UserDefaults.standard
     
     var populNhData : [PopulNhVO]? = nil{
         didSet{
@@ -27,6 +28,26 @@ class PopularListTableViewCell: UITableViewCell {
         popularCollectionView.dataSource = self
         popularCollectionView.tag = row
         popularCollectionView.reloadData()
+    }
+    
+    //MARK: 좋아요 통신
+    @objc func heartButtonAction(_ sender: UIButton) {
+        
+        if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") == nil{
+            NotificationCenter.default.post(name: .noLoginUser, object: nil)
+        }
+        else if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") != nil{
+            HeartService.likeAddNetworking(nhIdx: sender.tag) {
+                print("하트 추가 성공")
+                sender.setImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal)
+            }
+        }
+        else{
+            HeartService.likeDeleteNetworking(nhIdx: sender.tag) {
+                print("하트 삭제 성공")
+                sender.setImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal)
+            }
+        }
     }
 }
 
@@ -48,6 +69,17 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         cell.titleLabel.text = index.name
         cell.addressLabel.text = index.addr
         cell.priceLabel.text = index.price
+        
+        cell.heartButton.tag = index.nhIdx!
+        cell.heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)
+        //MARK: 좋아요 안 했을 때
+        if index.isBooked == nil || index.isBooked == 0{
+            cell.heartButton.setImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal)
+        }
+        else{
+            cell.heartButton.setImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal)
+        }
+
         
         return cell
     }

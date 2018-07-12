@@ -13,8 +13,8 @@ import NotificationBannerSwift
 class DetailViewController : UIViewController, NetworkCallback {
     
     
-    @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var heartButton: UIBarButtonItem!
+    @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var containerView: UIView!
     @IBOutlet var popupCenterYConstraint: NSLayoutConstraint!
     @IBOutlet var popupTableView: UITableView!
@@ -43,7 +43,8 @@ class DetailViewController : UIViewController, NetworkCallback {
     //MARK: 농활 인덱스
     var nhIdx : Int?
     var schIdx : Int?
-
+    var isBooked : Int?
+    
     //MARK: 신청페이지 넘길 데이터
     var name : String?
     var addr : String?
@@ -51,10 +52,44 @@ class DetailViewController : UIViewController, NetworkCallback {
     var price : Int?
     var img : String?
     
+    //MARK: 후기페이지 넘길 데이터
+    var star : Double?
+    
     var tempMyScheduleActivities : [Int]?
     
     @IBAction func backButtonClickAction(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+//    @objc func heartButtonAction(_ sender: UIBarButtonItem) {
+//        if sender.image == #imageLiteral(resourceName: "main_heart_empty"){
+//            HeartService.likeAddNetworking(nhIdx: sender.tag) {
+//                print("하트 추가 성공")
+//                sender.setBackgroundImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal, barMetrics: .default)
+//            }
+//        }
+//        else{
+//            HeartService.likeDeleteNetworking(nhIdx: sender.tag) {
+//                print("하트 삭제 성공")
+//                sender.setBackgroundImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal, barMetrics: .default)
+//            }
+//        }
+//    }
+
+    @IBAction func heartButtonAction(_ sender: UIBarButtonItem) {
+        if sender.image == #imageLiteral(resourceName: "main_heart_empty"){
+            HeartService.likeAddNetworking(nhIdx: gino(nhIdx)) {
+                print("하트 추가 성공")
+                sender.image = UIImage(named: "main_heart_fill")
+
+            }
+        }
+        else{
+            HeartService.likeDeleteNetworking(nhIdx: gino(nhIdx)) {
+                print("하트 삭제 성공")
+                sender.image = UIImage(named: "main_heart_empty")
+            }
+        }
     }
     
     
@@ -67,6 +102,16 @@ class DetailViewController : UIViewController, NetworkCallback {
         price = responseMessage?.nhInfo?.price
         img = responseMessage?.image![0]
         schIdx = responseMessage?.allStartDate![0].idx
+        star = responseMessage?.nhInfo?.star
+        isBooked = responseMessage?.nhInfo?.isBooked
+        
+        
+        
+        if isBooked == 0 || isBooked == nil{
+            heartButton.image = UIImage(named: "main_heart_empty")
+        } else {
+            heartButton.image = UIImage(named: "main_heart_fill")
+        }
         
         self.navigationController?.navigationBar.topItem?.title = name
         self.navigationController?.navigationBar.tintColor = UIColor.black
@@ -83,6 +128,7 @@ class DetailViewController : UIViewController, NetworkCallback {
         
         applyButton.addTarget(self, action: #selector(applyButtonClickAction), for: .touchUpInside)
         applyCancelButton.addTarget(self, action: #selector(applyCancelButtonClickAction), for: .touchUpInside)
+
 
         
         datePickerButton.setTitle(responseMessage?.nearestStartDate, for: .normal)
@@ -106,11 +152,6 @@ class DetailViewController : UIViewController, NetworkCallback {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = "참가 신청"
-    }
-    
-
     
     func segmentedSetting(){
         let headerVC = self.storyboard?.instantiateViewController(withIdentifier: "HeaderViewController") as! HeaderViewController
@@ -130,7 +171,8 @@ class DetailViewController : UIViewController, NetworkCallback {
         
         let reviewVC = self.storyboard?.instantiateViewController(withIdentifier: "ReviewTableViewController") as! ReviewTableViewController
         reviewVC.title = "후기"
-        
+        reviewVC.nhIdx = responseMessage?.nhInfo?.nhIdx
+        reviewVC.star = responseMessage?.nhInfo?.star
         
         //MARK: Segmented Control Setting
         segmentedController.segmentControllers = [informationVC, qnaVC, reviewVC]
@@ -236,7 +278,6 @@ extension DetailViewController {
     //MARK: 이미 신청한건지 안한건지 Comparable
     func comparableMyActivity(){
         if let myScheduleActivities = responseMessage?.myScheduleActivities{
-            print(myScheduleActivities)
             if let allStartDate = responseMessage?.allStartDate{
                 if myScheduleActivities.contains(gino(allStartDate[0].idx)){
                     check = false
@@ -247,7 +288,6 @@ extension DetailViewController {
 
             }
         }
-        print(check)
         if check == true{
             applyCancelButton.isHidden = true
             applyButton.isHidden = false

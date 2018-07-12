@@ -12,6 +12,6 @@ struct MyReviewDataVO: Codable {
     let img: [String]
     let name: String?
     let content: String?
-    let star: Int?
+    let star: Double?
     let startDate: String?
 }

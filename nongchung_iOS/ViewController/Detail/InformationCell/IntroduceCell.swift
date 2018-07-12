@@ -15,6 +15,7 @@ class IntroduceCell: UITableViewCell {
     @IBOutlet var periodLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
     @IBOutlet var introduceLabel: UILabel!
+    @IBOutlet var starImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
