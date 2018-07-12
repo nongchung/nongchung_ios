@@ -200,10 +200,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            if indexPath.row == 0 {
+            if indexPath.row == 0 { // 내가 쓴 후기
                 let viewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "MyReviewViewController") as! MyReviewViewController
                 self.navigationController?.pushViewController(viewController, animated: true)
-            } else {
+            } else { // 내 포인트
                 //                guard let farmerVC = storyboard?.instantiateViewController(
                 //                    withIdentifier : "FarmerViewController"
                 //                    ) as? FarmerViewController
@@ -212,24 +212,33 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 //                self.present(navigationControlr, animated: true, completion: nil)
             }
         } else if indexPath.section == 2 {
-            if indexPath.row == 0 {
+            if indexPath.row == 0 { // 닉네임 변경
                 let nicknameViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
                 nicknameViewController.nickname = nickname
                 
                 self.navigationController?.pushViewController(nicknameViewController, animated: true)
-            } else if indexPath.row == 1 {
+            } else if indexPath.row == 1 { // 비밀번호 변경
                 let passwordViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
                 self.navigationController?.pushViewController(passwordViewController, animated: true)
+            } else if indexPath.row == 2{ // 로그아웃
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                
+                //MARK: UserDefaults 파괴
+                UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+                UserDefaults.standard.synchronize()
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
-        } else if indexPath.section == 3 {
+        }
+        else if indexPath.section == 3 { // 푸시알림
             let pushViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "PushViewController") as! PushViewController
             self.navigationController?.pushViewController(pushViewController, animated: true)
         }
         else if indexPath.section == 4 {
-            if indexPath.row == 0 {
+            if indexPath.row == 0 { // 공지사항
                 let noticeViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NoticeTableViewController") as! NoticeTableViewController
                 self.navigationController?.pushViewController(noticeViewController, animated: true)
-            } else if indexPath.row == 1 {
+            } else if indexPath.row == 1 { // FAQ
                 let faqViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "FAQTableViewController") as! FAQTableViewController
                 self.navigationController?.pushViewController(faqViewController, animated: true)
             }

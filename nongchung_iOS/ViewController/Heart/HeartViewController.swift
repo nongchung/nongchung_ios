@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import NotificationBannerSwift
 
 class HeartViewController: UIViewController {
     @IBOutlet weak var heartTableView: UITableView!
@@ -57,15 +58,16 @@ extension HeartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func heartButtonClickAction(_ sender: UIButton) {
-        print("하트버튼")
-        print(sender.tag)
         
         let alert = UIAlertController(title: "좋아요를 취소하시겠습니까?", message: "", preferredStyle: .alert)
         let doneButton = UIAlertAction(title: "확인", style: UIAlertActionStyle.destructive) {
             (action: UIAlertAction) in
             HeartService.likeDeleteNetworking(nhIdx: sender.tag) {
-                print("찜 삭제 성공")
                 self.heartInit()
+                let banner = NotificationBanner(title: "취소 완료", subtitle: "찜한 농활이 취소되었습니다.", style: .danger)
+                banner.show()
+                banner.autoDismiss = true
+                banner.haptic = .heavy
             }
         }
         let cancleButton = UIAlertAction(title: "취소", style: .cancel, handler: nil)
