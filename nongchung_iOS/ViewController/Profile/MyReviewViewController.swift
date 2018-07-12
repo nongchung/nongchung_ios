@@ -16,13 +16,11 @@ class MyReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.isHidden = true
         myReviewTableView.delegate = self
         myReviewTableView.dataSource = self
         
@@ -35,7 +33,6 @@ class MyReviewViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     func reviewInit() {

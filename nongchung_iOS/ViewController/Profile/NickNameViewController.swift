@@ -44,18 +44,6 @@ class NickNameViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     @objc func currentLengthOfTxt(){
         let length = (nicknameTextField.text?.characters.count)!
         textStsteLabel.text = "\(length)/20"

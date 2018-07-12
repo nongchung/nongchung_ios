@@ -11,6 +11,7 @@ import UIKit
 class ButtonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var buttonLabel: UILabel!
+    @IBOutlet var arrowImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

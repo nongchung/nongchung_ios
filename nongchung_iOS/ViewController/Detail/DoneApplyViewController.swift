@@ -51,6 +51,7 @@ class DoneApplyViewController : UIViewController {
         numberPeopleLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))명"
         numberPeopleBottomLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))명"
         totalPeopleLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))/\(gino(responseData?.maxPerson))"
+        
     }
     
     @objc func doneButtonClickAction(){

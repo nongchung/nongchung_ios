@@ -11,6 +11,10 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
+protocol TapDelegate {
+    func tapProfile()
+}
+
 class ProfileViewController: UIViewController {
     @IBOutlet weak var profileTableView: UITableView!
     
@@ -25,13 +29,6 @@ class ProfileViewController: UIViewController {
     var nickname : String?
     
     let imagePicker : UIImagePickerController = UIImagePickerController()
-    
-    func profileInit() {
-        ProfileService.profileInit { (profileData) in
-            self.profile = profileData
-            self.profileTableView.reloadData()
-        }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,12 +49,23 @@ class ProfileViewController: UIViewController {
         profileTableView.tableHeaderView = UIView.init(frame: CGRect.zero)
         profileTableView.delegate = self
         profileTableView.dataSource = self
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
+    }
+    
+    func profileInit() {
+        ProfileService.profileInit { (profileData) in
+            self.profile = profileData
+            self.profileTableView.reloadData()
+        }
     }
     
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func openGallery() {
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             self.imagePicker.sourceType = .photoLibrary
@@ -128,9 +136,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let header = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell") as! ButtonTableViewCell
         
         header.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.9529411765, blue: 0.9607843137, alpha: 1)
+        header.buttonLabel.font = UIFont(name: "NanumSquareRoundB", size: 12)
+        header.buttonLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)
+        header.arrowImageView.isHidden = true
         
         if section == 1 {
             header.buttonLabel.text = "내 정보"
+
         } else if section == 2 {
             header.buttonLabel.text = "계정"
         } else if section == 3 {
@@ -227,10 +239,5 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func action() {
         openGallery()
     }
-}
-
-
-protocol TapDelegate {
-    func tapProfile()
 }
 

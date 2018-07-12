@@ -24,6 +24,14 @@ class DetailViewController : UIViewController, NetworkCallback {
     @IBOutlet var grayBackgroundButton: UIButton!
     @IBOutlet var applyCancelButton: UIButton!
     
+    var dateFormatter: DateFormatter {
+        get {
+            let f = DateFormatter()
+            f.dateFormat = "yyyy년 MM월 dd일"
+            return f
+        }
+    }
+    
     var responseMessage : IntroduceVO?
     
     let segmentedController = SJSegmentedViewController()
@@ -182,9 +190,9 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PopupCell", for: indexPath) as! PopupCell
         let index = responseMessage?.allStartDate![indexPath.row]
-        cell.periodLabel.text = index?.startDate
+        cell.periodLabel.text = gsno(index?.startDate)
         cell.departureLabel.text = "오전 9시 출발"
-        cell.leftLabel.text = "\(String(describing: index?.availPerson))명 남음"
+        cell.leftLabel.text = "\(gino(index?.availPerson))명 남음"
 
         if index?.state == 0{
             cell.statusLabel.text = "참가가능"

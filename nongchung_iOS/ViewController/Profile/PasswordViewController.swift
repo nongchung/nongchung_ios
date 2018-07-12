@@ -33,18 +33,6 @@ class PasswordViewController: UIViewController {
         
         duplicateLabel.isHidden = true
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
 
     func editPassword(password: String, newpw: String) {
         ProfileService.editPassword(password: password, newpw: newpw) { message in
