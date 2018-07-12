@@ -18,6 +18,7 @@ class IntroduceVO : Mappable{
     var schedule : [ScheduleVO]?
     var nearestStartDate : String?
     var allStartDate : [AllStartDateVO]?
+    var myScheduleActivities : [Int]?
     
     
     required init?(map: Map) {}
@@ -31,5 +32,6 @@ class IntroduceVO : Mappable{
         schedule <- map["schedule"]
         nearestStartDate <- map["nearestStartDate"]
         allStartDate <- map["allStartDate"]
+        myScheduleActivities <- map["myScheduleActivities"]
     }
 }

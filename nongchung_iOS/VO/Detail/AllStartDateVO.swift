@@ -13,6 +13,7 @@ class AllStartDateVO : Mappable{
     var idx : Int?
     var state : Int?
     var startDate : String?
+    var availPerson  : Int?
     
     required init?(map: Map) {}
     
@@ -20,5 +21,6 @@ class AllStartDateVO : Mappable{
         idx <- map["idx"]
         state <- map["state"]
         startDate <- map["startDate"]
+        availPerson <- map["availPerson"]
     }
 }

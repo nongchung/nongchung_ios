@@ -26,7 +26,11 @@ class InformationTableViewController : UIViewController {
         customTableView.delegate = self
         customTableView.dataSource = self
         customTableView.separatorInset = UIEdgeInsets(top: 0, left: self.customTableView.frame.width, bottom: 0, right: 0)
-        
+    
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        print(scrollView.contentOffset.y)
     }
 }
 
@@ -66,7 +70,7 @@ extension InformationTableViewController : UITableViewDelegate, UITableViewDataS
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell", for: indexPath) as! ScheduleCell
-            
+            cell.scheduleData = scheduleData
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SuppliesCell", for: indexPath) as! SuppliesCell
@@ -76,7 +80,6 @@ extension InformationTableViewController : UITableViewDelegate, UITableViewDataS
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as! MapCell
             cell.addressLabel.text = "잠실종합경기운동장 2번출구"
             cell.awakeFromNib()
-            
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PolicyCell", for: indexPath) as! PolicyCell

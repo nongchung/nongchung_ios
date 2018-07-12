@@ -12,7 +12,7 @@ import AlamofireObjectMapper
 
 class IntroduceModel : NetworkModel{
     
-    func introuduceNetworking(idx: Int) {
+    func introuduceNetworking(idx: Int, token: String) {
         
         let URL = "\(baseURL)/api/home/detail/nh?idx=\(idx)"
         
@@ -21,7 +21,7 @@ class IntroduceModel : NetworkModel{
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: nil
+            headers: ["token": token]
             ).responseObject{
                 (response:DataResponse<IntroduceVO>) in
                 switch response.result {

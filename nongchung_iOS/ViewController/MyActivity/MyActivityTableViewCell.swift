@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MyActivityViewCellDelegate : class {
+    func myActivityTableViewReviewButton(_ sender: MyActivityTableViewCell)
+}
+
 class MyActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
@@ -24,20 +28,31 @@ class MyActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var progressCountLabel: UILabel!
     @IBOutlet weak var progressParticipantLabel: UILabel!
     
+    weak var delegate: MyActivityViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         progress.transform = progress.transform.scaledBy(x: 1, y: 2)
-//        progress.layer.cornerRadius = progress.layer.frame.height / 2.0
-//        //progress.layer.cornerRadius = progress.layer.frame.height / 2.0
-//        progress.clipsToBounds = true
-//        progress.layer.sublayers![1].cornerRadius = progress.layer.frame.height / 2.0
-//        progress.subviews[1].clipsToBounds = true
+        //        progress.layer.cornerRadius = progress.layer.frame.height / 2.0
+        //        //progress.layer.cornerRadius = progress.layer.frame.height / 2.0
+        //        progress.clipsToBounds = true
+        //        progress.layer.sublayers![1].cornerRadius = progress.layer.frame.height / 2.0
+        //        progress.subviews[1].clipsToBounds = true
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    
+    
+    @IBAction func reviewButton(_ sender: UIButton) {
+        delegate?.myActivityTableViewReviewButton(self)
+        
+        print("w22togn2323")
+    }
+    
+    
 }

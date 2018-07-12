@@ -8,9 +8,12 @@
 
 import UIKit
 import SJSegmentedScrollView
+import NotificationBannerSwift
 
-class DetailViewController : UIViewController {
+class DetailViewController : UIViewController, NetworkCallback {
     
+    
+    @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var heartButton: UIBarButtonItem!
     @IBOutlet var containerView: UIView!
     @IBOutlet var popupCenterYConstraint: NSLayoutConstraint!
@@ -19,20 +22,47 @@ class DetailViewController : UIViewController {
     @IBOutlet var datePickerButton: UIButton!
     @IBOutlet var applyButton: UIButton!
     @IBOutlet var grayBackgroundButton: UIButton!
-
+    @IBOutlet var applyCancelButton: UIButton!
+    
     var responseMessage : IntroduceVO?
     
     let segmentedController = SJSegmentedViewController()
     var selectedSegment:SJSegmentTab?
     var offsetY: CGFloat = 0.0
+    let ud = UserDefaults.standard
+    var check = true
     
+    //MARK: 농활 인덱스
+    var nhIdx : Int?
+    var schIdx : Int?
 
+    //MARK: 신청페이지 넘길 데이터
+    var name : String?
+    var addr : String?
+    var period : String?
+    var price : Int?
+    var img : String?
+    
+    var tempMyScheduleActivities : [Int]?
+    
+    @IBAction func backButtonClickAction(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
-        UIApplication.shared.statusBarStyle = .lightContent
-        self.navigationController?.navigationBar.alpha = 0
-        self.navigationController?.isNavigationBarHidden = false
-        self.edgesForExtendedLayout = .all
+        
+        comparableMyActivity()
+        name = responseMessage?.nhInfo?.name
+        addr = responseMessage?.nhInfo?.addr
+        period = responseMessage?.nhInfo?.period
+        price = responseMessage?.nhInfo?.price
+        img = responseMessage?.image![0]
+        schIdx = responseMessage?.allStartDate![0].idx
+        
+        self.navigationController?.navigationBar.topItem?.title = name
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
         
         popupTableView.delegate = self
         popupTableView.dataSource = self
@@ -42,35 +72,37 @@ class DetailViewController : UIViewController {
         
         grayBackgroundButton.isHidden = true
         grayBackgroundButton.addTarget(self, action: #selector(hiddenGrayButtonAction), for: .touchUpInside)
+        
+        applyButton.addTarget(self, action: #selector(applyButtonClickAction), for: .touchUpInside)
+        applyCancelButton.addTarget(self, action: #selector(applyCancelButtonClickAction), for: .touchUpInside)
 
         
         datePickerButton.setTitle(responseMessage?.nearestStartDate, for: .normal)
         datePickerButton.addTarget(self, action: #selector(datePickerButtonClickAction), for: .touchUpInside)
-    
-        segmentedSetting()
+        
         addChildViewController(segmentedController)
         containerView.addSubview(segmentedController.view)
         segmentedController.view.frame = self.containerView.bounds
         segmentedController.didMove(toParentViewController: self)
-        super.viewDidLoad()
+        segmentedSetting()
+        
+        self.view.layoutIfNeeded()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
-        //self.navigationController?.navigationBar.alpha = 1.0-(250-offsetY)/250
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = name
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .default
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.alpha = 1
+        self.navigationController?.navigationBar.topItem?.title = "참가 신청"
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        UIApplication.shared.statusBarStyle = .default
-        self.navigationController?.navigationBar.isHidden = false
-        self.navigationController?.navigationBar.alpha = 1
-    }
+
     
     func segmentedSetting(){
         let headerVC = self.storyboard?.instantiateViewController(withIdentifier: "HeaderViewController") as! HeaderViewController
@@ -105,6 +137,22 @@ class DetailViewController : UIViewController {
         segmentedController.segmentBounces = true
         segmentedController.delegate = self
     }
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "Success To Cancel"{
+            let banner = NotificationBanner(title: "취소 완료", subtitle: "농활이 취소되었습니다.", style: .danger)
+            banner.show()
+            banner.autoDismiss = true
+            banner.haptic = .heavy
+            applyCancelButton.isHidden = true
+            applyButton.isHidden = false
+            datePickerButton.isHidden = false
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "인터넷 오류", msg: "네트워크 연결을 확인하세요.")
+    }
 }
 
 extension DetailViewController: SJSegmentedViewControllerDelegate {
@@ -121,6 +169,8 @@ extension DetailViewController: SJSegmentedViewControllerDelegate {
 }
 
 extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if responseMessage?.allStartDate == nil {
             return 1
@@ -132,15 +182,17 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PopupCell", for: indexPath) as! PopupCell
         let index = responseMessage?.allStartDate![indexPath.row]
-        cell.periodLabel.text = responseMessage?.nearestStartDate!
-        cell.departureLabel.text = index?.startDate
+        cell.periodLabel.text = index?.startDate
+        cell.departureLabel.text = "오전 9시 출발"
+        cell.leftLabel.text = "\(String(describing: index?.availPerson))명 남음"
 
         if index?.state == 0{
             cell.statusLabel.text = "참가가능"
-            cell.statusLabel.textColor = #colorLiteral(red: 0.9450980392, green: 0.3529411765, blue: 0.5294117647, alpha: 1)
+            cell.statusLabel.textColor = #colorLiteral(red: 0.9490196078, green: 0.337254902, blue: 0.1254901961, alpha: 1)
         } else{
             cell.statusLabel.text = "모집마감"
             cell.statusLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.54)
+            cell.isUserInteractionEnabled = false
         }
         
         return cell
@@ -153,34 +205,91 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! PopupCell
         let index = responseMessage?.allStartDate![indexPath.row]
+        schIdx = index?.idx
         datePickerButton.setTitle(cell.periodLabel.text, for: .normal)
-        
+        datePickerButtonClickAction()
+        if let myScheduleActivities = responseMessage?.myScheduleActivities{
+            if myScheduleActivities.contains(gino(schIdx)) {
+                applyCancelButton.isHidden = false
+                applyButton.isHidden = true
+                datePickerButton.isHidden = true
+            }
+            else{
+                applyCancelButton.isHidden = true
+                applyButton.isHidden = false
+                datePickerButton.isHidden = false
+            }
+        }
     }
 }
 
 extension DetailViewController {
     
+    //MARK: 이미 신청한건지 안한건지 Comparable
+    func comparableMyActivity(){
+        if let myScheduleActivities = responseMessage?.myScheduleActivities{
+            print(myScheduleActivities)
+            if let allStartDate = responseMessage?.allStartDate{
+                if myScheduleActivities.contains(gino(allStartDate[0].idx)){
+                    check = false
+                    schIdx = allStartDate[0].idx
+                } else{
+                    check = true
+                }
+
+            }
+        }
+        print(check)
+        if check == true{
+            applyCancelButton.isHidden = true
+            applyButton.isHidden = false
+            datePickerButton.isHidden = false
+        } else{
+            applyCancelButton.isHidden = false
+            applyButton.isHidden = true
+            datePickerButton.isHidden = true
+        }
+    }
+    
     //MARK: Apply Button Action
     @objc func applyButtonClickAction(){
-        guard let applyVC = self.storyboard?.instantiateViewController(
-            withIdentifier : "ApplyViewController"
-            ) as? ApplyViewController
-            else{return}
-        self.present(applyVC, animated: true, completion: nil)
+        if ud.string(forKey: "token") == nil{
+            loginAlert()
+        } else{
+            guard let applyVC = self.storyboard?.instantiateViewController(
+                withIdentifier : "ApplyViewController"
+                ) as? ApplyViewController
+                else{return}
+            applyVC.name = name
+            applyVC.addr = addr
+            applyVC.period = period
+            applyVC.price = price
+            applyVC.img = img
+            applyVC.nhIdx = nhIdx
+            applyVC.schIdx = schIdx
+            
+            self.navigationController?.pushViewController(applyVC, animated: true)
+        }
+    }
+    
+    //MARK: Apply Cancel Button Action
+    @objc func applyCancelButtonClickAction(){
+        let model = ApplyModel(self)
+        model.applyCancelNetworking(nhIdx: gino(nhIdx), schIdx: gino(schIdx), token: gsno(ud.string(forKey: "token")))
     }
     
     //MARK: Date Choose Button
     @objc func datePickerButtonClickAction(){
         grayBackgroundButton.isHidden = false
         
-        if popupCenterYConstraint.constant == 500{
+        if popupCenterYConstraint.constant == 700{
             self.popupCenterYConstraint.constant = 183.5
             UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
         else if popupCenterYConstraint.constant == 183.5{
-            self.popupCenterYConstraint.constant = 500
+            self.popupCenterYConstraint.constant = 700
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
             }
@@ -189,7 +298,7 @@ extension DetailViewController {
     }
     
     @objc func hiddenGrayButtonAction(){
-        self.popupCenterYConstraint.constant = 500
+        self.popupCenterYConstraint.constant = 700
         UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
         }

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SJSegmentedScrollView
+import NotificationBannerSwift
 
 extension Notification.Name{
     static let gotoIntroduce = Notification.Name("gotoIntroduce")
+    static let gotoMain = Notification.Name("gotoMain")
 }
 
 class MainViewController: UIViewController, NetworkCallback {
@@ -37,9 +40,17 @@ class MainViewController: UIViewController, NetworkCallback {
     var allStartDateData : [AllStartDateVO]?
     
     
-    var idx : Int?
+    var nhIdx : Int?
+    let ud = UserDefaults.standard
     
     var indicator = UIActivityIndicatorView()
+    let segmentedController = SJSegmentedViewController()
+    
+    @IBAction func unwindToMain(segue:UIStoryboardSegue) {
+        if segue.source as? DoneApplyViewController != nil{
+            segue.source.dismiss(animated: true, completion: nil)
+        }
+    }
     
     //MARK: Main Load 전 Loading Indicator
     func activityIndicator() {
@@ -51,12 +62,25 @@ class MainViewController: UIViewController, NetworkCallback {
     
     //MARK: 농활소개 Push idx Notification 알림
     @objc func gotoIntroduce(notification: NSNotification){
-
+        nhIdx = gino(notification.userInfo!["nhIdx"] as? Int)
         let model = IntroduceModel(self)
-        model.introuduceNetworking(idx: gino(notification.userInfo!["idx"] as? Int))
+        model.introuduceNetworking(idx: gino(nhIdx), token: gsno(ud.string(forKey: "token")))
         
 
     }
+    
+    //MARK: 신청완룔 홈 Root Change 알림
+    @objc func gotoMain(notification: NSNotification){
+        let banner = NotificationBanner(title: "신청 완료", subtitle: "농활이 신청되었습니다.", style: .success)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5){
+            banner.show(queuePosition: .front)
+            banner.haptic = .heavy
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0){
+            banner.dismiss()
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         mainTableView.reloadData()
     }
@@ -65,9 +89,18 @@ class MainViewController: UIViewController, NetworkCallback {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         NotificationCenter.default.addObserver(self,selector: #selector(gotoIntroduce),name: .gotoIntroduce,object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(gotoMain), name: .gotoMain, object: nil)
         
         //MARK: TableView Layout Setting
-        //mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
+        mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
+        mainTableView.tableFooterView = UIView(frame: CGRect.zero)
+        mainTableView.tableHeaderView = UIView(frame: CGRect.zero)
+        
+        //MARK: Present FadeOut Method
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
+        view.layer.add(transition, forKey: kCATransition)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -80,39 +113,32 @@ class MainViewController: UIViewController, NetworkCallback {
         self.navigationController?.isNavigationBarHidden = true
         
         let model = MainModel(self)
-        model.home()
+        model.home(token: gsno(ud.string(forKey: "token")))
+        
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+
     func networkResult(resultData: Any, code: String) {
         
         switch code {
         case "Success To Get Detail Information": // 농활보기 Networking
             responseMessage = resultData as? IntroduceVO
-            imageData = responseMessage?.image
-            nhInfoData = responseMessage?.nhInfo
-            friendsInfoData = responseMessage?.friendsInfo
-            farmerInfoData = responseMessage?.farmerInfo
-            scheduleData = responseMessage?.schedule
-            nearestStartDateData = responseMessage?.nearestStartDate
-            allStartDateData = responseMessage?.allStartDate
-            
-            //MARK: Present FadeOut Method
-            let transition = CATransition()
-            transition.duration = 0.5
-            transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
-            view.window!.layer.add(transition, forKey: kCATransition)
-            
+
             guard let detailVC = self.storyboard?.instantiateViewController(
                 withIdentifier : "DetailViewController"
                 ) as? DetailViewController
                 else{return}
             detailVC.responseMessage = responseMessage
             detailVC.segmentedSetting()
-            //detailVC.modalTransitionStyle = .crossDissolve
-            self.navigationController?.pushViewController(detailVC, animated: false)
-//            self.present(detailVC, animated: true, completion: nil)
+            detailVC.nhIdx = nhIdx
+            detailVC.modalTransitionStyle = .crossDissolve
             
-            
+            let navigationControlr = UINavigationController(rootViewController: detailVC)
+            self.present(navigationControlr, animated: true, completion: nil)
+
         case "Null Value":
             let errmsg = resultData as? String
             simpleAlert(title: "오류", msg: gsno(errmsg))
@@ -136,6 +162,7 @@ class MainViewController: UIViewController, NetworkCallback {
             mainTableView.delegate = self
             mainTableView.dataSource = self
             mainTableView.reloadData()
+            
         default:
             break
         }

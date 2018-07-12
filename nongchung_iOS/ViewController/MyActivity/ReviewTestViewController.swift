@@ -1,5 +1,5 @@
 //
-//  ReviewTestViewController.swift
+//  ReviewWriteViewController.swift
 //  nongchung_iOS
 //
 //  Created by 권민하 on 2018. 7. 7..
@@ -10,17 +10,24 @@ import UIKit
 import YangMingShan
 import Cosmos
 
-class ReviewTestViewController: UIViewController, YMSPhotoPickerViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var cosmosView: CosmosView!
-    
     @IBOutlet weak var collectionView: UICollectionView!
-
-    
     @IBOutlet weak var cameraButton: UIButton!
-    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var contentLabel: UITextView!
+    @IBOutlet weak var titleLable: UILabel!
     var images: NSArray! = []
+    
+    var reviewTitle: String?
+    var startDate: String?
+    var endDate: String?
+    var period: String?
+    var idx: Int?
+    
+    var placeholderLabel : UILabel!
     
     @IBAction func presentPhotoPicker(_ sender: AnyObject) {
         //        if self.numberOfPhotoSelectionTextField.text!.count > 0
@@ -46,21 +53,35 @@ class ReviewTestViewController: UIViewController, YMSPhotoPickerViewControllerDe
         
         let pickerViewController = YMSPhotoPickerViewController.init()
         
-        pickerViewController.numberOfPhotoToSelect = 2
+        pickerViewController.numberOfPhotoToSelect = 5
         self.yms_presentCustomAlbumPhotoView(pickerViewController, delegate: self)
     }
     
+    // 이미지 삭제 시
     @objc func deletePhotoImage(_ sender: UIButton!) {
         let mutableImages: NSMutableArray! = NSMutableArray.init(array: images)
+        print(sender.tag)
         mutableImages.removeObject(at: sender.tag)
         
         self.images = NSArray.init(array: mutableImages)
         self.collectionView.performBatchUpdates({
             self.collectionView.deleteItems(at: [IndexPath.init(item: sender.tag, section: 0)])
-        }, completion: nil)
+        }) { (finished) in
+            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        }
     }
     
+    // 네비게이션바의 완료 버튼을 눌렀을 때
+    @objc func addTapped(){
+        //        if let originPw = originPwLabel.text, let newPw = newPwLabel.text {
+        //            editPassword(password: originPw, newpw: newPw)
+        //        }
+    }
+    
+    
     override func viewDidLoad() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(addTapped))
+        
         cameraButton.addTarget(self, action: #selector(presentPhotoPicker(_:)), for: .touchUpInside)
         
         collectionView.delegate = self
@@ -69,10 +90,39 @@ class ReviewTestViewController: UIViewController, YMSPhotoPickerViewControllerDe
         cosmosView.didTouchCosmos = didTouchCosmos
         cosmosView.didFinishTouchingCosmos = didFinishTouchingCosmos
         updateRating()
+        
+        titleLable.text = reviewTitle
+        
+        // TextView Placeholder
+        contentLabel.delegate = self
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "내용을 입력하세요"
+        //placeholderLabel.font = UIFont.italicSystemFont(ofSize: (contentLabel.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        contentLabel.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (contentLabel.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !contentLabel.text.isEmpty
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    // Star rating bar setting
     private func updateRating() {
-        self.ratingLabel.text = ReviewTestViewController.formatValue(cosmosView.rating)
+        self.ratingLabel.text = ReviewWriteViewController.formatValue(cosmosView.rating)
     }
     
     private class func formatValue(_ value: Double) -> String {
@@ -80,13 +130,16 @@ class ReviewTestViewController: UIViewController, YMSPhotoPickerViewControllerDe
     }
     
     private func didTouchCosmos(_ rating: Double) {
-        ratingLabel.text = ReviewTestViewController.formatValue(rating)
+        ratingLabel.text = ReviewWriteViewController.formatValue(rating)
     }
     
     private func didFinishTouchingCosmos(_ rating: Double) {
-        self.ratingLabel.text = ReviewTestViewController.formatValue(rating)
+        self.ratingLabel.text = ReviewWriteViewController.formatValue(rating)
     }
     
+}
+
+extension ReviewWriteViewController: YMSPhotoPickerViewControllerDelegate {
     func photoPickerViewControllerDidReceivePhotoAlbumAccessDenied(_ picker: YMSPhotoPickerViewController!) {
         let alertController = UIAlertController.init(title: "Allow photo album access?", message: "Need your permission to access photo albumbs", preferredStyle: .alert)
         let dismissAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
@@ -143,8 +196,9 @@ class ReviewTestViewController: UIViewController, YMSPhotoPickerViewControllerDe
             print("didFinishPickingImages")
         }
     }
-    
-    
+}
+
+extension ReviewWriteViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     // MARK - UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.images.count
@@ -155,8 +209,9 @@ class ReviewTestViewController: UIViewController, YMSPhotoPickerViewControllerDe
         
         cell.photoImageView.image =  self.images.object(at: (indexPath as NSIndexPath).item) as? UIImage
         cell.deleteButton.tag = (indexPath as NSIndexPath).item
-        cell.deleteButton.addTarget(self, action: #selector(ReviewTestViewController.deletePhotoImage(_:)), for: .touchUpInside)
-    
+        print((indexPath as NSIndexPath).item)
+        cell.deleteButton.addTarget(self, action: #selector(ReviewWriteViewController.deletePhotoImage(_:)), for: .touchUpInside)
+        
         return cell
     }
     
@@ -168,6 +223,4 @@ class ReviewTestViewController: UIViewController, YMSPhotoPickerViewControllerDe
     {
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
-    
-    
 }

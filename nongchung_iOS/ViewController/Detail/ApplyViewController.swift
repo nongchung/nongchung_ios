@@ -30,17 +30,27 @@ class ApplyViewController : UIViewController, NetworkCallback {
     let datePickerView = UIDatePicker()
     let ud = UserDefaults.standard
     
+    //MARK: 농활보기에서 넘겨받은 데이터
+    var name : String?
+    var addr : String?
+    var period : String?
+    var price : Int?
+    var img : String?
+    var nhIdx : Int?
+    var schIdx : Int?
+    
+    var responseData : ApplyVO?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         nameTextField.delegate = self
         birthTextField.delegate = self
         emailTextField.delegate = self
         phoneTextField.delegate = self
         
+        applyButton.addTarget(self, action: #selector(applyButtonClickAction), for: .touchUpInside)
         userDataSetting()
         setView()
-        
     }
     
     @IBAction func birthEditingAction(_ sender: UITextField) {
@@ -53,7 +63,45 @@ class ApplyViewController : UIViewController, NetworkCallback {
     }
     
     func networkResult(resultData: Any, code: String) {
-        
+
+        switch code {
+        case "Success To Request For Application":
+            responseData = resultData as? ApplyVO
+            
+            guard let doneApplyVC = self.storyboard?.instantiateViewController(
+                withIdentifier : "DoneApplyViewController"
+                ) as? DoneApplyViewController
+                else{return}
+            doneApplyVC.name = name
+            doneApplyVC.addr = addr
+            doneApplyVC.price = price
+            doneApplyVC.responseData = responseData
+            self.present(doneApplyVC, animated: true, completion: nil)
+        case "No token":
+            let errmsg = resultData as! String
+            print(errmsg)
+        case "Null Value":
+            let errmsg = resultData as! String
+            print(errmsg)
+        case "Invalid nhIdx and schIdx":
+            let errmsg = resultData as! String
+            print(errmsg)
+        case "Invalid schIdx":
+            let errmsg = resultData as! String
+            print(errmsg)
+        case "Duplicate To Time":
+            let errmsg = resultData as! String
+            print(errmsg)
+            errorAlert(title: "날짜 중복", message: "농활 신청은 시간이 중복될 수 없습니다.")
+        case "Fail To Request For Application, No Available Person Number":
+            let errmsg = resultData as! String
+            print(errmsg)
+        case "Internal Server Error":
+            let errmsg = resultData as! String
+            print(errmsg)
+        default:
+            break
+        }
          
     }
     
@@ -65,12 +113,30 @@ class ApplyViewController : UIViewController, NetworkCallback {
 
 extension ApplyViewController {
     
+    func errorAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: "확인", style: .default) { (UIAlertAction) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(doneAction)
+        present(alert, animated: true)
+    }
+    
     //MARK: View Setting
     func setView(){
+        applyShadowView.isUserInteractionEnabled = false
         nameTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.7960784314, green: 0.7960784314, blue: 0.7960784314, alpha: 1))
         birthTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.7960784314, green: 0.7960784314, blue: 0.7960784314, alpha: 1))
         emailTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.7960784314, green: 0.7960784314, blue: 0.7960784314, alpha: 1))
         phoneTextField.addBorderBottom(height: 1.0, color: #colorLiteral(red: 0.7960784314, green: 0.7960784314, blue: 0.7960784314, alpha: 1))
+        
+        activityImageView.imageFromUrl(gsno(img), defaultImgPath: gsno(img))
+        titleLabel.text = name
+        addressLabel.text = addr
+        periodLabel.text = period
+        priceLabel.text = "\(gino(price))원"
+        
+        userImageView.imageFromUrl(gsno(ud.string(forKey: "img")), defaultImgPath: gsno(ud.string(forKey: "img")))
         
         let attr = NSDictionary(object: UIFont(name: "NanumSquareRoundB", size: 14)!, forKey: kCTFontAttributeName as! NSCopying)
         genderSegmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , for: .normal)
@@ -113,6 +179,14 @@ extension ApplyViewController {
         default:
             break
         }
+    }
+    
+    @objc func applyButtonClickAction(){
+        print("click")
+        let model = ApplyModel(self)
+        model.applyNetworking(nhIdx: gino(nhIdx), schIdx: gino(schIdx), token: gsno(ud.string(forKey: "token")))
+        print(gino(nhIdx))
+        print(gino(schIdx))
     }
     
     //MARK: Date PickerView value Change Method

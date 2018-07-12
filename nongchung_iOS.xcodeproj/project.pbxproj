@@ -22,6 +22,36 @@
 		4C0EA59620E8714C00CB70ED /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA59520E8714C00CB70ED /* Extension.swift */; };
 		4C0EA59E20E873E800CB70ED /* LoginVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA59D20E873E800CB70ED /* LoginVO.swift */; };
 		4C0EA5A120E8799600CB70ED /* JoinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0EA5A020E8799600CB70ED /* JoinVC.swift */; };
+		4C23FAD420F4915C00676796 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAD320F4915C00676796 /* ScheduleTableViewCell.swift */; };
+		4C23FAD720F4A8F800676796 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C23FAD620F4A8F800676796 /* UserNotifications.framework */; };
+		4C23FAD920F4A90200676796 /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C23FAD820F4A90200676796 /* PushKit.framework */; };
+		4C23FAE320F4CA7700676796 /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAE220F4CA7700676796 /* SearchModel.swift */; };
+		4C23FAE620F4CC2D00676796 /* SearchVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAE520F4CC2D00676796 /* SearchVO.swift */; };
+		4C23FAE820F4CC3A00676796 /* SearchDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAE720F4CC3A00676796 /* SearchDataVO.swift */; };
+		4C23FAEA20F4CDCB00676796 /* SearchFiliteredDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAE920F4CDCB00676796 /* SearchFiliteredDataCell.swift */; };
+		4C23FAEE20F4E3DF00676796 /* QnaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAEB20F4E3DE00676796 /* QnaData.swift */; };
+		4C23FAEF20F4E3DF00676796 /* QnAExpansionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAEC20F4E3DE00676796 /* QnAExpansionTableViewCell.swift */; };
+		4C23FAF020F4E3DF00676796 /* QnATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAED20F4E3DE00676796 /* QnATableViewCell.swift */; };
+		4C23FAF320F4E46500676796 /* MyActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAF220F4E46500676796 /* MyActivityService.swift */; };
+		4C23FAF820F4E4AC00676796 /* MyActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAF520F4E4AB00676796 /* MyActivityData.swift */; };
+		4C23FAF920F4E4AC00676796 /* MyActivityTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAF620F4E4AB00676796 /* MyActivityTotal.swift */; };
+		4C23FAFA20F4E4AC00676796 /* MyActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAF720F4E4AC00676796 /* MyActivity.swift */; };
+		4C23FAFE20F4E55A00676796 /* MyReviewImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAFB20F4E55900676796 /* MyReviewImageCollectionViewCell.swift */; };
+		4C23FAFF20F4E55A00676796 /* MyReviewClickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAFC20F4E55A00676796 /* MyReviewClickViewController.swift */; };
+		4C23FB0020F4E55A00676796 /* MyReviewClickCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FAFD20F4E55A00676796 /* MyReviewClickCollectionViewCell.swift */; };
+		4C23FB0320F4E5C700676796 /* ReviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB0220F4E5C700676796 /* ReviewService.swift */; };
+		4C23FB0720F4E5DE00676796 /* ReviewDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB0520F4E5DE00676796 /* ReviewDataVO.swift */; };
+		4C23FB0820F4E5DE00676796 /* ReviewVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB0620F4E5DE00676796 /* ReviewVO.swift */; };
+		4C23FB1020F553B900676796 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB0F20F553B900676796 /* Utility.swift */; };
+		4C23FB1920F5563000676796 /* DatePickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB1220F5562F00676796 /* DatePickerHeader.swift */; };
+		4C23FB1A20F5563000676796 /* DatePickerFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB1320F5562F00676796 /* DatePickerFooter.swift */; };
+		4C23FB1B20F5563000676796 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB1420F5562F00676796 /* BaseCell.swift */; };
+		4C23FB1C20F5563000676796 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB1520F5563000676796 /* DatePicker.swift */; };
+		4C23FB1D20F5563000676796 /* DatePickerFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB1620F5563000676796 /* DatePickerFlowLayout.swift */; };
+		4C23FB1E20F5563000676796 /* DatePickerMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB1720F5563000676796 /* DatePickerMonthHeader.swift */; };
+		4C23FB1F20F5563000676796 /* DatePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB1820F5563000676796 /* DatePickerCell.swift */; };
+		4C23FB2220F5564500676796 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB2020F5564500676796 /* DatePickerViewController.swift */; };
+		4C23FB2520F668FF00676796 /* SearchRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C23FB2420F668FF00676796 /* SearchRegionViewController.swift */; };
 		4C30130920EB48AA001B2728 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30130820EB48AA001B2728 /* MainModel.swift */; };
 		4C30130D20EB4A86001B2728 /* MainVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30130C20EB4A86001B2728 /* MainVO.swift */; };
 		4C30130F20EB4AC5001B2728 /* AdsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C30130E20EB4AC5001B2728 /* AdsVO.swift */; };
@@ -99,16 +129,15 @@
 		4CAB387C20F0F5460057F4C0 /* HeartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB387A20F0F5460057F4C0 /* HeartData.swift */; };
 		4CAB388020F0F5500057F4C0 /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB387E20F0F5500057F4C0 /* ProfileData.swift */; };
 		4CAB388120F0F5500057F4C0 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB387F20F0F5500057F4C0 /* Profile.swift */; };
-		4CAB389120F0F6660057F4C0 /* MainAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB388E20F0F6650057F4C0 /* MainAds.swift */; };
-		4CAB389220F0F6660057F4C0 /* MainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB388F20F0F6650057F4C0 /* MainData.swift */; };
-		4CAB389320F0F6660057F4C0 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389020F0F6660057F4C0 /* Main.swift */; };
 		4CAB38A020F107010057F4C0 /* HeartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389A20F107000057F4C0 /* HeartService.swift */; };
 		4CAB38A120F107010057F4C0 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389B20F107000057F4C0 /* APIService.swift */; };
 		4CAB38A220F107010057F4C0 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389D20F107000057F4C0 /* ProfileService.swift */; };
-		4CAB38A320F107010057F4C0 /* MainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB389F20F107000057F4C0 /* MainService.swift */; };
 		4CAB38A520F1216B0057F4C0 /* ApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38A420F1216B0057F4C0 /* ApplyViewController.swift */; };
 		4CAB38A720F138F80057F4C0 /* ApplyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38A620F138F80057F4C0 /* ApplyModel.swift */; };
 		4CAB38A920F13B550057F4C0 /* UserDataVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38A820F13B550057F4C0 /* UserDataVO.swift */; };
+		4CAB38AB20F2156E0057F4C0 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */; };
+		4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */; };
+		4CAB38B520F294840057F4C0 /* ApplyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38B420F294840057F4C0 /* ApplyVO.swift */; };
 		B698B3B3D3A6657655ACEC08 /* Pods_nongchung_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE6756A3BEE07570D35D072 /* Pods_nongchung_iOSTests.framework */; };
 		BA43D3C020E8887700786D4E /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA43D3BF20E8887700786D4E /* LoginModel.swift */; };
 		BA84841920E904B800BC706E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA84841820E904B800BC706E /* MainViewController.swift */; };
@@ -155,6 +184,37 @@
 		4C0EA59520E8714C00CB70ED /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		4C0EA59D20E873E800CB70ED /* LoginVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVO.swift; sourceTree = "<group>"; };
 		4C0EA5A020E8799600CB70ED /* JoinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinVC.swift; sourceTree = "<group>"; };
+		4C23FAD320F4915C00676796 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		4C23FAD520F4A8B800676796 /* nongchung_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nongchung_iOS.entitlements; sourceTree = "<group>"; };
+		4C23FAD620F4A8F800676796 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		4C23FAD820F4A90200676796 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		4C23FAE220F4CA7700676796 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		4C23FAE520F4CC2D00676796 /* SearchVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVO.swift; sourceTree = "<group>"; };
+		4C23FAE720F4CC3A00676796 /* SearchDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataVO.swift; sourceTree = "<group>"; };
+		4C23FAE920F4CDCB00676796 /* SearchFiliteredDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiliteredDataCell.swift; sourceTree = "<group>"; };
+		4C23FAEB20F4E3DE00676796 /* QnaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnaData.swift; sourceTree = "<group>"; };
+		4C23FAEC20F4E3DE00676796 /* QnAExpansionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnAExpansionTableViewCell.swift; sourceTree = "<group>"; };
+		4C23FAED20F4E3DE00676796 /* QnATableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QnATableViewCell.swift; sourceTree = "<group>"; };
+		4C23FAF220F4E46500676796 /* MyActivityService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityService.swift; sourceTree = "<group>"; };
+		4C23FAF520F4E4AB00676796 /* MyActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityData.swift; sourceTree = "<group>"; };
+		4C23FAF620F4E4AB00676796 /* MyActivityTotal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityTotal.swift; sourceTree = "<group>"; };
+		4C23FAF720F4E4AC00676796 /* MyActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivity.swift; sourceTree = "<group>"; };
+		4C23FAFB20F4E55900676796 /* MyReviewImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReviewImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		4C23FAFC20F4E55A00676796 /* MyReviewClickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReviewClickViewController.swift; sourceTree = "<group>"; };
+		4C23FAFD20F4E55A00676796 /* MyReviewClickCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReviewClickCollectionViewCell.swift; sourceTree = "<group>"; };
+		4C23FB0220F4E5C700676796 /* ReviewService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewService.swift; sourceTree = "<group>"; };
+		4C23FB0520F4E5DE00676796 /* ReviewDataVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDataVO.swift; sourceTree = "<group>"; };
+		4C23FB0620F4E5DE00676796 /* ReviewVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewVO.swift; sourceTree = "<group>"; };
+		4C23FB0F20F553B900676796 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		4C23FB1220F5562F00676796 /* DatePickerHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerHeader.swift; sourceTree = "<group>"; };
+		4C23FB1320F5562F00676796 /* DatePickerFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFooter.swift; sourceTree = "<group>"; };
+		4C23FB1420F5562F00676796 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		4C23FB1520F5563000676796 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		4C23FB1620F5563000676796 /* DatePickerFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerFlowLayout.swift; sourceTree = "<group>"; };
+		4C23FB1720F5563000676796 /* DatePickerMonthHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerMonthHeader.swift; sourceTree = "<group>"; };
+		4C23FB1820F5563000676796 /* DatePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerCell.swift; sourceTree = "<group>"; };
+		4C23FB2020F5564500676796 /* DatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		4C23FB2420F668FF00676796 /* SearchRegionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRegionViewController.swift; sourceTree = "<group>"; };
 		4C30130820EB48AA001B2728 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		4C30130C20EB4A86001B2728 /* MainVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVO.swift; sourceTree = "<group>"; };
 		4C30130E20EB4AC5001B2728 /* AdsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsVO.swift; sourceTree = "<group>"; };
@@ -232,16 +292,15 @@
 		4CAB387A20F0F5460057F4C0 /* HeartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartData.swift; sourceTree = "<group>"; };
 		4CAB387E20F0F5500057F4C0 /* ProfileData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
 		4CAB387F20F0F5500057F4C0 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		4CAB388E20F0F6650057F4C0 /* MainAds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAds.swift; sourceTree = "<group>"; };
-		4CAB388F20F0F6650057F4C0 /* MainData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainData.swift; sourceTree = "<group>"; };
-		4CAB389020F0F6660057F4C0 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		4CAB389A20F107000057F4C0 /* HeartService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartService.swift; sourceTree = "<group>"; };
 		4CAB389B20F107000057F4C0 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		4CAB389D20F107000057F4C0 /* ProfileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
-		4CAB389F20F107000057F4C0 /* MainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainService.swift; sourceTree = "<group>"; };
 		4CAB38A420F1216B0057F4C0 /* ApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyViewController.swift; sourceTree = "<group>"; };
 		4CAB38A620F138F80057F4C0 /* ApplyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyModel.swift; sourceTree = "<group>"; };
 		4CAB38A820F13B550057F4C0 /* UserDataVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataVO.swift; sourceTree = "<group>"; };
+		4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
+		4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneApplyViewController.swift; sourceTree = "<group>"; };
+		4CAB38B420F294840057F4C0 /* ApplyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyVO.swift; sourceTree = "<group>"; };
 		4FEA88DF39A4473E578321B5 /* Pods_nongchung_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nongchung_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		703D2453D691E76992FDE4D9 /* Pods-nongchung_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOSTests/Pods-nongchung_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		8EC82056829108DFFEB305CA /* Pods-nongchung_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nongchung_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-nongchung_iOS/Pods-nongchung_iOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -258,6 +317,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C23FAD920F4A90200676796 /* PushKit.framework in Frameworks */,
+				4C23FAD720F4A8F800676796 /* UserNotifications.framework in Frameworks */,
 				3D8FC8CD6848CD11FC38C790 /* Pods_nongchung_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +345,8 @@
 		1136FF7550F2189DD1EE7191 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C23FAD820F4A90200676796 /* PushKit.framework */,
+				4C23FAD620F4A8F800676796 /* UserNotifications.framework */,
 				E15ECCE609D89927B7FDAA84 /* Pods_nongchung_iOS.framework */,
 				3DE6756A3BEE07570D35D072 /* Pods_nongchung_iOSTests.framework */,
 				4FEA88DF39A4473E578321B5 /* Pods_nongchung_iOSUITests.framework */,
@@ -316,12 +379,15 @@
 		4C0EA55520E86CF900CB70ED /* nongchung_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				4C23FAD520F4A8B800676796 /* nongchung_iOS.entitlements */,
 				4C7DC5F120EE08C400CCA950 /* Font */,
 				4C0EA56520E86CFB00CB70ED /* Info.plist */,
 				4C0EA56020E86CFB00CB70ED /* Assets.xcassets */,
 				4C0EA55620E86CF900CB70ED /* AppDelegate.swift */,
 				4C0EA59520E8714C00CB70ED /* Extension.swift */,
+				4C23FB0F20F553B900676796 /* Utility.swift */,
 				4C0EA58B20E86E8C00CB70ED /* Protocol */,
+				4CAB389820F107000057F4C0 /* Service */,
 				4C0EA58A20E86E1D00CB70ED /* VO */,
 				4C0EA58920E86E1300CB70ED /* Model */,
 				4C0EA58820E86E0D00CB70ED /* ViewController */,
@@ -370,6 +436,7 @@
 				4C0EA59220E86F8F00CB70ED /* Login */,
 				BA43D3B520E8860C00786D4E /* Main */,
 				4C30131620EB6E3A001B2728 /* Mypage */,
+				4C98B4C120EA32230038866E /* Search */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -383,6 +450,7 @@
 				4C30130820EB48AA001B2728 /* MainModel.swift */,
 				4C7DC5E620EDEA5900CCA950 /* IntroduceModel.swift */,
 				4CAB38A620F138F80057F4C0 /* ApplyModel.swift */,
+				4C23FAE220F4CA7700676796 /* SearchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,13 +458,15 @@
 		4C0EA58A20E86E1D00CB70ED /* VO */ = {
 			isa = PBXGroup;
 			children = (
-				4CAB389820F107000057F4C0 /* Service */,
+				4C23FB0420F4E5D400676796 /* Review */,
+				4C23FAF420F4E4A000676796 /* MyActivity */,
 				4CAB387D20F0F5500057F4C0 /* Profile */,
 				4CAB387820F0F5460057F4C0 /* Heart */,
 				4C7DC5E820EDEAD100CCA950 /* Detail */,
 				4C98B4F820EA4ECE0038866E /* Join */,
 				4C0EA59A20E873AB00CB70ED /* Login */,
 				BA43D3BC20E8874100786D4E /* Main */,
+				4C23FAE420F4CC1C00676796 /* Search */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -413,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0EA59320E86FA300CB70ED /* LoginVC.swift */,
+				4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -436,6 +507,65 @@
 			path = Join;
 			sourceTree = "<group>";
 		};
+		4C23FAE420F4CC1C00676796 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4C23FAE520F4CC2D00676796 /* SearchVO.swift */,
+				4C23FAE720F4CC3A00676796 /* SearchDataVO.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4C23FAF120F4E45700676796 /* MyActivity */ = {
+			isa = PBXGroup;
+			children = (
+				4C23FAF220F4E46500676796 /* MyActivityService.swift */,
+			);
+			path = MyActivity;
+			sourceTree = "<group>";
+		};
+		4C23FAF420F4E4A000676796 /* MyActivity */ = {
+			isa = PBXGroup;
+			children = (
+				4C23FAF720F4E4AC00676796 /* MyActivity.swift */,
+				4C23FAF520F4E4AB00676796 /* MyActivityData.swift */,
+				4C23FAF620F4E4AB00676796 /* MyActivityTotal.swift */,
+			);
+			path = MyActivity;
+			sourceTree = "<group>";
+		};
+		4C23FB0120F4E5BF00676796 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				4C23FB0220F4E5C700676796 /* ReviewService.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		4C23FB0420F4E5D400676796 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				4C23FB0520F4E5DE00676796 /* ReviewDataVO.swift */,
+				4C23FB0620F4E5DE00676796 /* ReviewVO.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		4C23FB1120F553D100676796 /* DatePicker(WithOutStoryboard) */ = {
+			isa = PBXGroup;
+			children = (
+				4C23FB2020F5564500676796 /* DatePickerViewController.swift */,
+				4C23FB1520F5563000676796 /* DatePicker.swift */,
+				4C23FB1720F5563000676796 /* DatePickerMonthHeader.swift */,
+				4C23FB1420F5562F00676796 /* BaseCell.swift */,
+				4C23FB1820F5563000676796 /* DatePickerCell.swift */,
+				4C23FB1620F5563000676796 /* DatePickerFlowLayout.swift */,
+				4C23FB1320F5562F00676796 /* DatePickerFooter.swift */,
+				4C23FB1220F5562F00676796 /* DatePickerHeader.swift */,
+			);
+			path = "DatePicker(WithOutStoryboard)";
+			sourceTree = "<group>";
+		};
 		4C30131620EB6E3A001B2728 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,10 +581,14 @@
 				4C7DC60420EFAD2700CCA950 /* HeaderCollectionViewCell.swift */,
 				4C7DC5CF20ECA69F00CCA950 /* InformationTableViewController.swift */,
 				4C7DC5D120ECA71D00CCA950 /* QnATableViewController.swift */,
+				4C23FAED20F4E3DE00676796 /* QnATableViewCell.swift */,
+				4C23FAEC20F4E3DE00676796 /* QnAExpansionTableViewCell.swift */,
+				4C23FAEB20F4E3DE00676796 /* QnaData.swift */,
 				4C7DC5D320ECB89100CCA950 /* ReviewTableViewController.swift */,
 				4C7DC5D520ECD6F900CCA950 /* InformationCell */,
 				4CAB384420F0D4A80057F4C0 /* Popup */,
 				4CAB38A420F1216B0057F4C0 /* ApplyViewController.swift */,
+				4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -467,6 +601,7 @@
 				4C7DC5FC20EF8CD700CCA950 /* VolunteerCollectionViewCell.swift */,
 				4C7DC5D820ECDC8F00CCA950 /* FarmerCell.swift */,
 				4C7DC5DE20ECDFAD00CCA950 /* ScheduleCell.swift */,
+				4C23FAD320F4915C00676796 /* ScheduleTableViewCell.swift */,
 				4C7DC5E020ECE04C00CCA950 /* SuppliesCell.swift */,
 				4C7DC5E220ECE06A00CCA950 /* MapCell.swift */,
 				4C7DC5E420ECE08C00CCA950 /* PolicyCell.swift */,
@@ -484,6 +619,7 @@
 				4C7DC5ED20EDEBA400CCA950 /* FarmerInfoVO.swift */,
 				4C7DC5EF20EDEBAF00CCA950 /* ScheduleVO.swift */,
 				4C7DC60020EF91BB00CCA950 /* AllStartDateVO.swift */,
+				4CAB38B420F294840057F4C0 /* ApplyVO.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -503,6 +639,9 @@
 			isa = PBXGroup;
 			children = (
 				4C98B4C220EA323E0038866E /* SearchViewController.swift */,
+				4C23FAE920F4CDCB00676796 /* SearchFiliteredDataCell.swift */,
+				4C23FB2420F668FF00676796 /* SearchRegionViewController.swift */,
+				4C23FB1120F553D100676796 /* DatePicker(WithOutStoryboard) */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -576,8 +715,11 @@
 				4CAB385420F0F52B0057F4C0 /* ProfileTableViewCell.swift */,
 				4CAB385520F0F52B0057F4C0 /* PushViewController.swift */,
 				4CAB385620F0F52B0057F4C0 /* MyReviewViewController.swift */,
-				4CAB385720F0F52B0057F4C0 /* PasswordViewController.swift */,
 				4CAB385820F0F52B0057F4C0 /* MyReviewTableViewCell.swift */,
+				4C23FAFD20F4E55A00676796 /* MyReviewClickCollectionViewCell.swift */,
+				4C23FAFC20F4E55A00676796 /* MyReviewClickViewController.swift */,
+				4C23FAFB20F4E55900676796 /* MyReviewImageCollectionViewCell.swift */,
+				4CAB385720F0F52B0057F4C0 /* PasswordViewController.swift */,
 				4CAB385920F0F52B0057F4C0 /* NoticeData.swift */,
 				4CAB385A20F0F52B0057F4C0 /* NoticeExpansionTableViewCell.swift */,
 				4CAB385B20F0F52B0057F4C0 /* ButtonHeaderTableViewCell.swift */,
@@ -612,12 +754,14 @@
 		4CAB389820F107000057F4C0 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				4C23FB0120F4E5BF00676796 /* Review */,
+				4C23FAF120F4E45700676796 /* MyActivity */,
 				4CAB389920F107000057F4C0 /* Heart */,
 				4CAB389B20F107000057F4C0 /* APIService.swift */,
 				4CAB389C20F107000057F4C0 /* Profile */,
-				4CAB389E20F107000057F4C0 /* Main */,
 			);
-			path = Service;
+			name = Service;
+			path = VO/Service;
 			sourceTree = "<group>";
 		};
 		4CAB389920F107000057F4C0 /* Heart */ = {
@@ -636,14 +780,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		4CAB389E20F107000057F4C0 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				4CAB389F20F107000057F4C0 /* MainService.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		BA43D3B520E8860C00786D4E /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,7 +788,6 @@
 				4C98B4FD20EA56000038866E /* AllShowViewController.swift */,
 				4C98B4DD20EA4DAF0038866E /* TableViewCell */,
 				4C98B4E320EA4DAF0038866E /* CollectionViewCell */,
-				4C98B4C120EA32230038866E /* Search */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -665,9 +800,6 @@
 				4C30131020EB4B2D001B2728 /* PopulNhVO.swift */,
 				4C30131220EB4BB6001B2728 /* NewNhVO.swift */,
 				4C30131420EB4C57001B2728 /* PopulFarmVO.swift */,
-				4CAB389020F0F6660057F4C0 /* Main.swift */,
-				4CAB388E20F0F6650057F4C0 /* MainAds.swift */,
-				4CAB388F20F0F6650057F4C0 /* MainData.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -759,6 +891,11 @@
 					4C0EA55220E86CF900CB70ED = {
 						CreatedOnToolsVersion = 9.4.1;
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					4C0EA56920E86CFB00CB70ED = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -869,9 +1006,13 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SJSegmentedScrollView/SJSegmentedScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/YangMingShan/YangMingShan.framework",
 			);
@@ -880,9 +1021,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SJSegmentedScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YangMingShan.framework",
 			);
@@ -936,7 +1081,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CAB389320F0F6660057F4C0 /* Main.swift in Sources */,
+				4C23FAEA20F4CDCB00676796 /* SearchFiliteredDataCell.swift in Sources */,
 				4CAB38A920F13B550057F4C0 /* UserDataVO.swift in Sources */,
 				4C7DC5E520ECE08C00CCA950 /* PolicyCell.swift in Sources */,
 				4C7DC5F020EDEBAF00CCA950 /* ScheduleVO.swift in Sources */,
@@ -944,26 +1089,36 @@
 				4C7DC5E320ECE06A00CCA950 /* MapCell.swift in Sources */,
 				4C7DC5D020ECA69F00CCA950 /* InformationTableViewController.swift in Sources */,
 				4C7DC5D420ECB89100CCA950 /* ReviewTableViewController.swift in Sources */,
+				4C23FB1020F553B900676796 /* Utility.swift in Sources */,
 				4C7DC5FF20EF911E00CCA950 /* FriendsInfoVO.swift in Sources */,
+				4C23FB1B20F5563000676796 /* BaseCell.swift in Sources */,
 				4CAB386520F0F52B0057F4C0 /* MyActivityHeaderTableViewCell.swift in Sources */,
 				4C7DC5EC20EDEB9800CCA950 /* NhInfoVO.swift in Sources */,
 				4CAB386720F0F52B0057F4C0 /* MyActivityTableViewCell.swift in Sources */,
+				4CAB38B520F294840057F4C0 /* ApplyVO.swift in Sources */,
 				4C30130920EB48AA001B2728 /* MainModel.swift in Sources */,
 				4CAB387520F0F52B0057F4C0 /* NickNameViewController.swift in Sources */,
 				4C30130D20EB4A86001B2728 /* MainVO.swift in Sources */,
 				4C98B4C320EA323E0038866E /* SearchViewController.swift in Sources */,
+				4C23FB0020F4E55A00676796 /* MyReviewClickCollectionViewCell.swift in Sources */,
+				4C23FAE620F4CC2D00676796 /* SearchVO.swift in Sources */,
 				4CAB386620F0F52B0057F4C0 /* MyActivityViewController.swift in Sources */,
 				BA84841920E904B800BC706E /* MainViewController.swift in Sources */,
 				4CAB38A020F107010057F4C0 /* HeartService.swift in Sources */,
+				4C23FB1D20F5563000676796 /* DatePickerFlowLayout.swift in Sources */,
 				BA43D3C020E8887700786D4E /* LoginModel.swift in Sources */,
 				4C0EA55F20E86CF900CB70ED /* nongchung_iOS.xcdatamodeld in Sources */,
+				4C23FAF920F4E4AC00676796 /* MyActivityTotal.swift in Sources */,
 				4C0EA59620E8714C00CB70ED /* Extension.swift in Sources */,
+				4C23FB1920F5563000676796 /* DatePickerHeader.swift in Sources */,
 				4CAB386420F0F52B0057F4C0 /* WriteReviewCollectionViewCell.swift in Sources */,
+				4C23FAFE20F4E55A00676796 /* MyReviewImageCollectionViewCell.swift in Sources */,
 				4C30130F20EB4AC5001B2728 /* AdsVO.swift in Sources */,
 				4C7DC60520EFAD2700CCA950 /* HeaderCollectionViewCell.swift in Sources */,
 				4CAB387620F0F52B0057F4C0 /* ProfileViewController.swift in Sources */,
 				4CAB38A520F1216B0057F4C0 /* ApplyViewController.swift in Sources */,
 				4CAB388020F0F5500057F4C0 /* ProfileData.swift in Sources */,
+				4C23FAEE20F4E3DF00676796 /* QnaData.swift in Sources */,
 				4CAB387220F0F52B0057F4C0 /* PushTableViewCell.swift in Sources */,
 				4C7DC60120EF91BB00CCA950 /* AllStartDateVO.swift in Sources */,
 				4CAB38A220F107010057F4C0 /* ProfileService.swift in Sources */,
@@ -971,14 +1126,18 @@
 				4C98B4F120EA4DAF0038866E /* NewCollectionViewCell.swift in Sources */,
 				4CAB386D20F0F52B0057F4C0 /* PasswordViewController.swift in Sources */,
 				4C98B4F220EA4DAF0038866E /* PopularListCollectionViewCell.swift in Sources */,
+				4C23FAE320F4CA7700676796 /* SearchModel.swift in Sources */,
 				4CAB386820F0F52B0057F4C0 /* ReviewTestViewController.swift in Sources */,
+				4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */,
 				4C98B4B520EA1F370038866E /* JoinModel.swift in Sources */,
 				4CAB387420F0F52B0057F4C0 /* NoticeTableViewCell.swift in Sources */,
 				4C7DC5FD20EF8CD700CCA950 /* VolunteerCollectionViewCell.swift in Sources */,
+				4C23FAF320F4E46500676796 /* MyActivityService.swift in Sources */,
 				4C7DC5E120ECE04C00CCA950 /* SuppliesCell.swift in Sources */,
 				4CAB386F20F0F52B0057F4C0 /* NoticeData.swift in Sources */,
 				4C98B4EC20EA4DAF0038866E /* NewTableViewCell.swift in Sources */,
 				4CAB387720F0F52B0057F4C0 /* ButtonTableViewCell.swift in Sources */,
+				4C23FB2520F668FF00676796 /* SearchRegionViewController.swift in Sources */,
 				4C7DC5FB20EE477300CCA950 /* JoinVC3.swift in Sources */,
 				4C98B4EF20EA4DAF0038866E /* ThemeCollectionViewCell.swift in Sources */,
 				4C7DC5D220ECA71D00CCA950 /* QnATableViewController.swift in Sources */,
@@ -988,7 +1147,6 @@
 				4C7DC5EA20EDEADC00CCA950 /* IntroduceVO.swift in Sources */,
 				4CAB387B20F0F5460057F4C0 /* Heart.swift in Sources */,
 				4CAB38A720F138F80057F4C0 /* ApplyModel.swift in Sources */,
-				4CAB389220F0F6660057F4C0 /* MainData.swift in Sources */,
 				4C98B4ED20EA4DAF0038866E /* AdTableViewCell.swift in Sources */,
 				4C0EA5A120E8799600CB70ED /* JoinVC.swift in Sources */,
 				4C7DC5DB20ECDE4B00CCA950 /* VolunteerCell.swift in Sources */,
@@ -999,36 +1157,50 @@
 				4C7DC5D920ECDC8F00CCA950 /* FarmerCell.swift in Sources */,
 				4C0EA55720E86CF900CB70ED /* AppDelegate.swift in Sources */,
 				4CAB387120F0F52B0057F4C0 /* ButtonHeaderTableViewCell.swift in Sources */,
+				4CAB38AB20F2156E0057F4C0 /* LoginNavigationController.swift in Sources */,
 				4CAB386A20F0F52B0057F4C0 /* ProfileTableViewCell.swift in Sources */,
 				4C98B4FE20EA56000038866E /* AllShowViewController.swift in Sources */,
+				4C23FB1E20F5563000676796 /* DatePickerMonthHeader.swift in Sources */,
 				4C30131120EB4B2D001B2728 /* PopulNhVO.swift in Sources */,
 				4CAB386220F0F52B0057F4C0 /* HeartTableViewCell.swift in Sources */,
 				4C7DC64820F0A43700CCA950 /* HeaderViewController.swift in Sources */,
+				4C23FB1A20F5563000676796 /* DatePickerFooter.swift in Sources */,
+				4C23FB1F20F5563000676796 /* DatePickerCell.swift in Sources */,
 				4C7DC60320EFA18900CCA950 /* ContactCell.swift in Sources */,
+				4C23FAEF20F4E3DF00676796 /* QnAExpansionTableViewCell.swift in Sources */,
+				4C23FAFA20F4E4AC00676796 /* MyActivity.swift in Sources */,
 				4CAB384820F0F50F0057F4C0 /* AllListTableViewCell.swift in Sources */,
+				4C23FAD420F4915C00676796 /* ScheduleTableViewCell.swift in Sources */,
+				4C23FB0820F4E5DE00676796 /* ReviewVO.swift in Sources */,
 				4C7DC5D720ECD72D00CCA950 /* IntroduceCell.swift in Sources */,
 				4C98B4E920EA4DAF0038866E /* PopularListTableViewCell.swift in Sources */,
 				4CAB387320F0F52B0057F4C0 /* FAQTableViewController.swift in Sources */,
+				4C23FAE820F4CC3A00676796 /* SearchDataVO.swift in Sources */,
 				4C0EA59E20E873E800CB70ED /* LoginVO.swift in Sources */,
 				4CAB38A120F107010057F4C0 /* APIService.swift in Sources */,
+				4C23FAF820F4E4AC00676796 /* MyActivityData.swift in Sources */,
 				4C0EA58F20E86EBF00CB70ED /* NetworkModel.swift in Sources */,
 				4C98B4C020EA29550038866E /* TabBarController.swift in Sources */,
+				4C23FB0720F4E5DE00676796 /* ReviewDataVO.swift in Sources */,
 				4C98B4EB20EA4DAF0038866E /* PopFarmTableViewCell.swift in Sources */,
 				4CAB387020F0F52B0057F4C0 /* NoticeExpansionTableViewCell.swift in Sources */,
+				4C23FAFF20F4E55A00676796 /* MyReviewClickViewController.swift in Sources */,
 				4CAB386320F0F52B0057F4C0 /* HeartViewController.swift in Sources */,
 				4C98B4B120EA1F180038866E /* JoinVC2.swift in Sources */,
+				4C23FAF020F4E3DF00676796 /* QnATableViewCell.swift in Sources */,
 				4CAB386920F0F52B0057F4C0 /* NoticeTableViewController.swift in Sources */,
-				4CAB389120F0F6660057F4C0 /* MainAds.swift in Sources */,
 				4CAB387C20F0F5460057F4C0 /* HeartData.swift in Sources */,
 				4CAB386C20F0F52B0057F4C0 /* MyReviewViewController.swift in Sources */,
 				4CAB386E20F0F52B0057F4C0 /* MyReviewTableViewCell.swift in Sources */,
 				4C0EA58D20E86EAA00CB70ED /* NetworkCallback.swift in Sources */,
 				4C30131320EB4BB6001B2728 /* NewNhVO.swift in Sources */,
+				4C23FB0320F4E5C700676796 /* ReviewService.swift in Sources */,
 				4C98B4FA20EA4ED60038866E /* DuplicateVO.swift in Sources */,
-				4CAB38A320F107010057F4C0 /* MainService.swift in Sources */,
 				4C7DC5DF20ECDFAD00CCA950 /* ScheduleCell.swift in Sources */,
+				4C23FB2220F5564500676796 /* DatePickerViewController.swift in Sources */,
 				4C98B4EA20EA4DAF0038866E /* ThemeTableViewCell.swift in Sources */,
 				4C7DC5EE20EDEBA400CCA950 /* FarmerInfoVO.swift in Sources */,
+				4C23FB1C20F5563000676796 /* DatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,7 +1287,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: luciperheart@gmail.com (TABLDY7NN6)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1203,6 +1376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = nongchung_iOS/nongchung_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = nongchung_iOS/Info.plist;
@@ -1211,7 +1385,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nongchung.nongchung-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nongchung.nongchung;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -1225,6 +1399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = nongchung_iOS/nongchung_iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86PPC52X64;
 				INFOPLIST_FILE = nongchung_iOS/Info.plist;
@@ -1233,7 +1408,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nongchung.nongchung-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nongchung.nongchung;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -15,6 +15,7 @@ class MainVO : Mappable {
     var populNh : [PopulNhVO]?
     var newNh : [NewNhVO]?
     var populFarm : [PopulFarmVO]?
+    var myScheduleActivities : Int?
     
     required init?(map: Map) {}
     
@@ -24,5 +25,6 @@ class MainVO : Mappable {
         populNh <- map["populNh"]
         newNh <- map["newNh"]
         populFarm <- map["populFarm"]
+        myScheduleActivities <- map["myScheduleActivities"]
     }
 }

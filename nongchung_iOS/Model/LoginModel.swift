@@ -51,6 +51,7 @@ class LoginModel : NetworkModel{
                             ud.setValue(data[0].sex, forKey: "sex")
                             ud.synchronize()
                         }
+                        self.view.networkResult(resultData: "Login Success", code: "Success To Sign In")
                     }
                     else if responseMessage.message == "Null Value" {
                         self.view.networkResult(resultData: "400ERR", code: "Null Value")

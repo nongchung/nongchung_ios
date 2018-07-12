@@ -45,5 +45,10 @@ extension NewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = newNhData![indexPath.row]
+        NotificationCenter.default.post(name: .gotoIntroduce, object: nil, userInfo: ["nhIdx" : index.nhIdx!])
+    }
 }
 

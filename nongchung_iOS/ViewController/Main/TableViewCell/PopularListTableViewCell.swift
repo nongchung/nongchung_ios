@@ -54,6 +54,6 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = populNhData![indexPath.row]
-        NotificationCenter.default.post(name: .gotoIntroduce, object: nil, userInfo: ["idx" : index.idx!])
+        NotificationCenter.default.post(name: .gotoIntroduce, object: nil, userInfo: ["nhIdx" : index.nhIdx!])
     }
 }

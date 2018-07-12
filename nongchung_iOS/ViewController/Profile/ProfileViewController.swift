@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
         profileTableView.dataSource = self
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-
+    
 }
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -191,6 +191,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 0 {
                 let viewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "MyReviewViewController") as! MyReviewViewController
                 self.navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                //                guard let farmerVC = storyboard?.instantiateViewController(
+                //                    withIdentifier : "FarmerViewController"
+                //                    ) as? FarmerViewController
+                //                    else{return}
+                //                let navigationControlr = UINavigationController(rootViewController: farmerVC)
+                //                self.present(navigationControlr, animated: true, completion: nil)
             }
         } else if indexPath.section == 2 {
             if indexPath.row == 0 {

@@ -9,6 +9,25 @@
 import UIKit
 import Kingfisher
 
+
+//MARK: 2개 배열 교집합 Bool 리턴
+extension Array where Element: Comparable {
+    func containsSameElements(as other: [Element]) -> Bool {
+        return self.count == other.count && self.sorted() == other.sorted()
+    }
+}
+
+//MARK: Current Date Start End Method
+extension Date {
+    func startOfMonth() -> Date {
+        return Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+    }
+    
+    func endOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
+    }
+}
+
 extension UITableViewCell{
     
     //MARK: Separator Height Increase Method
@@ -22,6 +41,8 @@ extension UITableViewCell{
 }
 
 extension UITextField {
+    
+    //MARK: TextField UnderLine Make
     func addBorderBottom(height: CGFloat, color: UIColor) {
         let border = CALayer()
         border.frame = CGRect(x: 0, y: self.frame.height-height+5, width: self.frame.width, height: height)
@@ -32,6 +53,7 @@ extension UITextField {
 
 extension UIView {
     
+    //MARK: UIView Fade In/Out Animation Method
     func fadeIn(_ duration: TimeInterval = 0.5, delay: TimeInterval = 0.0, completion: @escaping ((Bool) -> Void) = {(finished: Bool) -> Void in}) {
         UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.alpha = 1.0
@@ -110,10 +132,11 @@ extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
         let loginAction = UIAlertAction(title: "로그인", style: .default) { (UIAlertAction) in
             let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
             guard let loginVC = loginStoryboard.instantiateViewController(
-                withIdentifier : "LoginVC"
-                ) as? LoginVC
+                withIdentifier : "LoginNavigationController"
+                ) as? LoginNavigationController
                 else{return}
-            self.present(loginVC, animated: true, completion: nil)
+            loginVC.modalTransitionStyle = .crossDissolve
+            UIApplication.shared.keyWindow?.rootViewController = loginVC
         }
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
         alert.addAction(cancelAction)

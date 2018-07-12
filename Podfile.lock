@@ -1,9 +1,10 @@
 PODS:
-  - Alamofire (4.7.2)
+  - Alamofire (4.7.3)
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - Cosmos (16.0.0)
+  - FSCalendar (2.7.9)
   - GoogleMaps (2.7.0):
     - GoogleMaps/Maps (= 2.7.0)
   - GoogleMaps/Base (2.7.0)
@@ -12,8 +13,13 @@ PODS:
   - GooglePlaces (2.7.0):
     - GoogleMaps/Base (= 2.7.0)
   - Kingfisher (4.8.0)
+  - MarqueeLabel/Swift (3.1.6)
+  - NotificationBannerSwift (1.6.3):
+    - MarqueeLabel/Swift
+    - SnapKit (~> 4.0)
   - ObjectMapper (3.3.0)
   - SJSegmentedScrollView (1.3.6)
+  - SnapKit (4.0.0)
   - SwiftyJSON (4.1.0)
   - YangMingShan (2.0.1):
     - YangMingShan/YMSPhotoPicker (= 2.0.1)
@@ -23,9 +29,11 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
   - Cosmos (~> 16.0)
+  - FSCalendar (~> 2.7.3)
   - GoogleMaps
   - GooglePlaces
   - Kingfisher
+  - NotificationBannerSwift
   - ObjectMapper
   - SJSegmentedScrollView
   - SwiftyJSON
@@ -36,26 +44,34 @@ SPEC REPOS:
     - Alamofire
     - AlamofireObjectMapper
     - Cosmos
+    - FSCalendar
     - GoogleMaps
     - GooglePlaces
     - Kingfisher
+    - MarqueeLabel
+    - NotificationBannerSwift
     - ObjectMapper
     - SJSegmentedScrollView
+    - SnapKit
     - SwiftyJSON
     - YangMingShan
 
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Cosmos: 7bcee0fa858a9355a214f2a181be5dffcee42c81
+  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
   GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
   Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
+  MarqueeLabel: 0c41f08ef5773e29c0f71064a8fa788a2fd8b365
+  NotificationBannerSwift: b231e4c3244848ef300e1c53ce027b9756b9b06f
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   SJSegmentedScrollView: 13eb38fc0a28cc46a3ccc52b4e246df0e2227077
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   YangMingShan: 561cfbb769e8cf679d3f23d8ae7030402ddb6495
 
-PODFILE CHECKSUM: f170e47573ea026220296d39e30241a4ca059f01
+PODFILE CHECKSUM: 2956be5544ad9eb0c5f3addfbb2bd022f78694bd
 
 COCOAPODS: 1.5.3

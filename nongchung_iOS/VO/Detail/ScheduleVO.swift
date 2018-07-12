@@ -9,7 +9,7 @@
 import ObjectMapper
 
 class ScheduleVO : Mappable{
-    var time : Int?
+    var time : String?
     var activity : String?
     
     required init?(map: Map) {}

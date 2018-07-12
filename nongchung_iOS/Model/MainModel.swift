@@ -11,7 +11,8 @@ import AlamofireObjectMapper
 
 class MainModel : NetworkModel{
     
-    func home() {
+    //MARK: 비로그인
+    func home(token: String) {
         
         let URL = "\(baseURL)/api/home"
         
@@ -20,7 +21,7 @@ class MainModel : NetworkModel{
             method: .get,
             parameters: nil,
             encoding: JSONEncoding.default,
-            headers: nil
+            headers: ["token": token]
             ).responseObject{
                 (response:DataResponse<MainVO>) in
                 switch response.result {
