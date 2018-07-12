@@ -14,7 +14,8 @@ class NoticeExpansionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        textView.font = UIFont(name: "NanumSquareRoundB", size: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

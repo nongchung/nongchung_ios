@@ -9,11 +9,14 @@
 import UIKit
 
 class NoticeTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var noticeLabel: UILabel!
+    @IBOutlet var arrowImageView: UIImageView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        noticeLabel.font = UIFont(name: "NanumSquareRoundB", size: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

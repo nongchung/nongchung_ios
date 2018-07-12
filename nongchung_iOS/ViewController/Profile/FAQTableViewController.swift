@@ -37,27 +37,12 @@ class FAQTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        self.title = "FAQ"
-        
+
         noticeData = getData()
         
         self.tableView.tableFooterView = UIView.init(frame: CGRect.zero)
         self.tableView.tableHeaderView = UIView.init(frame: CGRect.zero)
-        self.tableView.rowHeight = UITableViewAutomaticDimension
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
     
     private func getParentCellIndex(expansionIndex: Int) -> Int {
         
@@ -105,8 +90,8 @@ class FAQTableViewController: UITableViewController {
         if let rowData = noticeData?[indexPath.row] {
             let defaultCell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as! NoticeTableViewCell
             defaultCell.noticeLabel.text = rowData.title
-            
-            defaultCell.selectionStyle = .none
+            defaultCell.selectionStyle = .default
+            defaultCell.arrowImageView.image = UIImage(named: "notice_down")
             return defaultCell
         }
             // Row is ExpansionCell
@@ -141,24 +126,22 @@ class FAQTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let data = noticeData?[indexPath.row] {
-            
-            // If user clicked last cell, do not try to access cell+1 (out of range)
-            if(indexPath.row + 1 >= (noticeData?.count)!) {
+
+        // If user clicked last cell, do not try to access cell+1 (out of range)
+        if(indexPath.row + 1 >= (noticeData?.count)!) {
+            expandCell(tableView: tableView, index: indexPath.row)
+        }
+        else {
+            // If next cell is not nil, then cell is not expanded
+            if(noticeData?[indexPath.row+1] != nil) {
                 expandCell(tableView: tableView, index: indexPath.row)
-            }
-            else {
-                // If next cell is not nil, then cell is not expanded
-                if(noticeData?[indexPath.row+1] != nil) {
-                    expandCell(tableView: tableView, index: indexPath.row)
-                    // Close Cell (remove ExpansionCells)
-                } else {
-                    contractCell(tableView: tableView, index: indexPath.row)
-                    
-                }
+                // Close Cell (remove ExpansionCells)
+            } else {
+                contractCell(tableView: tableView, index: indexPath.row)
             }
         }
     }
+    
     
     
 }

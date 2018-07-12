@@ -47,19 +47,7 @@ class NoticeTableViewController: UITableViewController {
         self.tableView.tableHeaderView = UIView.init(frame: CGRect.zero)
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
+
     
     private func getParentCellIndex(expansionIndex: Int) -> Int {
         
@@ -107,6 +95,7 @@ class NoticeTableViewController: UITableViewController {
         if let rowData = noticeData?[indexPath.row] {
             let defaultCell = tableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell", for: indexPath) as! NoticeTableViewCell
             defaultCell.noticeLabel.text = rowData.title
+            defaultCell.arrowImageView.image = UIImage(named: "notice_down")
             defaultCell.selectionStyle = .none
             
             return defaultCell

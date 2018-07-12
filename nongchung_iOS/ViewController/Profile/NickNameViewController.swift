@@ -14,6 +14,7 @@ class NickNameViewController: UIViewController {
     
     @IBOutlet weak var duplicateLabel: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet var warningImageView: UIImageView!
     
     var limitLength = 20
     
@@ -39,7 +40,7 @@ class NickNameViewController: UIViewController {
         nicknameTextField.text = nickname
         
         duplicateLabel.isHidden = true
-        
+        warningImageView.isHidden = true
         print(nickname)
         
     }
@@ -60,10 +61,13 @@ class NickNameViewController: UIViewController {
             if message == "Success to change nickname" {
                 print("닉네임 변경 성공")
                 self.navigationController?.popViewController(animated: true)
+                self.duplicateLabel.isHidden = true
+                self.warningImageView.isHidden = true
                 
             } else if message == "duplicate nickname" {
                 print("닉네임 중복")
                 self.duplicateLabel.isHidden = false
+                self.warningImageView.isHidden = false
                 
             }
         }
@@ -75,5 +79,11 @@ class NickNameViewController: UIViewController {
         }
     }
     
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nicknameTextField {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
     
 }

@@ -16,8 +16,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -54,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         
+        UserDefaults.standard.setValue(deviceTokenString, forKey: "deviceAPNsToken")
+        UserDefaults.standard.synchronize()
         // Print it to console
         print("APNs device token: \(deviceTokenString)")
         

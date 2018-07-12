@@ -88,9 +88,12 @@ class LoginVC: UIViewController, NetworkCallback, UIGestureRecognizerDelegate {
     func networkResult(resultData: Any, code: String) {
 
         if code == "Success To Sign In"{
+//            let model = APNSModel(self)
+//            model.apnsTokenNetworking(deviceCategoty: 1, token: gsno(ud.string(forKey: "deviceAPNsToken")))
+            
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-            UIApplication.shared.keyWindow?.rootViewController = mainVC
+            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         }
         else if code == "Fail To Sign In"{
             simpleAlert(title: "로그인 오류", msg: "아이디 또는 패스워드를 확인해주세요.")
@@ -101,6 +104,11 @@ class LoginVC: UIViewController, NetworkCallback, UIGestureRecognizerDelegate {
         else if code == "Internal Server Error"{
             simpleAlert(title: "서버 오류", msg: "관리자에게 문의하세요.")
         }
+//        else if code == "Success To Register Token"{
+//            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+//            UIApplication.shared.keyWindow?.rootViewController = viewController
+//        }
     }
     
     func networkFailed() {

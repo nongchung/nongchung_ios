@@ -38,6 +38,7 @@ class LoginModel : NetworkModel{
                         if let token = responseMessage.token{
                             ud.setValue(token, forKey: "token")
                             ud.synchronize()
+                            print(token)
                         }
                         if let data = responseMessage.data{
                             ud.setValue(data[0].name, forKey: "name")
