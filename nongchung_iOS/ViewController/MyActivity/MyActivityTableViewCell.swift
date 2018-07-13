@@ -13,7 +13,6 @@ protocol MyActivityViewCellDelegate : class {
 }
 
 class MyActivityTableViewCell: UITableViewCell {
-    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var stateImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
@@ -23,11 +22,15 @@ class MyActivityTableViewCell: UITableViewCell {
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var reviewView: UIView!
 
+    @IBOutlet weak var participantCancelView: UIStackView!
+    @IBOutlet weak var participantOkView: UIStackView!
+    @IBOutlet weak var cashImageView: UIImageView!
     @IBOutlet weak var reviewButton: UIButton!
     @IBOutlet weak var progressView: UIView!
     @IBOutlet weak var progress: UIProgressView!
     @IBOutlet weak var progressCountLabel: UILabel!
     @IBOutlet weak var progressParticipantLabel: UILabel!
+    @IBOutlet weak var cancelPeopleNumLabel: UILabel!
     
     weak var delegate: MyActivityViewCellDelegate?
     
@@ -38,12 +41,14 @@ class MyActivityTableViewCell: UITableViewCell {
         //        progress.clipsToBounds = true
         //        progress.layer.sublayers![1].cornerRadius = progress.layer.frame.height / 2.0
         //        progress.subviews[1].clipsToBounds = true
+        
+        increaseSeparatorHeight()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        
     }
     
     @IBAction func reviewButton(_ sender: UIButton) {

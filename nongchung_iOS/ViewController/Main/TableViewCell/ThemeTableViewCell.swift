@@ -11,7 +11,7 @@ import UIKit
 class ThemeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var themeCollectionView: UICollectionView!
-    var imageArray = [#imageLiteral(resourceName: "main_image4"), #imageLiteral(resourceName: "main_theme3"), #imageLiteral(resourceName: "main_theme2"), #imageLiteral(resourceName: "main_theme5"), #imageLiteral(resourceName: "main_theme4"), #imageLiteral(resourceName: "main_theme1")]
+    var imageArray = [#imageLiteral(resourceName: "main_theme3"), #imageLiteral(resourceName: "main_theme2"), #imageLiteral(resourceName: "main_theme5"), #imageLiteral(resourceName: "main_theme4"), #imageLiteral(resourceName: "main_theme1")]
     
     func setCollectionViewDataSourceDelegate(forRow row: Int) {
         themeCollectionView.delegate = self
@@ -47,11 +47,7 @@ extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemeCollectionViewCell", for: indexPath) as! ThemeCollectionViewCell
         
         cell.imageView.image = imageArray[indexPath.row]
-        
-        //        let gesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        //        cell.imageView.isUserInteractionEnabled = true
-        //        cell.imageView.addGestureRecognizer(gesture)
-        
+
         return cell
     }
     

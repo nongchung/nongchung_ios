@@ -9,5 +9,6 @@
 import UIKit
 
 class EditReviewCollectionViewCell: UICollectionViewCell {
-    
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
 }

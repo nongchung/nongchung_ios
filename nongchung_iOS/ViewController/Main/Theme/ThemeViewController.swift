@@ -17,7 +17,7 @@ class ThemeViewController: UIViewController {
     
     var themes: [ThemeDataVO] = [ThemeDataVO]()
     
-    var imageArray = [#imageLiteral(resourceName: "main_image4"), #imageLiteral(resourceName: "main_theme3"), #imageLiteral(resourceName: "main_theme2"), #imageLiteral(resourceName: "main_theme5"), #imageLiteral(resourceName: "main_theme4"), #imageLiteral(resourceName: "main_theme1")]
+    var imageArray = [#imageLiteral(resourceName: "main_theme3"), #imageLiteral(resourceName: "main_theme2"), #imageLiteral(resourceName: "main_theme5"), #imageLiteral(resourceName: "main_theme4"), #imageLiteral(resourceName: "main_theme1")]
     
     
     @IBAction func backButtonAction(_ sender: Any) {
@@ -35,16 +35,11 @@ class ThemeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = false
-        
-        self.title = "테마별 농활"
-        
         themeInit()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.isNavigationBarHidden = true
     }
     
     func navigationBarSetting(){

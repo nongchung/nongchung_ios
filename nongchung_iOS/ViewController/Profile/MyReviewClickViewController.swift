@@ -9,8 +9,6 @@
 import UIKit
 
 class MyReviewClickViewController: UIViewController {
-    
-    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var clickCollectionView: UICollectionView!
     
     @IBAction func doneButton(_ sender: Any) {
@@ -24,19 +22,26 @@ class MyReviewClickViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         clickCollectionView.delegate = self
         clickCollectionView.dataSource = self
         imageArrayCount = imageArray?.count
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black], for: .normal)
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
+        
+        navigationController?.navigationBar.barTintColor = UIColor.white
+        
     }
     
 }
 
 extension MyReviewClickViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentPage = scrollView.contentOffset.x / scrollView.frame.size.width + 1
-        countLabel.text = "\(Int(currentPage))/\(gino(imageArrayCount))"
+        self.title = "\(Int(currentPage))/\(gino(imageArrayCount))"
         self.clickCollectionView.reloadData()
     }
     
@@ -48,7 +53,7 @@ extension MyReviewClickViewController: UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyReviewClickCollectionViewCell", for: indexPath) as! MyReviewClickCollectionViewCell
         
         cell.imageView.kf.setImage(with: URL(string: imageArray![indexPath.row]), placeholder: #imageLiteral(resourceName: "login_image"))
-
+        
         return cell
     }
     
@@ -56,7 +61,7 @@ extension MyReviewClickViewController: UICollectionViewDataSource, UICollectionV
         if !onceOnly {
             let indexToScrollTo = IndexPath(item: index!, section: 0)
             self.clickCollectionView.scrollToItem(at: indexToScrollTo, at: .left, animated: false)
-            countLabel.text = "\(gino(index)+1)/\(gino(imageArrayCount))"
+            self.title = "\(gino(index)+1)/\(gino(imageArrayCount))"
             onceOnly = true
         }
     }

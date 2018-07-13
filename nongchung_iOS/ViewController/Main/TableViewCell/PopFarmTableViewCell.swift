@@ -42,7 +42,17 @@ extension PopFarmTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         cell.addressLabel.text = index.addr
         cell.profileImageView.layer.masksToBounds = true
         cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.size.width / 2
+        cell.profileImageView.imageFromUrl(index.farmerImg!, defaultImgPath: index.farmerImg!)
+        cell.imageView.imageFromUrl(index.farmImg!, defaultImgPath: index.farmImg!)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = populFarmData![indexPath.row]
+        guard let farmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FarmerViewController") as? FarmerViewController else { return }
+        farmVC.nhIdx = index.farmidx!
+        
+        self.window?.rootViewController?.present(farmVC, animated: true, completion: nil)
     }
 }

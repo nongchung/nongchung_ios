@@ -51,13 +51,6 @@
 		4C56063820F78BA30063C800 /* APNsVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56063720F78BA30063C800 /* APNsVO.swift */; };
 		4C56063A20F78D6A0063C800 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C56063920F78D6A0063C800 /* Splash.storyboard */; };
 		4C56063D20F78D8A0063C800 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56063C20F78D8A0063C800 /* SplashViewController.swift */; };
-		4C56064520F7CB3D0063C800 /* ReviewEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56063E20F7CB390063C800 /* ReviewEditViewController.swift */; };
-		4C56064620F7CB3D0063C800 /* MyActivityHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56063F20F7CB390063C800 /* MyActivityHeaderTableViewCell.swift */; };
-		4C56064720F7CB3D0063C800 /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064020F7CB3A0063C800 /* MyActivityViewController.swift */; };
-		4C56064820F7CB3D0063C800 /* MyActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064120F7CB3B0063C800 /* MyActivityTableViewCell.swift */; };
-		4C56064920F7CB3D0063C800 /* EditReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064220F7CB3C0063C800 /* EditReviewCollectionViewCell.swift */; };
-		4C56064A20F7CB3D0063C800 /* WriteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064320F7CB3C0063C800 /* WriteReviewCollectionViewCell.swift */; };
-		4C56064B20F7CB3D0063C800 /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064420F7CB3D0063C800 /* ReviewWriteViewController.swift */; };
 		4C56064F20F7CB730063C800 /* MyActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064C20F7CB710063C800 /* MyActivityData.swift */; };
 		4C56065020F7CB730063C800 /* MyActivityTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064D20F7CB720063C800 /* MyActivityTotal.swift */; };
 		4C56065120F7CB730063C800 /* MyActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C56064E20F7CB730063C800 /* MyActivity.swift */; };
@@ -159,6 +152,13 @@
 		4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */; };
 		4CAB38B520F294840057F4C0 /* ApplyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38B420F294840057F4C0 /* ApplyVO.swift */; };
 		4CD7D3B620F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B520F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift */; };
+		4CD7D3BE20F8EE1500F1DDF0 /* ReviewEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B720F8EE0E00F1DDF0 /* ReviewEditViewController.swift */; };
+		4CD7D3BF20F8EE1500F1DDF0 /* MyActivityHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B820F8EE0F00F1DDF0 /* MyActivityHeaderTableViewCell.swift */; };
+		4CD7D3C020F8EE1500F1DDF0 /* MyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B920F8EE1000F1DDF0 /* MyActivityViewController.swift */; };
+		4CD7D3C120F8EE1500F1DDF0 /* MyActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3BA20F8EE1200F1DDF0 /* MyActivityTableViewCell.swift */; };
+		4CD7D3C220F8EE1500F1DDF0 /* EditReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3BB20F8EE1300F1DDF0 /* EditReviewCollectionViewCell.swift */; };
+		4CD7D3C320F8EE1500F1DDF0 /* WriteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3BC20F8EE1400F1DDF0 /* WriteReviewCollectionViewCell.swift */; };
+		4CD7D3C420F8EE1500F1DDF0 /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3BD20F8EE1500F1DDF0 /* ReviewWriteViewController.swift */; };
 		4CDE4BE820F7D664006FEFCA /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE020F7D660006FEFCA /* ReviewTableViewCell.swift */; };
 		4CDE4BE920F7D664006FEFCA /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE120F7D660006FEFCA /* ReviewCollectionViewCell.swift */; };
 		4CDE4BEA20F7D664006FEFCA /* ReviewStarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE220F7D661006FEFCA /* ReviewStarTableViewCell.swift */; };
@@ -244,13 +244,6 @@
 		4C56063720F78BA30063C800 /* APNsVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNsVO.swift; sourceTree = "<group>"; };
 		4C56063920F78D6A0063C800 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		4C56063C20F78D8A0063C800 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		4C56063E20F7CB390063C800 /* ReviewEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewEditViewController.swift; sourceTree = "<group>"; };
-		4C56063F20F7CB390063C800 /* MyActivityHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		4C56064020F7CB3A0063C800 /* MyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
-		4C56064120F7CB3B0063C800 /* MyActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityTableViewCell.swift; sourceTree = "<group>"; };
-		4C56064220F7CB3C0063C800 /* EditReviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReviewCollectionViewCell.swift; sourceTree = "<group>"; };
-		4C56064320F7CB3C0063C800 /* WriteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
-		4C56064420F7CB3D0063C800 /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		4C56064C20F7CB710063C800 /* MyActivityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityData.swift; sourceTree = "<group>"; };
 		4C56064D20F7CB720063C800 /* MyActivityTotal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityTotal.swift; sourceTree = "<group>"; };
 		4C56064E20F7CB730063C800 /* MyActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivity.swift; sourceTree = "<group>"; };
@@ -352,6 +345,13 @@
 		4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneApplyViewController.swift; sourceTree = "<group>"; };
 		4CAB38B420F294840057F4C0 /* ApplyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyVO.swift; sourceTree = "<group>"; };
 		4CD7D3B520F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonTableViewCell.swift; sourceTree = "<group>"; };
+		4CD7D3B720F8EE0E00F1DDF0 /* ReviewEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewEditViewController.swift; sourceTree = "<group>"; };
+		4CD7D3B820F8EE0F00F1DDF0 /* MyActivityHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		4CD7D3B920F8EE1000F1DDF0 /* MyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityViewController.swift; sourceTree = "<group>"; };
+		4CD7D3BA20F8EE1200F1DDF0 /* MyActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityTableViewCell.swift; sourceTree = "<group>"; };
+		4CD7D3BB20F8EE1300F1DDF0 /* EditReviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		4CD7D3BC20F8EE1400F1DDF0 /* WriteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		4CD7D3BD20F8EE1500F1DDF0 /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		4CDE4BE020F7D660006FEFCA /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		4CDE4BE120F7D660006FEFCA /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4CDE4BE220F7D661006FEFCA /* ReviewStarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewStarTableViewCell.swift; sourceTree = "<group>"; };
@@ -871,13 +871,13 @@
 		4CAB384C20F0F52A0057F4C0 /* MyActivity */ = {
 			isa = PBXGroup;
 			children = (
-				4C56064220F7CB3C0063C800 /* EditReviewCollectionViewCell.swift */,
-				4C56063F20F7CB390063C800 /* MyActivityHeaderTableViewCell.swift */,
-				4C56064120F7CB3B0063C800 /* MyActivityTableViewCell.swift */,
-				4C56064020F7CB3A0063C800 /* MyActivityViewController.swift */,
-				4C56063E20F7CB390063C800 /* ReviewEditViewController.swift */,
-				4C56064420F7CB3D0063C800 /* ReviewWriteViewController.swift */,
-				4C56064320F7CB3C0063C800 /* WriteReviewCollectionViewCell.swift */,
+				4CD7D3BB20F8EE1300F1DDF0 /* EditReviewCollectionViewCell.swift */,
+				4CD7D3B820F8EE0F00F1DDF0 /* MyActivityHeaderTableViewCell.swift */,
+				4CD7D3BA20F8EE1200F1DDF0 /* MyActivityTableViewCell.swift */,
+				4CD7D3B920F8EE1000F1DDF0 /* MyActivityViewController.swift */,
+				4CD7D3B720F8EE0E00F1DDF0 /* ReviewEditViewController.swift */,
+				4CD7D3BD20F8EE1500F1DDF0 /* ReviewWriteViewController.swift */,
+				4CD7D3BC20F8EE1400F1DDF0 /* WriteReviewCollectionViewCell.swift */,
 			);
 			path = MyActivity;
 			sourceTree = "<group>";
@@ -1273,7 +1273,6 @@
 				4CAB386B20F0F52B0057F4C0 /* PushViewController.swift in Sources */,
 				4C7DC5E320ECE06A00CCA950 /* MapCell.swift in Sources */,
 				4C7DC5D020ECA69F00CCA950 /* InformationTableViewController.swift in Sources */,
-				4C56064520F7CB3D0063C800 /* ReviewEditViewController.swift in Sources */,
 				4C23FB1020F553B900676796 /* Utility.swift in Sources */,
 				4C7DC5FF20EF911E00CCA950 /* FriendsInfoVO.swift in Sources */,
 				4C23FB1B20F5563000676796 /* BaseCell.swift in Sources */,
@@ -1286,7 +1285,6 @@
 				4C56065120F7CB730063C800 /* MyActivity.swift in Sources */,
 				4C23FAE620F4CC2D00676796 /* SearchVO.swift in Sources */,
 				BA84841920E904B800BC706E /* MainViewController.swift in Sources */,
-				4C56064A20F7CB3D0063C800 /* WriteReviewCollectionViewCell.swift in Sources */,
 				4C56063D20F78D8A0063C800 /* SplashViewController.swift in Sources */,
 				4CAB38A020F107010057F4C0 /* HeartService.swift in Sources */,
 				4C23FB1D20F5563000676796 /* DatePickerFlowLayout.swift in Sources */,
@@ -1297,6 +1295,8 @@
 				4C56063520F78B340063C800 /* APNSModel.swift in Sources */,
 				4C23FB1920F5563000676796 /* DatePickerHeader.swift in Sources */,
 				4C30130F20EB4AC5001B2728 /* AdsVO.swift in Sources */,
+				4CD7D3BE20F8EE1500F1DDF0 /* ReviewEditViewController.swift in Sources */,
+				4CD7D3C220F8EE1500F1DDF0 /* EditReviewCollectionViewCell.swift in Sources */,
 				4C56069120F7D1DB0063C800 /* AllListDataVO.swift in Sources */,
 				4CDE4BED20F7D664006FEFCA /* ReviewTableViewController.swift in Sources */,
 				4C7DC60520EFAD2700CCA950 /* HeaderCollectionViewCell.swift in Sources */,
@@ -1313,7 +1313,9 @@
 				4C23FAE320F4CA7700676796 /* SearchModel.swift in Sources */,
 				4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */,
 				4C98B4B520EA1F370038866E /* JoinModel.swift in Sources */,
+				4CD7D3C420F8EE1500F1DDF0 /* ReviewWriteViewController.swift in Sources */,
 				4C56066520F7CCCD0063C800 /* MyReviewTableViewCell.swift in Sources */,
+				4CD7D3C320F8EE1500F1DDF0 /* WriteReviewCollectionViewCell.swift in Sources */,
 				4C56068B20F7D1B80063C800 /* AllListTableViewCell.swift in Sources */,
 				4CAB387420F0F52B0057F4C0 /* NoticeTableViewCell.swift in Sources */,
 				4C7DC5FD20EF8CD700CCA950 /* VolunteerCollectionViewCell.swift in Sources */,
@@ -1330,6 +1332,7 @@
 				4C98B4EF20EA4DAF0038866E /* ThemeCollectionViewCell.swift in Sources */,
 				4C56066420F7CCCD0063C800 /* MyReviewClickViewController.swift in Sources */,
 				4CDE4BE820F7D664006FEFCA /* ReviewTableViewCell.swift in Sources */,
+				4CD7D3BF20F8EE1500F1DDF0 /* MyActivityHeaderTableViewCell.swift in Sources */,
 				4C56065C20F7CBEB0063C800 /* MyReviewVO.swift in Sources */,
 				4C56067420F7CE900063C800 /* FarmerDataVO.swift in Sources */,
 				4C0EA59420E86FA300CB70ED /* LoginVC.swift in Sources */,
@@ -1341,7 +1344,6 @@
 				4CAB38A720F138F80057F4C0 /* ApplyModel.swift in Sources */,
 				4C56069420F7D1FF0063C800 /* AllListService.swift in Sources */,
 				4C98B4ED20EA4DAF0038866E /* AdTableViewCell.swift in Sources */,
-				4C56064920F7CB3D0063C800 /* EditReviewCollectionViewCell.swift in Sources */,
 				4C0EA5A120E8799600CB70ED /* JoinVC.swift in Sources */,
 				4C7DC5DB20ECDE4B00CCA950 /* VolunteerCell.swift in Sources */,
 				4C98B4EE20EA4DAF0038866E /* AdCollectionViewCell.swift in Sources */,
@@ -1353,7 +1355,6 @@
 				4CAB387120F0F52B0057F4C0 /* ButtonHeaderTableViewCell.swift in Sources */,
 				4CAB38AB20F2156E0057F4C0 /* LoginNavigationController.swift in Sources */,
 				4CAB386A20F0F52B0057F4C0 /* ProfileTableViewCell.swift in Sources */,
-				4C56064820F7CB3D0063C800 /* MyActivityTableViewCell.swift in Sources */,
 				4C23FB1E20F5563000676796 /* DatePickerMonthHeader.swift in Sources */,
 				4C30131120EB4B2D001B2728 /* PopulNhVO.swift in Sources */,
 				4CAB386220F0F52B0057F4C0 /* HeartTableViewCell.swift in Sources */,
@@ -1368,9 +1369,9 @@
 				4C7DC60320EFA18900CCA950 /* ContactCell.swift in Sources */,
 				4C23FAD420F4915C00676796 /* ScheduleTableViewCell.swift in Sources */,
 				4C7DC5D720ECD72D00CCA950 /* IntroduceCell.swift in Sources */,
+				4CD7D3C020F8EE1500F1DDF0 /* MyActivityViewController.swift in Sources */,
 				4C98B4E920EA4DAF0038866E /* PopularListTableViewCell.swift in Sources */,
 				4CAB387320F0F52B0057F4C0 /* FAQTableViewController.swift in Sources */,
-				4C56064720F7CB3D0063C800 /* MyActivityViewController.swift in Sources */,
 				4C56067320F7CE900063C800 /* FarmerVO.swift in Sources */,
 				4CD7D3B620F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift in Sources */,
 				4C23FAE820F4CC3A00676796 /* SearchDataVO.swift in Sources */,
@@ -1393,7 +1394,6 @@
 				4C56068720F7D02A0063C800 /* ThemeService.swift in Sources */,
 				4CAB386320F0F52B0057F4C0 /* HeartViewController.swift in Sources */,
 				4C98B4B120EA1F180038866E /* JoinVC2.swift in Sources */,
-				4C56064620F7CB3D0063C800 /* MyActivityHeaderTableViewCell.swift in Sources */,
 				4C56067E20F7CFF60063C800 /* ThemeImageTableViewCell.swift in Sources */,
 				4CAB386920F0F52B0057F4C0 /* NoticeTableViewController.swift in Sources */,
 				4CAB387C20F0F5460057F4C0 /* HeartData.swift in Sources */,
@@ -1402,12 +1402,12 @@
 				4C30131320EB4BB6001B2728 /* NewNhVO.swift in Sources */,
 				4C23FB0320F4E5C700676796 /* ReviewService.swift in Sources */,
 				4C98B4FA20EA4ED60038866E /* DuplicateVO.swift in Sources */,
-				4C56064B20F7CB3D0063C800 /* ReviewWriteViewController.swift in Sources */,
 				4CDE4BE920F7D664006FEFCA /* ReviewCollectionViewCell.swift in Sources */,
 				4C7DC5DF20ECDFAD00CCA950 /* ScheduleCell.swift in Sources */,
 				4C23FB2220F5564500676796 /* DatePickerViewController.swift in Sources */,
 				4C98B4EA20EA4DAF0038866E /* ThemeTableViewCell.swift in Sources */,
 				4C7DC5EE20EDEBA400CCA950 /* FarmerInfoVO.swift in Sources */,
+				4CD7D3C120F8EE1500F1DDF0 /* MyActivityTableViewCell.swift in Sources */,
 				4C23FB1C20F5563000676796 /* DatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

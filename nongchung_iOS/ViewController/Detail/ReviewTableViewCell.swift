@@ -16,7 +16,7 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var starLabel: UILabel!
     @IBOutlet weak var starImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
-
+    
     var array = [String]()
     
     func setCollectionViewDataSourceDelegate(forRow row: Int, imageArray: Array<String>) {
@@ -57,6 +57,12 @@ extension ReviewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //        guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
+        //        let navController = UINavigationController(rootViewController: clickVC)
+        //        clickVC.imageArray = self.array
+        //        clickVC.index = indexPath.row
+        //        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
+        
         guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
         clickVC.imageArray = self.array
         clickVC.index = indexPath.row
@@ -66,5 +72,6 @@ extension ReviewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         appDelegate.window?.rootViewController = initialViewController
         
         self.window?.rootViewController?.present(clickVC, animated: true, completion: nil)
+        
     }
 }

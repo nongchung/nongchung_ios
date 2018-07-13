@@ -132,6 +132,61 @@ struct ReviewService: APIService {
         }
     }
     
+    //MARK: 리뷰 수정
+    static func editImageReview(rIdx: String, content: String, rImages: [UIImage], star: String, completion: @escaping ()->Void) {
+        let URL = url("/api/activity/review")
+        let userdefault = UserDefaults.standard
+        guard let token = userdefault.string(forKey: "token") else { return }
+        
+        let content = content.data(using: .utf8)
+        let rIdx = rIdx.data(using: .utf8)
+        let star = star.data(using: .utf8)
+        print("데이터는????")
+        
+        var imageData = [UIImage]()
+        for i in 0..<rImages.count {
+            imageData.append(rImages[i])
+        }
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            multipartFormData.append(rIdx!, withName: "rIdx")
+            multipartFormData.append(content!, withName: "content")
+            for i in 0..<rImages.count {
+                let image = UIImageJPEGRepresentation(imageData[i], 0.3)
+                multipartFormData.append(image!, withName: "rImages", fileName: "photo.jpg", mimeType: "image/jpeg")
+            }
+            multipartFormData.append(star!, withName: "star")
+        }, to: URL, method: .put, headers: ["token" : token])
+        { (encodingResult) in
+            switch encodingResult {
+                
+            case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
+                upload.responseData( completionHandler: { (res) in
+                    switch res.result{
+                    case .success:
+                        if let value = res.result.value {
+                            let message = JSON(value)["mesaage"].string
+                            
+                            if message == "success To update review"{
+                                completion()
+                            }
+                        }
+                        break
+                        
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                    }
+                    
+                })
+                
+            case .failure(let err):
+                print(err.localizedDescription)
+                
+            }
+        }
+    }
+    
+    
     //MARK: 농활 상세보기 - 리뷰 수정 시 받아오는 내용
     static func reviewEditInit(scheIdx: Int, completion: @escaping (ReviewEditDataVO)->Void) {
         let URL = url("/api/activity/review/\(scheIdx)")

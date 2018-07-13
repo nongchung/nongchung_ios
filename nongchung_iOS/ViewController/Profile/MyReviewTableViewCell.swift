@@ -12,11 +12,13 @@ import SwiftyJSON
 import Kingfisher
 
 class MyReviewTableViewCell: UITableViewCell {
+    @IBOutlet weak var nongwhalLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var starLabel: UILabel!
     @IBOutlet weak var starImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var ImageCollectionView: UICollectionView!
     
@@ -62,10 +64,10 @@ extension MyReviewTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
+        let navController = UINavigationController(rootViewController: clickVC)
         clickVC.imageArray = self.array
         clickVC.index = indexPath.row
-        
-        self.window?.rootViewController?.present(clickVC, animated: true, completion: nil)
+        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
     }
 }
 

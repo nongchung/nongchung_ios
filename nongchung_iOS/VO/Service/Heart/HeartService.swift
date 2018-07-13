@@ -15,6 +15,7 @@ struct HeartService : APIService {
     static func heartInit(completion: @escaping ([Heart])->Void) {
         let URL = url("/api/bookmark")
         let token = UserDefaults.standard.string(forKey: "token")
+        print(token)
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["token" : token!]).responseData() { res in
             switch res.result {
             case .success:
@@ -26,7 +27,7 @@ struct HeartService : APIService {
                         
                         if heartData.message == "Success" {
                             completion(heartData.bmList)
-                            print(heartData.bmList)
+                            print("찜목록 ")
                         }
                         
                     } catch {

@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     
     var profile: [Profile] = [Profile]()
     
-    var myInfo = ["내가 쓴 후기", "내 포인트"]
+    var myInfo = ["내가 쓴 후기"]
     var accounts = ["닉네임 변경", "비밀번호 변경", "로그아웃"]
     var supports = ["공지사항", "FAQ"]
     
@@ -213,14 +213,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 0 { // 내가 쓴 후기
                 let viewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "MyReviewViewController") as! MyReviewViewController
                 self.navigationController?.pushViewController(viewController, animated: true)
-            } else { // 내 포인트
-                //                guard let farmerVC = storyboard?.instantiateViewController(
-                //                    withIdentifier : "FarmerViewController"
-                //                    ) as? FarmerViewController
-                //                    else{return}
-                //                let navigationControlr = UINavigationController(rootViewController: farmerVC)
-                //                self.present(navigationControlr, animated: true, completion: nil)
-            }
+            } 
         } else if indexPath.section == 2 {
             if indexPath.row == 0 { // 닉네임 변경
                 let nicknameViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController

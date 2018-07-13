@@ -15,34 +15,56 @@ import Kingfisher
 
 class MyActivityViewController: UIViewController {
     @IBOutlet weak var myActivityTableView: UITableView!
+    @IBOutlet var noReviewImageView: UIImageView!
+    
+    let token = UserDefaults.standard.string(forKey: "token")
     
     var activityTotal: [MyActivityTotal] = [MyActivityTotal]()
     var activitys: [MyActivity] = [MyActivity]()
     
-    let token = UserDefaults.standard.string(forKey: "token")
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationSetting()
         
         myActivityTableView.delegate = self
         myActivityTableView.dataSource = self
-        myActivityInit()
         
         myActivityTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         self.myActivityTableView.separatorStyle = .none
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        myActivityInit()
+    }
+    
     func myActivityInit() {
         if token != nil{
+            noReviewImageView.isHidden = true
+        }
+        else {
+            noReviewImageView.isHidden = false
             MyActivityService.myActivityInit(token: gsno(token)) { (myActivityTotal, myActivity)  in
                 self.activityTotal = myActivityTotal
                 self.activitys = myActivity
+                if self.activityTotal.count == 0{
+                    self.noReviewImageView.isHidden = false
+                } else{
+                    self.noReviewImageView.isHidden = true
+                }
                 self.myActivityTableView.reloadData()
             }
         }
+    }
+    
+    func navigationSetting(){
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "NanumSquareRoundB", size: 18)!]
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.isTranslucent = true
     }
     
 }
@@ -64,6 +86,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
             reviewWriteVC.period = activitys[tappedIndexPath.row].period
             reviewWriteVC.idx = activitys[tappedIndexPath.row].idx
             
+            
             self.navigationController?.pushViewController(reviewWriteVC, animated: true)
         }
         //MARK: 후기가 있는 경우 (수정)
@@ -73,11 +96,11 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 ) as? ReviewEditViewController
                 else{ return }
             
-//            reviewWriteVC.reviewTitle = activitys[tappedIndexPath.row].name
-//            reviewWriteVC.startDate = activitys[tappedIndexPath.row].startDate
-//            reviewWriteVC.endDate = activitys[tappedIndexPath.row].endDate
-//            reviewWriteVC.period = activitys[tappedIndexPath.row].period
-//            reviewWriteVC.idx = activitys[tappedIndexPath.row].idx
+            reviewEditVC.reviewTitle = activitys[tappedIndexPath.row].name
+            reviewEditVC.startDate = activitys[tappedIndexPath.row].startDate
+            reviewEditVC.endDate = activitys[tappedIndexPath.row].endDate
+            reviewEditVC.period = activitys[tappedIndexPath.row].period
+            reviewEditVC.idx = activitys[tappedIndexPath.row].idx
             
             self.navigationController?.pushViewController(reviewEditVC, animated: true)
         }
@@ -101,9 +124,6 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
             
             let activityTotalRow = activityTotal[indexPath.row]
             
-            //            if let ttime = activityTotalRow.ttime {
-            //                cell.timeLabel.text = "\(ttime)"
-            //            }
             cell.timeLabel.text = "\(activityTotalRow.ttime ?? 0)"
             cell.countLabel.text = "\(activityTotalRow.tcount ?? 0)"
             
@@ -112,27 +132,149 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyActivityTableViewCell", for: indexPath) as! MyActivityTableViewCell
             
             let activityRow = activitys[indexPath.row]
+        
+            switch activityRow.state {
+            //MARK: 신청중 - 입금대기
+            case 0:
+                cell.reviewView.isHidden = true
+                cell.progressView.isHidden = false
+                
+                cell.mainImageView.kf.setImage(with: URL(string: gsno(activityRow.img)), placeholder: UIImage(named: "main_image2"))
+                cell.titleLabel.text = activityRow.name
+                cell.addressLabel.text = activityRow.addr
+                cell.priceLabel.text = "\(gino(activityRow.price))원"
+                cell.cashImageView.image = #imageLiteral(resourceName: "activity_cash_ing")
+                cell.stateImageView.image = #imageLiteral(resourceName: "activity_ing")
+                
+                cell.startDate.text = activityRow.startDate
+                cell.endDate.text = activityRow.endDate
+                
+                cell.progressParticipantLabel.text = "\(gino(activityRow.person))"
+                cell.progressCountLabel.text = "\(gino(activityRow.currentPerson))/\(gino(activityRow.personLimit))"
+                // progress bar
+                let progress = Float(gino(activityRow.currentPerson)) / Float(gino(activityRow.personLimit))
+                cell.progress.progress = progress
+                cell.participantCancelView.isHidden = true
+                
+                cell.selectionStyle = .none
             
-            // 신청중인 농활
+            //MARK: 신청중 - 입금완료
+            case 1:
+                cell.reviewView.isHidden = true
+                cell.progressView.isHidden = false
+                
+                cell.mainImageView.kf.setImage(with: URL(string: gsno(activityRow.img)), placeholder: UIImage(named: "main_image2"))
+                cell.titleLabel.text = activityRow.name
+                cell.addressLabel.text = activityRow.addr
+                cell.priceLabel.text = "\(gino(activityRow.price))원"
+                cell.cashImageView.image = #imageLiteral(resourceName: "activity_cash_ok")
+                cell.stateImageView.image = #imageLiteral(resourceName: "activity_ing")
+                
+                cell.startDate.text = activityRow.startDate
+                cell.endDate.text = activityRow.endDate
+                
+                cell.progressParticipantLabel.text = "\(gino(activityRow.person))"
+                cell.progressCountLabel.text = "\(gino(activityRow.currentPerson))/\(gino(activityRow.personLimit))"
+                // progress bar
+                let progress = Float(gino(activityRow.currentPerson)) / Float(gino(activityRow.personLimit))
+                cell.progress.progress = progress
+                cell.participantCancelView.isHidden = true
+                
+                cell.selectionStyle = .none
+                
+            //MARK: 완료 -  rState : 0(후기없음) 1(후기있음)
+            case 2:
+                cell.reviewView.isHidden = false
+                cell.progressView.isHidden = true
+                
+                cell.mainImageView.kf.setImage(with: URL(string: gsno(activityRow.img)), placeholder: UIImage(named: "main_image2"))
+                cell.titleLabel.text = activityRow.name
+                cell.addressLabel.text = activityRow.addr
+                cell.priceLabel.text = "\(gino(activityRow.price))원"
+                cell.cashImageView.image = #imageLiteral(resourceName: "activity_been")
+                cell.stateImageView.isHidden = true
+                
+                cell.startDate.text = activityRow.startDate
+                cell.endDate.text = activityRow.endDate
+                
+                // 후기를 썼을 경우
+                if activityRow.rState == 1 {
+                    cell.reviewButton.setTitle("후기수정", for: .normal)
+                    cell.delegate = self
+                }
+                // 후기를 안 썼을 경우
+                else {
+                    cell.reviewButton.setTitle("후기작성", for: .normal)
+                    cell.delegate = self
+                }
+                
+                cell.selectionStyle = .none
+                
+            //MARK: 취소
+            case 3:
+                cell.reviewView.isHidden = true
+                cell.progressView.isHidden = false
+                
+                cell.mainImageView.image = #imageLiteral(resourceName: "activity_img_black")
+                cell.titleLabel.text = activityRow.name
+                cell.addressLabel.text = activityRow.addr
+                cell.priceLabel.text = "\(gino(activityRow.price))원"
+                cell.cashImageView.image = #imageLiteral(resourceName: "activity_cancel")
+                cell.stateImageView.isHidden = true
+                
+                cell.startDate.text = activityRow.startDate
+                cell.endDate.text = activityRow.endDate
+                
+                let progress = Float(gino(activityRow.currentPerson)) / Float(gino(activityRow.personLimit))
+                cell.progress.progress = progress
+                cell.participantOkView.isHidden = true
+                cell.progressCountLabel.isHidden = true
+                //progress.trackTintColor = [UIColor whiteColor];
+                cell.progress.progressTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
+                
+                let person = gino(activityRow.personLimit) - gino(activityRow.currentPerson)
+                cell.cancelPeopleNumLabel.text = "\(person)"
+                cell.selectionStyle = .none
+            
+            //MARK: 확정
+            case 4:
+                cell.reviewView.isHidden = true
+                cell.progressView.isHidden = false
+                
+                cell.mainImageView.kf.setImage(with: URL(string: gsno(activityRow.img)), placeholder: UIImage(named: "main_image2"))
+                cell.titleLabel.text = activityRow.name
+                cell.addressLabel.text = activityRow.addr
+                cell.priceLabel.text = "\(gino(activityRow.price))원"
+                cell.cashImageView.image = #imageLiteral(resourceName: "activity_extension")
+                cell.stateImageView.isHidden = true
+                
+                cell.startDate.text = activityRow.startDate
+                cell.endDate.text = activityRow.endDate
+                
+                cell.progressParticipantLabel.text = "\(gino(activityRow.person))"
+                cell.progressCountLabel.text = "\(gino(activityRow.currentPerson))/\(gino(activityRow.personLimit))"
+                // progress bar
+                let progress = Float(gino(activityRow.currentPerson)) / Float(gino(activityRow.personLimit))
+                cell.progress.progress = progress
+                cell.participantCancelView.isHidden = true
+                
+                cell.selectionStyle = .none
+                
+            default:
+                print("말도안대~~~~~")
+                
+            }
+            
+            
+            
             if activityRow.state == 0 {
                 cell.reviewView.isHidden = true
                 cell.progressView.isHidden = false
-                cell.stateImageView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-                cell.mainImageView.kf.setImage(with: URL(string: gsno(activityRow.img)), placeholder: UIImage(named: "woman_select"))
-                cell.countLabel.text = "\(indexPath.row + 1)"
-                cell.titleLabel.text = activityRow.name
-                cell.addressLabel.text = activityRow.addr
-                cell.priceLabel.text = "\(activityRow.price)"
-                cell.startDate.text = activityRow.startDate
-                cell.endDate.text = activityRow.endDate
-                cell.progressParticipantLabel.text = "참여인원 \(activityRow.person)명 남았습니다!"
-                cell.progressCountLabel.text = "\(activityRow.currentPerson)/\(activityRow.personLimit)"
                 
-                // progress bar
-                let progress = Float(activityRow.currentPerson!) / Float(activityRow.personLimit!)
-                cell.progress.progress = progress
                 
-                cell.selectionStyle = .none
+
+
+
             }
                 // 신청완료된 농활
             else if activityRow.state == 1 {
@@ -140,7 +282,6 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.progressView.isHidden = true
                 cell.stateImageView.backgroundColor = #colorLiteral(red: 0, green: 0.7776415944, blue: 0.6786493063, alpha: 0.87)
                 cell.mainImageView.kf.setImage(with: URL(string: gsno(activityRow.img)), placeholder: UIImage(named: "woman_select"))
-                cell.countLabel.text = "\(indexPath.row + 1)"
                 cell.titleLabel.text = activityRow.name
                 cell.addressLabel.text = activityRow.addr
                 cell.priceLabel.text = "\(activityRow.price)"

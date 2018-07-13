@@ -27,7 +27,6 @@ class MyReviewViewController: UIViewController {
         myReviewTableView.dataSource = self
         
         myReviewTableView.separatorStyle = .none
-        myReviewTableView.rowHeight = UITableViewAutomaticDimension
         
         myReviewInit()
     }
@@ -54,14 +53,16 @@ extension MyReviewViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewTableViewCell", for: indexPath) as! MyReviewTableViewCell
+        cell.nongwhalLabel.text = "\(gsno(reviews[indexPath.row].nhName)) \(gsno(reviews[indexPath.row].period))"
+        cell.nameLabel.text = gsno(reviews[indexPath.row].name)
+        cell.dateLabel.text = gsno(reviews[indexPath.row].startDate)
+        cell.contentLabel.text = gsno(reviews[indexPath.row].content)
+        cell.profileImageView.kf.setImage(with: URL(string: gsno(reviews[indexPath.row].farmImg)), placeholder: #imageLiteral(resourceName: "reviwe_profile_image"))
         
-        cell.nameLabel.text = reviews[indexPath.row].name
-        cell.dateLabel.text = reviews[indexPath.row].startDate
-        cell.contentLabel.text = reviews[indexPath.row].content
-        if reviews[indexPath.row].img.count == 0 {
+        if reviews[indexPath.row].img?.count == 0 {
             cell.ImageCollectionView.removeFromSuperview()
         } else {
-            cell.setCollectionViewDataSourceDelegate(forRow: indexPath.row, imageArray: reviews[indexPath.row].img)
+            cell.setCollectionViewDataSourceDelegate(forRow: indexPath.row, imageArray: reviews[indexPath.row].img!)
         }
         
         return cell

@@ -9,9 +9,12 @@
 import Foundation
 
 struct MyReviewDataVO: Codable {
-    let img: [String]
-    let name: String?
     let content: String?
     let star: Double?
+    let img: [String]?
+    let farmImg: String?
+    let name: String?
+    let period: String?
     let startDate: String?
+    let nhName: String?
 }

@@ -19,6 +19,7 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UITextView!
     @IBOutlet weak var titleLable: UILabel!
+    
     var images: NSArray! = []
     var reviewImage: NSArray! = []
     var isImage: Bool = false

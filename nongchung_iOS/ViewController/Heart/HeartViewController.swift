@@ -21,6 +21,7 @@ class HeartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationSetting()
         
         heartTableView.delegate = self
         heartTableView.dataSource = self
@@ -28,14 +29,22 @@ class HeartViewController: UIViewController {
         
         heartTableView.rowHeight = UITableViewAutomaticDimension
         
-        navigationController?.navigationBar.barTintColor = UIColor.white
-        //heartInit()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        if UserDefaults.standard.string(forKey: "token") == nil {
+            noZzimImageView.isHidden = false
+        } else {
+            noZzimImageView.isHidden = true
+            heartInit()
+        }
+    }
+    
     
     func heartInit() {
         HeartService.heartInit { (heartData) in
             self.hearts = heartData
-            
             if self.hearts.count == 0{
                 self.noZzimImageView.isHidden = false
             } else{
@@ -45,11 +54,11 @@ class HeartViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(animated)
-        
-        heartInit()
-        //heartTableView.reloadData()
+    func navigationSetting(){
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "NanumSquareRoundB", size: 18)!]
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.isTranslucent = true
     }
 }
 
