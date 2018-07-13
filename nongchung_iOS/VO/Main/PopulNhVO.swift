@@ -15,7 +15,7 @@ class PopulNhVO : Mappable {
     var addr : String?
     var name : String?
     var img : String?
-    var price : String?
+    var price : Int?
     var period : String?
     var star : Double?
     var isBooked: Int?

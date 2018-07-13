@@ -13,6 +13,8 @@ class NewTableViewCell: UITableViewCell {
     @IBOutlet weak var newCollectionView: UICollectionView!
     @IBOutlet weak var allButton: UIButton!
     
+    let ud = UserDefaults.standard
+    
     var newNhData : [NewNhVO]? = nil{
         didSet{
             newCollectionView.reloadData()
@@ -28,6 +30,9 @@ class NewTableViewCell: UITableViewCell {
     }
     
     @objc func heartButtonAction(_ sender: UIButton) {
+        if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") == nil{
+            NotificationCenter.default.post(name: .noLoginUser, object: nil)
+        }
         if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty"){
             HeartService.likeAddNetworking(nhIdx: sender.tag) {
                 print("하트 추가 성공")
@@ -52,11 +57,11 @@ extension NewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NewCollectionViewCell", for: indexPath) as! NewCollectionViewCell
         let index = newNhData![indexPath.row]
-        cell.imageView.imageFromUrl(index.img, defaultImgPath: "")
+        cell.imageView.imageFromUrl(index.img, defaultImgPath: index.img!)
         cell.periodImageView.image = UIImage(named: periodCalculator(period: index.period!))
         cell.titleLabel.text = index.name
         cell.addressLabel.text = index.addr
-        cell.priceLabel.text = index.price
+        cell.priceLabel.text = "\(index.price!)원"
         
         cell.heartButton.tag = index.nhIdx!
         cell.heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)

@@ -182,7 +182,7 @@ class DetailViewController : UIViewController, NetworkCallback {
         segmentedController.headerViewHeight = 225
         segmentedController.segmentTitleFont = UIFont(name: "NanumSquareRoundB", size: 16)!
         segmentedController.segmentTitleColor = UIColor.black
-        segmentedController.selectedSegmentViewColor = #colorLiteral(red: 0.03921568627, green: 0.7411764706, blue: 0.6156862745, alpha: 1)
+        segmentedController.selectedSegmentViewColor = #colorLiteral(red: 0.2039215686, green: 0.4392156863, blue: 1, alpha: 1)
         segmentedController.segmentShadow = SJShadow.init(offset: CGSize(width: 0, height: 0), color: UIColor.clear, radius: 0, opacity: 0)
         segmentedController.segmentBounces = true
         segmentedController.delegate = self
@@ -213,7 +213,7 @@ extension DetailViewController: SJSegmentedViewControllerDelegate {
 
         if segmentedController.segments.count > 0 {
             selectedSegment = segmentedController.segments[index]
-            selectedSegment?.titleColor(#colorLiteral(red: 0.03921568627, green: 0.7411764706, blue: 0.6156862745, alpha: 1))
+            selectedSegment?.titleColor(#colorLiteral(red: 0.2039215686, green: 0.4392156863, blue: 1, alpha: 1))
         }
     }
 }
