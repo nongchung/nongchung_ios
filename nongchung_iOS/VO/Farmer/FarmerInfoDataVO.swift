@@ -9,11 +9,11 @@
 import Foundation
 
 struct FarmerInfoDataVO: Codable {
-    let farmerIdx: Int?
-    let addr: String?
+    let idx: Int?
     let farmName: String?
+    let farmAddr: String?
     let farmerName: String?
+    let farmerPhone: String?
+    let farmerComment: String?
     let farmerImg: String?
-    let fphone: String?
-    let comment: String?
 }

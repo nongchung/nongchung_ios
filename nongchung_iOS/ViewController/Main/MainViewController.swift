@@ -65,8 +65,6 @@ class MainViewController: UIViewController, NetworkCallback {
         nhIdx = gino(notification.userInfo!["nhIdx"] as? Int)
         let model = IntroduceModel(self)
         model.introuduceNetworking(idx: gino(nhIdx), token: gsno(ud.string(forKey: "token")))
-        
-
     }
     
     //MARK: 신청완룔 홈 Root Change 알림
@@ -110,8 +108,7 @@ class MainViewController: UIViewController, NetworkCallback {
         }
         allListVC.modalTransitionStyle = .crossDissolve
         
-        let navigationControlr = UINavigationController(rootViewController: allListVC)
-        self.present(navigationControlr, animated: true, completion: nil)
+        self.navigationController?.pushViewController(allListVC, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,10 +132,16 @@ class MainViewController: UIViewController, NetworkCallback {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //MARK: TabBar Setting
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.isNavigationBarHidden = true
+        
         NotificationCenter.default.addObserver(self,selector: #selector(gotoIntroduce),name: .gotoIntroduce,object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(gotoMain), name: .gotoMain, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(noLoginUser), name: .noLoginUser, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(gotoThemeNoti), name: .gotoTheme, object: nil)
+        
+        mainTableView.contentInsetAdjustmentBehavior = .never
         
         //MARK: TableView Layout Setting
         mainTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
@@ -169,7 +172,7 @@ class MainViewController: UIViewController, NetworkCallback {
     
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
+        return .lightContent
     }
 
     func networkResult(resultData: Any, code: String) {
@@ -279,11 +282,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
             return cell
         }
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
 }
 
 

@@ -69,8 +69,6 @@ extension AdTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdCollectionViewCell", for: indexPath) as! AdCollectionViewCell
         let index = adsData![indexPath.row]
         cell.imageView.imageFromUrl(index.img, defaultImgPath: index.img!)
-        cell.mainLabel.text = index.title
-        cell.subLabel.text = index.description
         
         return cell
     }

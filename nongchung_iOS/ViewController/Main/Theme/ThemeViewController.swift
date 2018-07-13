@@ -85,7 +85,7 @@ extension ThemeViewController: UITableViewDataSource, UITableViewDelegate {
             cell.mainImageView.kf.setImage(with: URL(string: gsno(index.fImage)), placeholder: #imageLiteral(resourceName: "main_image3"))
             cell.titleLabel.text = index.name
             cell.addressLabel.text = index.addr
-            cell.priceLabel.text = String(gino(index.price))
+            cell.priceLabel.text = "\(gino(index.price))원"
             
             return cell
         }

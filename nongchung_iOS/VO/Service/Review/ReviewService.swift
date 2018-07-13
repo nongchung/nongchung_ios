@@ -23,24 +23,18 @@ struct ReviewService: APIService {
                 if let value = res.result.value {
                     let decoder = JSONDecoder()
                     do {
-                        print("리뷰 두들어옴")
                         let reviewData = try decoder.decode(ReviewVO.self, from: value)
                         print(reviewData)
                         if reviewData.message == "Success to Get Review List" {
-                            print("리뷰성공")
                             completion(reviewData.rvListInfo!)
                         } else if reviewData.message == "No Reviews" {
-                            print("리뷰없거든")
                         }
                     } catch {
-                        print("리뷰 캐치문")
                     }
-                    //////////////////
                 }
                 
                 break
             case .failure(let err):
-                print("리뷰 실패요")
                 print(err.localizedDescription)
                 break
             }
@@ -66,7 +60,6 @@ struct ReviewService: APIService {
                     } catch {
                         
                     }
-                    //////////////////
                 }
                 
                 break
@@ -80,7 +73,6 @@ struct ReviewService: APIService {
     //MARK: 내 활동 - 리뷰 작성하기
     static func writeImageReview(rImages: [UIImage], content: String,
                                  scheIdx: String, star: String, completion: @escaping ()->Void) {
-        print("들어와라라라라")
         let URL = url("/api/review")
         let userdefault = UserDefaults.standard
         guard let token = userdefault.string(forKey: "token") else { return }
@@ -141,7 +133,6 @@ struct ReviewService: APIService {
         let content = content.data(using: .utf8)
         let rIdx = rIdx.data(using: .utf8)
         let star = star.data(using: .utf8)
-        print("데이터는????")
         
         var imageData = [UIImage]()
         for i in 0..<rImages.count {
@@ -164,8 +155,9 @@ struct ReviewService: APIService {
                 upload.responseData( completionHandler: { (res) in
                     switch res.result{
                     case .success:
+                        
                         if let value = res.result.value {
-                            let message = JSON(value)["mesaage"].string
+                            let message = JSON(value)["message"].string
                             
                             if message == "success To update review"{
                                 completion()
@@ -175,6 +167,7 @@ struct ReviewService: APIService {
                         
                     case .failure(let err):
                         print(err.localizedDescription)
+                        print(234234324234)
                     }
                     
                 })
@@ -193,19 +186,23 @@ struct ReviewService: APIService {
         let token = UserDefaults.standard.string(forKey: "token")
         
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["token" : token!]).responseData() { res in
+            
+            
             switch res.result {
+                
             case .success:
                 if let value = res.result.value {
                     let decoder = JSONDecoder()
                     
                     do {
                         let reviewData = try decoder.decode(ReviewEditVO.self, from: value)
+                        print(reviewData.message)
                         
                         if reviewData.message == "Sucess To show review INFO" {
-                            completion(reviewData.data)
+                            completion(reviewData.data!)
+                        } else {
                         }
                     } catch {
-                        
                     }
                     //////////////////
                 }

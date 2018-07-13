@@ -42,14 +42,17 @@ class MyActivityViewController: UIViewController {
     }
     
     func myActivityInit() {
-        if token != nil{
-            noReviewImageView.isHidden = true
+        print(token)
+        if token == nil || token == ""{
+            noReviewImageView.isHidden = false
         }
         else {
-            noReviewImageView.isHidden = false
+            noReviewImageView.isHidden = true
+            
             MyActivityService.myActivityInit(token: gsno(token)) { (myActivityTotal, myActivity)  in
                 self.activityTotal = myActivityTotal
                 self.activitys = myActivity
+                
                 if self.activityTotal.count == 0{
                     self.noReviewImageView.isHidden = false
                 } else{
@@ -64,7 +67,8 @@ class MyActivityViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "NanumSquareRoundB", size: 18)!]
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
 }
@@ -74,7 +78,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
         guard let tappedIndexPath = myActivityTableView.indexPath(for: sender) else { return }
         
         //MARK: 후기가 없는 경우 (작성)
-        if activitys[tappedIndexPath.row].rState == 0 {
+        if activitys[tappedIndexPath.row].rState == 0  {
             guard let reviewWriteVC = self.storyboard?.instantiateViewController(
                 withIdentifier : "ReviewWriteViewController"
                 ) as? ReviewWriteViewController
@@ -229,7 +233,6 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.progress.progress = progress
                 cell.participantOkView.isHidden = true
                 cell.progressCountLabel.isHidden = true
-                //progress.trackTintColor = [UIColor whiteColor];
                 cell.progress.progressTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
                 
                 let person = gino(activityRow.personLimit) - gino(activityRow.currentPerson)
@@ -261,48 +264,9 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.selectionStyle = .none
                 
             default:
-                print("말도안대~~~~~")
-                
-            }
-            
-            
-            
-            if activityRow.state == 0 {
-                cell.reviewView.isHidden = true
-                cell.progressView.isHidden = false
-                
-                
-
-
-
-            }
-                // 신청완료된 농활
-            else if activityRow.state == 1 {
-                cell.reviewView.isHidden = false
-                cell.progressView.isHidden = true
-                cell.stateImageView.backgroundColor = #colorLiteral(red: 0, green: 0.7776415944, blue: 0.6786493063, alpha: 0.87)
-                cell.mainImageView.kf.setImage(with: URL(string: gsno(activityRow.img)), placeholder: UIImage(named: "woman_select"))
-                cell.titleLabel.text = activityRow.name
-                cell.addressLabel.text = activityRow.addr
-                cell.priceLabel.text = "\(activityRow.price)"
-                cell.startDate.text = activityRow.startDate
-                cell.endDate.text = activityRow.endDate
-                
-                cell.selectionStyle = .none
-                
-                // 후기를 썼을 경우
-                if activityRow.rState == 1 {
-                    cell.reviewButton.setTitle("후기수정", for: .normal)
-                    cell.delegate = self
-                }
-                    // 후기를 안 썼을 경우
-                else {
-                    cell.reviewButton.setTitle("후기작성", for: .normal)
-                    cell.delegate = self
-                }
+                break
             }
             return cell
-            
         }
     }
     

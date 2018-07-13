@@ -20,6 +20,7 @@ pod 'GooglePlaces'
 # UI Pods
 pod 'SJSegmentedScrollView'
 pod 'NotificationBannerSwift'
+pod 'lottie-ios'
 
 pod 'Cosmos', '~> 16.0'
 pod 'YangMingShan'

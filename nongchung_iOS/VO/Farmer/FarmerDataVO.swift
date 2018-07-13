@@ -9,13 +9,10 @@
 import Foundation
 
 struct FarmerDataVO: Codable {
-    let nhName: String?
-    let farmAddr: String?
-    let period: String?
-    let price: Int?
     let nhIdx: Int?
-    let farmIdx: Int?
-    let newState: Int?
+    let price: Int?
+    let nhName: String?
+    let period: String?
     let farmImg: String?
-    let isBooked: Int?
+    //let isBooked: Int?
 }

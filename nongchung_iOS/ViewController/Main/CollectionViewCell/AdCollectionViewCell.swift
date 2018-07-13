@@ -10,8 +10,5 @@ import UIKit
 
 class AdCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var subLabel: UILabel!
-    @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var pageLabel: UILabel!
     
 }

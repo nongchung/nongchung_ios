@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 class SplashViewController: UIViewController, NetworkCallback {
 
@@ -15,7 +16,16 @@ class SplashViewController: UIViewController, NetworkCallback {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2.0) {
+        let animationView = LOTAnimationView(name: "data")
+        animationView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        animationView.center = self.view.center
+        animationView.contentMode = .scaleAspectFill
+            
+        view.addSubview(animationView)
+            
+        animationView.play()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0) {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
             UIApplication.shared.keyWindow?.rootViewController = viewController

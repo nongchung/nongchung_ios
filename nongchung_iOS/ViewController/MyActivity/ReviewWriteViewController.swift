@@ -67,6 +67,23 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        //MARK: Navigationbar remove back button text
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //MARK: Navigationbar back button image setting
+        let backImage = UIImage(named: "back_icon")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+        //MARK: Navigationbar color setting
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        //MARK: Navigationbar font setting
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(addTapped))
         
         cameraButton.addTarget(self, action: #selector(presentPhotoPicker(_:)), for: .touchUpInside)

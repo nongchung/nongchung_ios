@@ -10,7 +10,6 @@ import UIKit
 
 class AllListTableViewCell: UITableViewCell {
     @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,10 +19,6 @@ class AllListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        profileImageView.layer.masksToBounds = true
-        profileImageView.layer.cornerRadius = profileImageView.layer.frame.height/2
-        profileImageView.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        profileImageView.layer.borderWidth = 0.1
         
         increaseSeparatorHeight()
     }

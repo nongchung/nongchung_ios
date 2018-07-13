@@ -21,7 +21,7 @@ class AllListViewController: UIViewController {
     @IBOutlet weak var allListTableView: UITableView!
     
     @IBAction func backButtonClickAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -102,7 +102,6 @@ class AllListViewController: UIViewController {
                 }
             //MARK: 새로운 농활 모두보기
             case "뉴" :
-                print("뉴 농활 로그인시 들어옴")
                 AllListService.newListLoginInit(idx: idx) { (isEnd, allListData) in
                     self.isEnd = isEnd
                     self.allList += allListData
@@ -117,19 +116,11 @@ class AllListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = false
-        
         if viewName == "인기" {
             self.title = "이번 주 인기 농활"
         } else {
             self.title = "새로운 농활"
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.navigationController?.isNavigationBarHidden = true
     }
 
 }
@@ -142,14 +133,13 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllListTableViewCell", for: indexPath) as! AllListTableViewCell
         
         cell.mainImageView.kf.setImage(with: URL(string: allList[indexPath.row].img!), placeholder: #imageLiteral(resourceName: "login_image"))
-        //cell.profileImageView.kf.setImage(with: URL(string: allList[indexPath.row].farmerImg!), placeholder: #imageLiteral(resourceName: "main_profile_circle"))
         cell.titleLabel.text = allList[indexPath.row].name
         cell.addressLabel.text = allList[indexPath.row].addr
         cell.priceLabel.text = String(gino(allList[indexPath.row].price))
-        //cell.periodImageView.kf.setImage(with: URL(string: ))
         
         cell.heartButton.tag = allList[indexPath.row].nhIdx!
         cell.heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)
+        
         //MARK: 좋아요 안 했을 때
         if allList[indexPath.row].isBooked == nil || allList[indexPath.row].isBooked == 0 {
             cell.heartButton.setImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal)
@@ -163,6 +153,11 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewAutomaticDimension
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = allList[indexPath.row]
+
+    }
+    
     //MARK: 좋아요 통신
     @objc func heartButtonAction(_ sender: UIButton) {
         if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") == nil{
@@ -170,13 +165,11 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") != nil{
             HeartService.likeAddNetworking(nhIdx: sender.tag) {
-                print("하트 추가 성공")
                 sender.setImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal)
             }
         }
         else{
             HeartService.likeDeleteNetworking(nhIdx: sender.tag) {
-                print("하트 삭제 성공")
                 sender.setImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal)
             }
         }

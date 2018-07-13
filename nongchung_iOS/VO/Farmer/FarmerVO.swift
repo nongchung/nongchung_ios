@@ -11,5 +11,5 @@ import Foundation
 struct FarmerVO: Codable {
     let message: String?
     let farmerInfo: FarmerInfoDataVO?
-    let data: [FarmerDataVO]?
+    let nhInfo: [FarmerDataVO]?
 }

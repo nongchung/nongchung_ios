@@ -9,6 +9,6 @@
 import Foundation
 
 struct ReviewEditVO: Codable {
-    let message: String
-    let data: ReviewEditDataVO
+    let message: String?
+    let data: ReviewEditDataVO?
 }

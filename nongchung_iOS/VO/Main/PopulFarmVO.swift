@@ -10,7 +10,7 @@ import ObjectMapper
 
 class PopulFarmVO : Mappable {
     
-    var farmidx : Int?
+    var farmIdx : Int?
     var addr : String?
     var name : String?
     var farmImg : String?
@@ -19,7 +19,7 @@ class PopulFarmVO : Mappable {
     required init?(map: Map) {}
     
     func mapping(map: Map) {
-        farmidx <- map["farmidx"]
+        farmIdx <- map["farmIdx"]
         addr <- map["addr"]
         name <- map["name"]
         farmImg <- map["farmImg"]

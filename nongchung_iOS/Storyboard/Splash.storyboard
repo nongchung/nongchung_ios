@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,19 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="RRx-Bi-iOM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_image" translatesAutoresizingMaskIntoConstraints="NO" id="YfG-wy-L3C">
-                                <rect key="frame" x="122.5" y="271" width="130" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="YfG-wy-L3C" secondAttribute="height" multiplier="26:25" id="HJP-6r-EtX"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="YfG-wy-L3C" firstAttribute="centerX" secondItem="RRx-Bi-iOM" secondAttribute="centerX" id="OBT-R5-tJi"/>
-                            <constraint firstItem="YfG-wy-L3C" firstAttribute="centerY" secondItem="RRx-Bi-iOM" secondAttribute="centerY" id="i2k-qZ-Iml"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HEc-wj-k63"/>
                     </view>
                 </viewController>
@@ -38,7 +25,4 @@
             <point key="canvasLocation" x="-23" y="49"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="login_image" width="130" height="125"/>
-    </resources>
 </document>

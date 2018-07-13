@@ -13,20 +13,20 @@ class QnATableViewController: UITableViewController {
     private func getData() -> [QnAData?] {
         var data: [QnAData?] = []
         
-        let first_content = [AnswerData(content: "content")]
-        let first = QnAData(title: "여기 농장주가 진짜 아이돌 차은우씨인가요??", contents: first_content)
+        let first_content = [AnswerData(content: "그 경우에는 강수량을 고려하여, 농활 성사 여부를 판단합니다.")]
+        let first = QnAData(title: "우천시 농활을 신청했을 경우에는 어떻게 되나요?", contents: first_content)
         
-        let second_content = [AnswerData(content: "우리 농촌 활동 함께해요 특집이 게시되었습니다.\n특집은 농활참여자들이 학생일 경우 10%할인 됩니다. 많은 관심 부탁드립니다.\n*특집 농활*\n1.우도환 완전 좋아좋아 짱이야 농장\n2.서강준 짱멋져 농장\n3.박서준이 최고지 농장")]
-        let second = QnAData(title: "환불은 어떻게 되나요", contents: second_content)
+        let second_content = [AnswerData(content: "일 잘하고 성실한 사람을 원하고 있습니다.")]
+        let second = QnAData(title: "농장에서 특별히 원하는 사람이 있나요?", contents: second_content)
         
-        let third_content = [AnswerData(content: "content")]
-        let third = QnAData(title: "결제가 되지 않아요", contents: third_content)
+        let third_content = [AnswerData(content: "아니요! 농장은 저희측에서 버스를 통해 일괄적으로 태워서 데려다 드립니다.")]
+        let third = QnAData(title: "농장이 너무 먼데 직접 찾아가야하나요?", contents: third_content)
         
-        let fourth_content = [AnswerData(content: "content")]
-        let fourth = QnAData(title: "서리해도 되나요?", contents: fourth_content)
+        let fourth_content = [AnswerData(content: "아닙니다. 가져가실 수 없습니다. 다만, 몇몇 농장의 경우 연계 판매 서비스를 제공하고 있습니다.")]
+        let fourth = QnAData(title: "농장에서 수확한 과일이나 채소는 직접 가져 갈 수 있나요?", contents: fourth_content)
         
-        let fifth_content = [AnswerData(content: "취소는 상세페이지의 환불규정내역을 확인해주세요")]
-        let fifth = QnAData(title: "농촌활동 신청시 취소 공지사항", contents: fifth_content)
+        let fifth_content = [AnswerData(content: "봉사활동 시간의 경우, 해당 센터에서 승인을 할 때까지 3~4일이 걸리므로, 승인 후 푸시메시지로 알림을 드립니다.")]
+        let fifth = QnAData(title: "농활을 다녀온 후 봉사활동 시간은 어떻게 발급받나요?", contents: fifth_content)
         
         return [first, second, third, fourth, fifth]
     }
@@ -135,16 +135,16 @@ class QnATableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            if let rowData = qnaData?[indexPath.row] {
-                return 50
-            } else {
-                return UITableViewAutomaticDimension
-            }
-        } else {
-            return UITableViewAutomaticDimension
-        }
-   
+//        if indexPath.section == 0 {
+//            if let rowData = qnaData?[indexPath.row] {
+//                return 50
+//            } else {
+//                return UITableViewAutomaticDimension
+//            }
+//        } else {
+//            return UITableViewAutomaticDimension
+//        }
+        return UITableViewAutomaticDimension
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

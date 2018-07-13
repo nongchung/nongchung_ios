@@ -30,6 +30,8 @@ class ProfileViewController: UIViewController {
     
     let imagePicker : UIImagePickerController = UIImagePickerController()
     
+    let ud = UserDefaults.standard
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -110,10 +112,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return myInfo.count
         } else if section == 2 {
             return accounts.count
-        }else if section == 3 {
-            return 1
-        } else {
+        } else if section == 3 {
             return supports.count
+        } else {
+            return 1
         }
     }
     
@@ -123,6 +125,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch section {
         case 0:
             // hide the header
+            headerHeight = CGFloat.leastNonzeroMagnitude
+        case 4:
             headerHeight = CGFloat.leastNonzeroMagnitude
         default:
             headerHeight = 30
@@ -140,14 +144,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         header.buttonLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.7)
         header.arrowImageView.isHidden = true
         
+
         if section == 1 {
             header.buttonLabel.text = "내 정보"
-
         } else if section == 2 {
             header.buttonLabel.text = "계정"
         } else if section == 3 {
-            header.buttonLabel.text = "알림"
-        } else if section == 4 {
             header.buttonLabel.text = "지원"
         }
         
@@ -157,7 +159,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -186,19 +187,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
             cell.buttonLabel.text = accounts[indexPath.row]
             return cell
-        }
-        else if indexPath.section == 3 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
-            cell.buttonLabel.text = "푸시알림"
-            return cell
-        } else if indexPath.section == 4{
+        } else if indexPath.section == 3{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
             cell.buttonLabel.text = supports[indexPath.row]
             return cell
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoginButtonTableViewCell", for: indexPath) as! LoginButtonTableViewCell
-            if UserDefaults.standard.string(forKey: "token") == ""{
+            if ud.string(forKey: "token") == "" || ud.string(forKey: "token") == nil{
                 cell.loginButton.isHidden = false
                 cell.loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
             } else{
@@ -207,37 +203,51 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 0 { // 내가 쓴 후기
-                let viewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "MyReviewViewController") as! MyReviewViewController
-                self.navigationController?.pushViewController(viewController, animated: true)
-            } 
+                if ud.string(forKey: "token") == nil {
+                    loginAlert()
+                } else {
+                    
+                    let viewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "MyReviewViewController") as! MyReviewViewController
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
+            }
         } else if indexPath.section == 2 {
             if indexPath.row == 0 { // 닉네임 변경
-                let nicknameViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
-                nicknameViewController.nickname = nickname
                 
-                self.navigationController?.pushViewController(nicknameViewController, animated: true)
+                if ud.string(forKey: "token") == nil {
+                    loginAlert()
+                } else {
+                    let nicknameViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
+                    nicknameViewController.nickname = nickname
+                    
+                    self.navigationController?.pushViewController(nicknameViewController, animated: true)
+                }
+                
             } else if indexPath.row == 1 { // 비밀번호 변경
-                let passwordViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
-                self.navigationController?.pushViewController(passwordViewController, animated: true)
+                if ud.string(forKey: "token") == nil {
+                    loginAlert()
+                } else {
+                    let passwordViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
+                    self.navigationController?.pushViewController(passwordViewController, animated: true)
+                }
             } else if indexPath.row == 2{ // 로그아웃
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-                
-                //MARK: UserDefaults 파괴
-                UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
-                UserDefaults.standard.synchronize()
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                if ud.string(forKey: "token") == nil {
+                    loginAlert()
+                } else {
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                    
+                    //MARK: UserDefaults 파괴
+                    UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+                    UserDefaults.standard.synchronize()
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
             }
-        }
-        else if indexPath.section == 3 { // 푸시알림
-            let pushViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "PushViewController") as! PushViewController
-            self.navigationController?.pushViewController(pushViewController, animated: true)
-        }
-        else if indexPath.section == 4 {
+        } else {
             if indexPath.row == 0 { // 공지사항
                 let noticeViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NoticeTableViewController") as! NoticeTableViewController
                 self.navigationController?.pushViewController(noticeViewController, animated: true)
@@ -247,6 +257,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
     @objc func loginButtonAction(){
         let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
         guard let loginVC = loginStoryboard.instantiateViewController(

@@ -12,7 +12,7 @@ struct ReviewDataVO: Codable {
     let uimg: String?
     let name: String?
     let startDate: String?
-    let star: Int?
+    let star: Double?
     let content: String?
     let rvImages: [String]?
 }

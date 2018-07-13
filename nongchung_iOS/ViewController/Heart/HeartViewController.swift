@@ -58,7 +58,8 @@ class HeartViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font: UIFont(name: "NanumSquareRoundB", size: 18)!]
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.backgroundColor = UIColor.white
     }
 }
 

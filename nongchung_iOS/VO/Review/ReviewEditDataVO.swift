@@ -10,7 +10,7 @@ import Foundation
 
 struct ReviewEditDataVO: Codable {
     let content: String?
-    let star: Int?
+    let star: Double?
     let img: [String]?
     let rIdx: Int?
 }

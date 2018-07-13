@@ -19,9 +19,6 @@ class ReviewEditViewController: UIViewController {
     @IBOutlet weak var cosmosView: CosmosView!
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
-    //var array: [Any] = []
-    
-    //var images: NSArray! = []
     
     var images: [UIImage] = [UIImage]()
     var isImage: Bool = false
@@ -34,18 +31,32 @@ class ReviewEditViewController: UIViewController {
     var idx: Int?
     
     //MARK: 통신을 통해서 받아올 이전 후기에 대한 데이터
-    var star: Int?
-    //var reviewImage = [String]()
+    var star: Double?
     var content: String?
     var rIdx: Int?
     
     var ImageArray : [UIImage]?
-    //var urlImageArray: [String]?
     var urlImageArray: [String] = [String]()
-    //   var hearts: [Heart] = [Heart]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        //MARK: Navigationbar remove back button text
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //MARK: Navigationbar back button image setting
+        let backImage = UIImage(named: "back_icon")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+        //MARK: Navigationbar color setting
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        
+        //MARK: Navigationbar font setting
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(addTapped))
         
@@ -57,7 +68,7 @@ class ReviewEditViewController: UIViewController {
         cosmosView.didTouchCosmos = didTouchCosmos
         cosmosView.didFinishTouchingCosmos = didFinishTouchingCosmos
         updateRating()
-
+        
         self.titleLabel.text = reviewTitle
         let date = "\(gsno(startDate)) ~ \(gsno(endDate)) (\(gsno(period)))"
         self.dateLabel.text = date
@@ -71,16 +82,19 @@ class ReviewEditViewController: UIViewController {
             self.content = reviewData.content
             self.rIdx = reviewData.rIdx
             
-            
             self.contentTextView.text = self.content
             self.ratingLabel.text = String(self.star!)
             self.cosmosView.rating = Double(self.star!)
-   
-            for i in 0 ..< reviewData.img!.count {
-                let data = try? Data(contentsOf: URL(string: reviewData.img![i])!)
-                if let imageData = data {
-                    self.images.append(UIImage(data: imageData)!)
-                    //self.images[i] = UIImage(data: imageData)
+            
+            print(reviewData)
+            
+            for i in 0 ... reviewData.img!.count-1 {
+                if reviewData.img![i] != ""{
+                    let data = try? Data(contentsOf: URL(string: reviewData.img![i])!)
+                    print("1")
+                    self.images.append(UIImage(data: data!)!)
+                } else{
+                    break
                 }
             }
             
@@ -98,17 +112,11 @@ class ReviewEditViewController: UIViewController {
     
     // 이미지 삭제 시
     @objc func deletePhotoImage(_ sender: UIButton!) {
-        //let mutableImages: NSMutableArray! = NSMutableArray.init(array: images)
         var mutableImages: [UIImage] = images
         
-        print(sender.tag)
-        print(images)
-        
         mutableImages.remove(at: sender.tag)
-        //mutableImages.removeObject(at: sender.tag)
         
         images = mutableImages
-        //self.images = NSArray.init(array: mutableImages)
         self.cameraCollectionView.performBatchUpdates({
             self.cameraCollectionView.deleteItems(at: [IndexPath.init(item: sender.tag, section: 0)])
         }) { (finished) in
@@ -118,12 +126,12 @@ class ReviewEditViewController: UIViewController {
     
     // 네비게이션바의 완료 버튼을 눌렀을 때
     @objc func addTapped(){
-//        ReviewService.writeImageReview(rImages: images as! [UIImage], content: contentTextView.text, scheIdx: String(idx!), star: ratingLabel.text!) {
-//            self.navigationController?.popViewController(animated: true)
-//        }
-        print(121313141)
-        print(rIdx)
-        ReviewService.editImageReview(rIdx: String(rIdx!), content: contentTextView.text, rImages: images, star: ratingLabel.text!) {
+        print(String(gino(rIdx)))
+        print(contentTextView.text)
+        print(images)
+        print(ratingLabel.text)
+        ReviewService.editImageReview(rIdx: String(gino(rIdx)), content: contentTextView.text, rImages: images, star: gsno(ratingLabel.text)) {
+            print("성공")
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -173,7 +181,7 @@ extension ReviewEditViewController: YMSPhotoPickerViewControllerDelegate {
     
     func photoPickerViewController(_ picker: YMSPhotoPickerViewController!, didFinishPicking image: UIImage!) {
         picker.dismiss(animated: true) {
-            self.images = [image]
+            self.images += [image]
             self.cameraCollectionView.reloadData()
         }
     }
@@ -187,7 +195,6 @@ extension ReviewEditViewController: YMSPhotoPickerViewControllerDelegate {
             options.resizeMode = .exact
             options.isSynchronous = true
             
-            //let mutableImages: NSMutableArray! = []
             var mutableImages: [UIImage] = [UIImage]()
             
             for asset: PHAsset in photoAssets
@@ -196,11 +203,9 @@ extension ReviewEditViewController: YMSPhotoPickerViewControllerDelegate {
                 let targetSize = CGSize(width: (self.cameraCollectionView.bounds.width - 20*2) * scale, height: (self.cameraCollectionView.bounds.height - 20*2) * scale)
                 imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options, resultHandler: { (image, info) in
                     mutableImages.append(image!)
-                    //mutableImages.add(image!)
                 })
             }
-            self.images = mutableImages
-            //self.images = mutableImages.copy() as? NSArray
+            self.images += mutableImages
             self.cameraCollectionView.reloadData()
             print("didFinishPickingImages")
         }
@@ -216,7 +221,7 @@ extension ReviewEditViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditReviewCollectionViewCell", for: indexPath) as! EditReviewCollectionViewCell
-
+        
         //cell.imageView.image =  self.images.object(at: (indexPath as NSIndexPath).item) as? UIImage
         cell.imageView.image = self.images[indexPath.row]
         cell.deleteButton.tag = indexPath.row

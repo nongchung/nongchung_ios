@@ -158,8 +158,6 @@ class DetailViewController : UIViewController, NetworkCallback {
         applyButton.addTarget(self, action: #selector(applyButtonClickAction), for: .touchUpInside)
         applyCancelButton.addTarget(self, action: #selector(applyCancelButtonClickAction), for: .touchUpInside)
 
-
-        print(nearStartEndDate)
         datePickerButton.setTitle(gsno(nearStartEndDate), for: .normal)
         datePickerButton.addTarget(self, action: #selector(datePickerButtonClickAction), for: .touchUpInside)
         
@@ -187,15 +185,15 @@ class DetailViewController : UIViewController, NetworkCallback {
         //MARK: 가장 가까운 스케줄
         selectStartDate = gsno(responseMessage?.nearestStartDate)
         selectEndDate = gsno(responseMessage?.nearestEndDate)
-        var dateStartString = gsno(responseMessage?.nearestStartDate)
-        var dateEndString = gsno(responseMessage?.nearestEndDate)
+        let dateStartString = gsno(responseMessage?.nearestStartDate)
+        let dateEndString = gsno(responseMessage?.nearestEndDate)
     
         nearStartEndDate = "\(String(describing: dateFormatter.string(from: dateForm.date(from: dateStartString)!))) ~ \(String(describing: dayCutFormatter.string(from: dateForm.date(from: dateEndString)!)))일"
         
         //MARK: 농활 스케줄 Array
         for scheduledate in (responseMessage?.allStartDate)! {
-            var scheduleStartString = gsno(scheduledate.startDate)
-            var scheduleEndString = gsno(scheduledate.endDate)
+            let scheduleStartString = gsno(scheduledate.startDate)
+            let scheduleEndString = gsno(scheduledate.endDate)
             scheduleStartEndDateArray.append("\(String(describing: dateFormatter.string(from: dateForm.date(from: scheduleStartString)!))) ~ \(String(describing: dayCutFormatter.string(from: dateForm.date(from: scheduleEndString)!)))일")
         }
     }

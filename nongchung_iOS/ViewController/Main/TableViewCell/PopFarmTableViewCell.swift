@@ -10,7 +10,6 @@ import UIKit
 
 class PopFarmTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var allButton: UIButton!
     @IBOutlet weak var popFarmCollectionView: UICollectionView!
     
     var populFarmData : [PopulFarmVO]? = nil{
@@ -25,7 +24,6 @@ class PopFarmTableViewCell: UITableViewCell {
         popFarmCollectionView.tag = row
         popFarmCollectionView.reloadData()
     }
-
 }
 
 extension PopFarmTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -50,9 +48,12 @@ extension PopFarmTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = populFarmData![indexPath.row]
+
         guard let farmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FarmerViewController") as? FarmerViewController else { return }
-        farmVC.nhIdx = index.farmidx!
+        farmVC.nhIdx = index.farmIdx!
+        farmVC.modalTransitionStyle = .crossDissolve
         
-        self.window?.rootViewController?.present(farmVC, animated: true, completion: nil)
+        let navigationControlr = UINavigationController(rootViewController: farmVC)
+        UIApplication.shared.keyWindow?.rootViewController?.present(navigationControlr, animated: true, completion: nil)
     }
 }

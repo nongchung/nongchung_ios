@@ -13,6 +13,7 @@ class ReviewTableViewController: UIViewController {
     
     
     @IBOutlet weak var customTableView: UITableView!
+    @IBOutlet var noMyWriteImageView: UIImageView!
     
     var nhIdx : String?
     var star : Double?
@@ -24,7 +25,9 @@ class ReviewTableViewController: UIViewController {
         
         customTableView.delegate = self
         customTableView.dataSource = self
-        
+        customTableView.tableFooterView = UIView(frame: CGRect.zero)
+        customTableView.tableHeaderView = UIView(frame: CGRect.zero)
+        customTableView.separatorInset = UIEdgeInsets(top: 0, left: self.view.frame.width, bottom: 0, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +40,12 @@ class ReviewTableViewController: UIViewController {
         print(Int(gsno(nhIdx))!)
         ReviewService.reviewInit(scheIdx: Int(gsno(nhIdx))!, completion: { (reviewData) in
             self.reviews = reviewData
+            if self.reviews.count == 0{
+                self.noMyWriteImageView.isHidden = false
+            }
+            else{
+                self.noMyWriteImageView.isHidden = true
+            }
             self.customTableView.reloadData()
             
         })
