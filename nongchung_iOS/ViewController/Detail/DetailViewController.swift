@@ -197,6 +197,9 @@ class DetailViewController : UIViewController, NetworkCallback {
             applyCancelButton.isHidden = true
             applyButton.isHidden = false
             datePickerButton.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+            }
         }
     }
     

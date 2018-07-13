@@ -16,7 +16,6 @@ class ApplyViewController : UIViewController, NetworkCallback {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var phoneTextField: UITextField!
     
-    @IBOutlet var userImageView: UIImageView!
     @IBOutlet var activityImageView: UIImageView!
     @IBOutlet var periodLabel: UILabel!
     @IBOutlet var titleLabel: UILabel!
@@ -136,8 +135,6 @@ extension ApplyViewController {
         periodLabel.text = period
         priceLabel.text = "\(gino(price))원"
         
-        userImageView.imageFromUrl(gsno(ud.string(forKey: "img")), defaultImgPath: gsno(ud.string(forKey: "img")))
-        
         let attr = NSDictionary(object: UIFont(name: "NanumSquareRoundB", size: 14)!, forKey: kCTFontAttributeName as! NSCopying)
         genderSegmentedControl.setTitleTextAttributes(attr as [NSObject : AnyObject] , for: .normal)
         
@@ -145,9 +142,6 @@ extension ApplyViewController {
         applyShadowView.layer.shadowOpacity = 0.16
         applyShadowView.layer.shadowOffset = CGSize.zero
         applyShadowView.layer.shadowRadius = 10
-        
-        userImageView.layer.masksToBounds = true
-        userImageView.layer.cornerRadius = userImageView.frame.width / 2
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default

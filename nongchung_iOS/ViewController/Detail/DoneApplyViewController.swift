@@ -52,14 +52,15 @@ class DoneApplyViewController : UIViewController {
         numberPeopleBottomLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))명"
         totalPeopleLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))/\(gino(responseData?.maxPerson))"
         
+        let progressRate = Float(gino(responseData?.currentPerson)) / Float(gino(responseData?.maxPerson))
+        progressBar.progress = progressRate
     }
     
     @objc func doneButtonClickAction(){
         NotificationCenter.default.post(name: .gotoMain, object: nil)
-        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-        UIApplication.shared.keyWindow?.rootViewController = mainVC
-//        self.performSegue(withIdentifier: "unwindToMain", sender: self)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

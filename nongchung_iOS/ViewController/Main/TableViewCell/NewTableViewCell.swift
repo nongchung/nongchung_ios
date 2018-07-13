@@ -24,7 +24,6 @@ class NewTableViewCell: UITableViewCell {
     func setCollectionViewDataSourceDelegate(forRow row: Int) {
         newCollectionView.delegate = self
         newCollectionView.dataSource = self
-        newCollectionView.backgroundColor = UIColor.white
         newCollectionView.tag = row
         newCollectionView.reloadData()
     }
@@ -35,13 +34,11 @@ class NewTableViewCell: UITableViewCell {
         }
         if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty"){
             HeartService.likeAddNetworking(nhIdx: sender.tag) {
-                print("하트 추가 성공")
                 sender.setImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal)
             }
         }
         else{
             HeartService.likeDeleteNetworking(nhIdx: sender.tag) {
-                print("하트 삭제 성공")
                 sender.setImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal)
             }
         }
@@ -62,11 +59,10 @@ extension NewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource
         cell.titleLabel.text = index.name
         cell.addressLabel.text = index.addr
         cell.priceLabel.text = "\(index.price!)원"
-        
         cell.heartButton.tag = index.nhIdx!
         cell.heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)
         //MARK: 좋아요 안 했을 때
-        if index.isBooked == 0 {
+        if index.isBooked == 0 || index.isBooked == nil {
             cell.heartButton.setImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal)
         }
             //MARK: 좋아요 했을 때

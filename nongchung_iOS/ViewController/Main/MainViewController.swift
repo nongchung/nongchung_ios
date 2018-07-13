@@ -72,7 +72,7 @@ class MainViewController: UIViewController, NetworkCallback {
     //MARK: 신청완룔 홈 Root Change 알림
     @objc func gotoMain(notification: NSNotification){
         let banner = NotificationBanner(title: "신청 완료", subtitle: "농활이 신청되었습니다.", style: .success)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5){
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.7){
             banner.show(queuePosition: .front)
             banner.haptic = .heavy
         }

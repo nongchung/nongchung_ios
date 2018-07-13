@@ -12,11 +12,10 @@ import SwiftyJSON
 import UIKit
 
 struct MyActivityService : APIService {
-    static func myActivityInit(completion: @escaping ([MyActivityTotal], [MyActivity])->Void) {
+    static func myActivityInit(token: String,completion: @escaping ([MyActivityTotal], [MyActivity])->Void) {
         let URL = url("/api/activity")
-        let token = UserDefaults.standard.string(forKey: "token")
         
-        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["token" : token!]).responseData() { res in
+        Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["token" : token]).responseData() { res in
             switch res.result {
             case .success:
                 print(res.result.debugDescription)

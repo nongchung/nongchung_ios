@@ -19,6 +19,8 @@ class MyActivityViewController: UIViewController {
     var activityTotal: [MyActivityTotal] = [MyActivityTotal]()
     var activitys: [MyActivity] = [MyActivity]()
     
+    let token = UserDefaults.standard.string(forKey: "token")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,26 +28,21 @@ class MyActivityViewController: UIViewController {
         
         myActivityTableView.delegate = self
         myActivityTableView.dataSource = self
+        myActivityInit()
         
         myActivityTableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         self.myActivityTableView.separatorStyle = .none
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        myActivityInit()
-    }
-    
     func myActivityInit() {
-        MyActivityService.myActivityInit { (myActivityTotal, myActivity)  in
-            self.activityTotal = myActivityTotal
-            self.activitys = myActivity
-            
-            self.myActivityTableView.reloadData()
+        if token != nil{
+            MyActivityService.myActivityInit(token: gsno(token)) { (myActivityTotal, myActivity)  in
+                self.activityTotal = myActivityTotal
+                self.activitys = myActivity
+                self.myActivityTableView.reloadData()
+            }
         }
-        
     }
     
 }
@@ -132,7 +129,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.progressCountLabel.text = "\(activityRow.currentPerson)/\(activityRow.personLimit)"
                 
                 // progress bar
-                let progress = Float(activityRow.currentPerson) / Float(activityRow.personLimit)
+                let progress = Float(activityRow.currentPerson!) / Float(activityRow.personLimit!)
                 cell.progress.progress = progress
                 
                 cell.selectionStyle = .none
