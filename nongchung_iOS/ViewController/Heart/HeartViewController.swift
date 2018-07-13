@@ -13,7 +13,9 @@ import Kingfisher
 import NotificationBannerSwift
 
 class HeartViewController: UIViewController {
+    
     @IBOutlet weak var heartTableView: UITableView!
+    @IBOutlet var noZzimImageView: UIImageView!
     
     var hearts: [Heart] = [Heart]()
     
@@ -33,6 +35,12 @@ class HeartViewController: UIViewController {
     func heartInit() {
         HeartService.heartInit { (heartData) in
             self.hearts = heartData
+            
+            if self.hearts.count == 0{
+                self.noZzimImageView.isHidden = false
+            } else{
+                self.noZzimImageView.isHidden = true
+            }
             self.heartTableView.reloadData()
         }
     }

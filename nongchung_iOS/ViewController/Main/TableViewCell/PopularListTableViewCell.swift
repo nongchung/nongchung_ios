@@ -65,7 +65,6 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         cell.imageView.imageFromUrl(index.img, defaultImgPath: "")
         cell.periodImageView.image = UIImage(named: periodCalculator(period: index.period!))
         cell.starImage.image = UIImage(named: starCalculator(star: index.star!))
-        cell.starLabel.text = "\(String(describing: index.star))"
         cell.titleLabel.text = index.name
         cell.addressLabel.text = index.addr
         cell.priceLabel.text = index.price

@@ -125,7 +125,21 @@ class SearchRegionViewController : UIViewController{
                 button.layer.borderColor = #colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1)
                 areaList.removeAll()
             }
-        } else{
+        } else if wholeCountryButton.backgroundColor == #colorLiteral(red: 0.2039215686, green: 0.4392156863, blue: 1, alpha: 1) && sender.tag != 17{
+            wholeCountryButton.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            wholeCountryButton.setTitleColor(#colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1), for: .normal)
+            wholeCountryButton.layer.borderColor = #colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1)
+            sender.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            sender.setTitleColor(#colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1), for: .normal)
+            sender.layer.borderColor = #colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1)
+            if let index = areaList.index(of: 17) {
+                areaList.remove(at: index)
+            }
+            if let index = areaList.index(of: sender.tag) {
+                areaList.remove(at: index)
+            }
+        }
+        else{
             if sender.backgroundColor == #colorLiteral(red: 0.2039215686, green: 0.4392156863, blue: 1, alpha: 1){
                 sender.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 sender.setTitleColor(#colorLiteral(red: 0.6941176471, green: 0.6941176471, blue: 0.6941176471, alpha: 1), for: .normal)

@@ -11,7 +11,6 @@ import UIKit
 class PopularListCollectionViewCell: UICollectionViewCell {
     @IBOutlet var periodImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var starLabel: UILabel!
     @IBOutlet weak var starImage: UIImageView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!

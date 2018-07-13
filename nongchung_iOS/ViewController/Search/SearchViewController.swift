@@ -19,7 +19,9 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var datePickerView: UIView!
     @IBOutlet var periodImageView: UIImageView!
+    @IBOutlet var noSearchImageView: UIImageView!
     
+    @IBOutlet var regionLabel: UILabel!
     @IBOutlet var regionButton: UIButton!
     @IBOutlet var peopleMinusButton: UIButton!
     @IBOutlet var peoplePlusButton: UIButton!
@@ -35,6 +37,9 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
     var peopleCount = 1
     var timer = Timer()
     var check = true
+    
+    var regionText = [0:"서울",1:"부산",2:"대구",3:"인천",4:"광주",5:"대전",6:"울산",7:"경기",8:"강원",9:"충남",10:"충북",11:"경남",12:"경북",13:"전남",14:"전북",15:"제주",16:"세종",17:"전국"]
+    var regionArray = [String]()
 
     let token = UserDefaults.standard.string(forKey: "token")
     var nhIdx : Int?
@@ -115,6 +120,30 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
         regionData = (notification.userInfo!["regionData"] as? [Int])!
         let model = SearchModel(self)
         model.searchNetworking(start: startDate, end: endDate, person: peopleCount, scontent: gsno(searchBar.text), area: regionData)
+        
+        if regionData.count == 0{
+            regionLabel.text = "지역별 농활 검색"
+        }
+        else{
+            regionLabel.text = ""
+            for (k,v) in regionText{
+                for i in regionData{
+                    if k == i{
+                        regionArray.append(v)
+                    }
+                }
+            }
+            var region = ""
+            for i in regionArray{
+                if i == "전국"{
+                    region = "전국"
+                    break
+                }
+                region += "\(i) "
+            }
+            regionLabel.text = region
+            regionArray.removeAll()
+        }
     }
     
     //MARK: Region Button Click Action
@@ -160,8 +189,14 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
         if code == "Success To Get Search"{
             responseMessage = resultData as? SearchVO
             searchData = (responseMessage?.data)!
+            if searchData.count == 0{
+                noSearchImageView.isHidden = false
+            }
+            else{
+                noSearchImageView.isHidden = true
+            }
+            
             searchTableView.reloadData()
-            print("success")
         }
         else if code == "Internal Server Error"{
             let errmsg = resultData as? String
