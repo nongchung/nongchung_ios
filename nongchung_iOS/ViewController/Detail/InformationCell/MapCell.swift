@@ -23,6 +23,7 @@ class MapCell: UITableViewCell {
         let camera = GMSCameraPosition.camera(withLatitude: 37.511298, longitude: 127.073753, zoom: 17.09)
         mapView.camera = camera
         mapView.settings.scrollGestures = false
+        mapView.settings.setAllGesturesEnabled(false)
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()

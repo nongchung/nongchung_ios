@@ -58,7 +58,7 @@ class DoneApplyViewController : UIViewController {
     
     @objc func doneButtonClickAction(){
         NotificationCenter.default.post(name: .gotoMain, object: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: false, completion: nil)
         }
     }

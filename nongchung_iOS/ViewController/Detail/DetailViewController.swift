@@ -264,13 +264,9 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
         if let myScheduleActivities = responseMessage?.myScheduleActivities{
             if myScheduleActivities.contains(gino(schIdx)) {
                 applyCancelButton.isHidden = false
-                applyButton.isHidden = true
-                datePickerButton.isHidden = true
             }
             else{
                 applyCancelButton.isHidden = true
-                applyButton.isHidden = false
-                datePickerButton.isHidden = false
             }
         }
     }
@@ -293,12 +289,8 @@ extension DetailViewController {
         }
         if check == true{
             applyCancelButton.isHidden = true
-            applyButton.isHidden = false
-            datePickerButton.isHidden = false
         } else{
             applyCancelButton.isHidden = false
-            applyButton.isHidden = true
-            datePickerButton.isHidden = true
         }
     }
     

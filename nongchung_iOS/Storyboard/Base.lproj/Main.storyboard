@@ -830,19 +830,17 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I38-uA-jhQ">
-                                <rect key="frame" x="9" y="614" width="356" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="I38-uA-jhQ" secondAttribute="height" multiplier="356:45" id="bmB-Wy-UG9"/>
-                                </constraints>
-                                <state key="normal" image="ic_cancel"/>
+                                <rect key="frame" x="248.5" y="613" width="119" height="47"/>
+                                <state key="normal" image="cancel_short"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dbn-6v-dkz" firstAttribute="trailing" secondItem="Lf0-dd-XZq" secondAttribute="trailing" id="4fl-TO-79Q"/>
-                            <constraint firstItem="I38-uA-jhQ" firstAttribute="centerY" secondItem="cp1-Zi-DJM" secondAttribute="centerY" id="7U3-d1-UNT"/>
+                            <constraint firstItem="I38-uA-jhQ" firstAttribute="top" secondItem="CNc-FO-Qxk" secondAttribute="top" id="7pL-zH-uuC"/>
+                            <constraint firstItem="I38-uA-jhQ" firstAttribute="leading" secondItem="CNc-FO-Qxk" secondAttribute="leading" id="9so-vN-ONc"/>
                             <constraint firstItem="cp1-Zi-DJM" firstAttribute="centerX" secondItem="dKr-xG-ViK" secondAttribute="centerX" id="APU-Uz-1oN"/>
-                            <constraint firstItem="I38-uA-jhQ" firstAttribute="centerX" secondItem="dKr-xG-ViK" secondAttribute="centerX" id="CQK-JL-3PB"/>
+                            <constraint firstItem="I38-uA-jhQ" firstAttribute="bottom" secondItem="CNc-FO-Qxk" secondAttribute="bottom" id="Cuw-dd-hp0"/>
                             <constraint firstItem="dbn-6v-dkz" firstAttribute="centerY" secondItem="dKr-xG-ViK" secondAttribute="centerY" constant="700" id="EFX-5m-BD5"/>
                             <constraint firstItem="ntd-cN-hcJ" firstAttribute="trailing" secondItem="Lf0-dd-XZq" secondAttribute="trailing" id="Nma-tk-qOP"/>
                             <constraint firstItem="cp1-Zi-DJM" firstAttribute="bottom" secondItem="Lf0-dd-XZq" secondAttribute="bottom" constant="-7" id="Rja-6q-AUl"/>
@@ -851,9 +849,9 @@
                             <constraint firstItem="rrt-JU-jJ1" firstAttribute="bottom" secondItem="Lf0-dd-XZq" secondAttribute="bottom" id="fE5-0h-DyL"/>
                             <constraint firstItem="rrt-JU-jJ1" firstAttribute="trailing" secondItem="Lf0-dd-XZq" secondAttribute="trailing" id="fVC-JN-OPl"/>
                             <constraint firstItem="dbn-6v-dkz" firstAttribute="centerX" secondItem="dKr-xG-ViK" secondAttribute="centerX" id="jsp-UT-o7P"/>
-                            <constraint firstItem="I38-uA-jhQ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Lf0-dd-XZq" secondAttribute="leading" constant="9" id="lP9-W2-jX5"/>
                             <constraint firstItem="ntd-cN-hcJ" firstAttribute="leading" secondItem="Lf0-dd-XZq" secondAttribute="leading" id="mTG-W7-Vtq"/>
                             <constraint firstItem="ntd-cN-hcJ" firstAttribute="top" secondItem="Lf0-dd-XZq" secondAttribute="top" id="nwf-D0-E04"/>
+                            <constraint firstItem="I38-uA-jhQ" firstAttribute="trailing" secondItem="CNc-FO-Qxk" secondAttribute="trailing" id="srz-iu-1by"/>
                             <constraint firstItem="cp1-Zi-DJM" firstAttribute="leading" secondItem="Lf0-dd-XZq" secondAttribute="leading" constant="7" id="uH0-rW-ovj"/>
                             <constraint firstItem="rrt-JU-jJ1" firstAttribute="top" secondItem="dKr-xG-ViK" secondAttribute="top" id="zkn-N5-JSC"/>
                         </constraints>
@@ -5218,6 +5216,7 @@ Og09DUINUQ1VDWANaA11DYINlw2cDaANog2kDaYNrw20DboNwg3EDcYNyA3KDc8N1x9DH0UfSh9YH1wf
 Yx9oH3UfeB+FH4ofkh+VH5ofoh+lH7cfuh+/AAAAAAAAAgEAAAAAAAAAWQAAAAAAAAAAAAAAAAAAH8E
 </mutableData>
         </image>
+        <image name="cancel_short" width="119" height="47"/>
         <image name="complete_arrow" width="24" height="24"/>
         <image name="complete_img1" width="375" height="215"/>
         <image name="complete_money" width="20" height="20"/>
@@ -5225,7 +5224,6 @@ Yx9oH3UfeB+FH4ofkh+VH5ofoh+lH7cfuh+/AAAAAAAAAgEAAAAAAAAAWQAAAAAAAAAAAAAAAAAAH8E
         <image name="complete_place" width="20" height="20"/>
         <image name="complete_question" width="20" height="20"/>
         <image name="heart_empty" width="24" height="24"/>
-        <image name="ic_cancel" width="356" height="45"/>
         <image name="ic_tapbar_home1" width="20" height="20"/>
         <image name="ic_tapbar_home2" width="20" height="20"/>
         <image name="ic_tapbar_more1" width="20" height="20"/>
