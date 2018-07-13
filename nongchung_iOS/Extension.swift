@@ -89,7 +89,7 @@ extension UITableViewCell{
             return "main_day_icon"
         case "2박 3일":
             return "main_day_icon2"
-        case "당일치기":
+        case "당일 치기":
             return "main_day_icon3"
         default:
             return ""

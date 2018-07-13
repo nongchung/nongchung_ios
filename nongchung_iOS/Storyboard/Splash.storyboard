@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,17 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YfG-wy-L3C">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="0.20392156859999999" green="0.43921568630000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_image" translatesAutoresizingMaskIntoConstraints="NO" id="YfG-wy-L3C">
+                                <rect key="frame" x="122.5" y="271" width="130" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YfG-wy-L3C" secondAttribute="height" multiplier="26:25" id="HJP-6r-EtX"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YfG-wy-L3C" firstAttribute="bottom" secondItem="HEc-wj-k63" secondAttribute="bottom" id="HIH-ta-pLM"/>
-                            <constraint firstItem="YfG-wy-L3C" firstAttribute="top" secondItem="RRx-Bi-iOM" secondAttribute="top" id="HV5-oR-L6n"/>
-                            <constraint firstItem="YfG-wy-L3C" firstAttribute="trailing" secondItem="HEc-wj-k63" secondAttribute="trailing" id="OeV-b0-OOC"/>
-                            <constraint firstItem="YfG-wy-L3C" firstAttribute="leading" secondItem="HEc-wj-k63" secondAttribute="leading" id="dg1-XK-mzg"/>
+                            <constraint firstItem="YfG-wy-L3C" firstAttribute="centerX" secondItem="RRx-Bi-iOM" secondAttribute="centerX" id="OBT-R5-tJi"/>
+                            <constraint firstItem="YfG-wy-L3C" firstAttribute="centerY" secondItem="RRx-Bi-iOM" secondAttribute="centerY" id="i2k-qZ-Iml"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HEc-wj-k63"/>
                     </view>
@@ -37,4 +38,7 @@
             <point key="canvasLocation" x="-23" y="49"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="login_image" width="130" height="125"/>
+    </resources>
 </document>

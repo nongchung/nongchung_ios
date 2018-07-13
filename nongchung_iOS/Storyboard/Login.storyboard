@@ -59,7 +59,7 @@
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_image" translatesAutoresizingMaskIntoConstraints="NO" id="GT3-eO-lmA">
-                                        <rect key="frame" x="142" y="164" width="90.5" height="91"/>
+                                        <rect key="frame" x="122.5" y="144" width="130" height="131"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="GT3-eO-lmA" secondAttribute="height" multiplier="90:91" id="i7p-Ug-eYn"/>
                                         </constraints>
@@ -468,11 +468,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MdQ-oC-Lcb">
-                                <rect key="frame" x="121" y="417" width="133" height="37"/>
+                                <rect key="frame" x="139.5" y="422" width="96" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MdQ-oC-Lcb" secondAttribute="height" multiplier="133:37" id="KgW-sD-iFd"/>
                                 </constraints>
-                                <state key="normal" image="star_icon"/>
+                                <state key="normal" image="join_ok_img2"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -519,10 +519,10 @@
         <image name="join2_ok_button" width="288" height="48"/>
         <image name="join_background" width="375" height="667"/>
         <image name="join_next_button" width="288" height="48"/>
+        <image name="join_ok_img2" width="96" height="22"/>
         <image name="login_button" width="288" height="48"/>
-        <image name="login_image" width="90" height="91"/>
+        <image name="login_image" width="130" height="125"/>
         <image name="login_linebox" width="288" height="46"/>
-        <image name="star_icon" width="133" height="37"/>
         <image name="start_background" width="375" height="667"/>
     </resources>
 </document>

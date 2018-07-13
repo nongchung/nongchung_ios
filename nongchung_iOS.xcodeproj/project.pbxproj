@@ -158,6 +158,7 @@
 		4CAB38AB20F2156E0057F4C0 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */; };
 		4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */; };
 		4CAB38B520F294840057F4C0 /* ApplyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38B420F294840057F4C0 /* ApplyVO.swift */; };
+		4CD7D3B620F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B520F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift */; };
 		4CDE4BE820F7D664006FEFCA /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE020F7D660006FEFCA /* ReviewTableViewCell.swift */; };
 		4CDE4BE920F7D664006FEFCA /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE120F7D660006FEFCA /* ReviewCollectionViewCell.swift */; };
 		4CDE4BEA20F7D664006FEFCA /* ReviewStarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE4BE220F7D661006FEFCA /* ReviewStarTableViewCell.swift */; };
@@ -350,6 +351,7 @@
 		4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneApplyViewController.swift; sourceTree = "<group>"; };
 		4CAB38B420F294840057F4C0 /* ApplyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyVO.swift; sourceTree = "<group>"; };
+		4CD7D3B520F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonTableViewCell.swift; sourceTree = "<group>"; };
 		4CDE4BE020F7D660006FEFCA /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		4CDE4BE120F7D660006FEFCA /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4CDE4BE220F7D661006FEFCA /* ReviewStarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewStarTableViewCell.swift; sourceTree = "<group>"; };
@@ -895,11 +897,12 @@
 				4CAB385920F0F52B0057F4C0 /* NoticeData.swift */,
 				4CAB385A20F0F52B0057F4C0 /* NoticeExpansionTableViewCell.swift */,
 				4CAB385B20F0F52B0057F4C0 /* ButtonHeaderTableViewCell.swift */,
+				4CAB386120F0F52B0057F4C0 /* ButtonTableViewCell.swift */,
 				4CAB385D20F0F52B0057F4C0 /* FAQTableViewController.swift */,
 				4CAB385E20F0F52B0057F4C0 /* NoticeTableViewCell.swift */,
 				4CAB385F20F0F52B0057F4C0 /* NickNameViewController.swift */,
 				4CAB386020F0F52B0057F4C0 /* ProfileViewController.swift */,
-				4CAB386120F0F52B0057F4C0 /* ButtonTableViewCell.swift */,
+				4CD7D3B520F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1369,6 +1372,7 @@
 				4CAB387320F0F52B0057F4C0 /* FAQTableViewController.swift in Sources */,
 				4C56064720F7CB3D0063C800 /* MyActivityViewController.swift in Sources */,
 				4C56067320F7CE900063C800 /* FarmerVO.swift in Sources */,
+				4CD7D3B620F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift in Sources */,
 				4C23FAE820F4CC3A00676796 /* SearchDataVO.swift in Sources */,
 				4C56065A20F7CBEB0063C800 /* ReviewEditVO.swift in Sources */,
 				4C56067820F7CEAA0063C800 /* FarmerService.swift in Sources */,

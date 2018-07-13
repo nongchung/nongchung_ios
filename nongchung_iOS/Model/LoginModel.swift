@@ -50,6 +50,7 @@ class LoginModel : NetworkModel{
                             ud.setValue(data[0].birth, forKey: "birth")
                             ud.setValue(data[0].hp, forKey: "hp")
                             ud.setValue(data[0].sex, forKey: "sex")
+                            print(ud.string(forKey: "token"))
                             ud.synchronize()
                         }
                         self.view.networkResult(resultData: "Login Success", code: "Success To Sign In")

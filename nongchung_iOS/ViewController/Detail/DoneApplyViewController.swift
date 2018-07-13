@@ -35,6 +35,11 @@ class DoneApplyViewController : UIViewController {
     var period : String?
     var price : Int?
     
+    var startMonth : String?
+    var startDay : String?
+    var endMonth : String?
+    var endDay : String?
+    
     let userName = UserDefaults.standard.string(forKey: "name")
     
     override func viewDidLoad() {
@@ -51,6 +56,10 @@ class DoneApplyViewController : UIViewController {
         numberPeopleLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))명"
         numberPeopleBottomLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))명"
         totalPeopleLabel.text = "\(gino(responseData?.maxPerson)-gino(responseData?.currentPerson))/\(gino(responseData?.maxPerson))"
+        startMonthLabel.text = gsno(startMonth)
+        startDayLabel.text = gsno(startDay)
+        endMonthLabel.text = gsno(endMonth)
+        endDayLabel.text = gsno(endDay)
         
         let progressRate = Float(gino(responseData?.currentPerson)) / Float(gino(responseData?.maxPerson))
         progressBar.progress = progressRate

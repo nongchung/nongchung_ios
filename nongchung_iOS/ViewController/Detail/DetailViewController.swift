@@ -24,10 +24,50 @@ class DetailViewController : UIViewController, NetworkCallback {
     @IBOutlet var grayBackgroundButton: UIButton!
     @IBOutlet var applyCancelButton: UIButton!
     
+    //MARK: 환불하기 아울렛
+    @IBOutlet var refundAddressLabel: UILabel!
+    @IBOutlet var refundTitleLabel: UILabel!
+    @IBOutlet var refundStartMonthLabel: UILabel!
+    @IBOutlet var refundStartDayLabel: UILabel!
+    @IBOutlet var refundEndMonthLabel: UILabel!
+    @IBOutlet var refundEndDayLabel: UILabel!
+    @IBOutlet var refundAcceptButton: UIButton!
+    @IBOutlet var refundDismissLabel: UIButton!
+    @IBOutlet var refundCenterYConstraint: NSLayoutConstraint!
+    @IBOutlet var refundView: UIView!
+    
+    var scheduleStartMonth : String = ""
+    var scheduleStartDay : String = ""
+    var scheduleEndMonth : String = ""
+    var scheduleEndDay : String = ""
+    var nearStartEndDate : String = ""
+    var scheduleStartEndDateArray = [String]()
+    
+    var selectStartDate : String = ""
+    var selectEndDate : String = ""
+    
+    var dateForm = DateFormatter()
+    
     var dateFormatter: DateFormatter {
         get {
             let f = DateFormatter()
             f.dateFormat = "yyyy년 MM월 dd일"
+            return f
+        }
+    }
+    
+    var monthCutFormatter : DateFormatter {
+        get {
+            let f = DateFormatter()
+            f.dateFormat = "yyyy.MM"
+            return f
+        }
+    }
+    
+    var dayCutFormatter : DateFormatter {
+        get {
+            let f = DateFormatter()
+            f.dateFormat = "dd"
             return f
         }
     }
@@ -60,33 +100,16 @@ class DetailViewController : UIViewController, NetworkCallback {
     @IBAction func backButtonClickAction(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    @objc func heartButtonAction(_ sender: UIBarButtonItem) {
-//        if sender.image == #imageLiteral(resourceName: "main_heart_empty"){
-//            HeartService.likeAddNetworking(nhIdx: sender.tag) {
-//                print("하트 추가 성공")
-//                sender.setBackgroundImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal, barMetrics: .default)
-//            }
-//        }
-//        else{
-//            HeartService.likeDeleteNetworking(nhIdx: sender.tag) {
-//                print("하트 삭제 성공")
-//                sender.setBackgroundImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal, barMetrics: .default)
-//            }
-//        }
-//    }
 
     @IBAction func heartButtonAction(_ sender: UIBarButtonItem) {
         if sender.image == #imageLiteral(resourceName: "main_heart_empty"){
             HeartService.likeAddNetworking(nhIdx: gino(nhIdx)) {
-                print("하트 추가 성공")
                 sender.image = UIImage(named: "main_heart_fill")
 
             }
         }
         else{
             HeartService.likeDeleteNetworking(nhIdx: gino(nhIdx)) {
-                print("하트 삭제 성공")
                 sender.image = UIImage(named: "main_heart_empty")
             }
         }
@@ -94,8 +117,17 @@ class DetailViewController : UIViewController, NetworkCallback {
     
     
     override func viewDidLoad() {
+        dateForm.dateFormat = "yyyy-MM-dd"
         
         comparableMyActivity()
+        navigationbarSetting()
+        scheduleTimeSetting()
+        refundSetting()
+        
+        refundDismissLabel.addTarget(self, action: #selector(refundBackButtonAction), for: .touchUpInside)
+        refundAcceptButton.addTarget(self, action: #selector(refundAcceptButtonAction), for: .touchUpInside)
+        
+        //MARK: Data Setting
         name = responseMessage?.nhInfo?.name
         addr = responseMessage?.nhInfo?.addr
         period = responseMessage?.nhInfo?.period
@@ -106,16 +138,13 @@ class DetailViewController : UIViewController, NetworkCallback {
         isBooked = responseMessage?.nhInfo?.isBooked
         
         
-        
         if isBooked == 0 || isBooked == nil{
             heartButton.image = UIImage(named: "main_heart_empty")
         } else {
             heartButton.image = UIImage(named: "main_heart_fill")
         }
         
-        self.navigationController?.navigationBar.topItem?.title = name
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
+        
         
         popupTableView.delegate = self
         popupTableView.dataSource = self
@@ -130,8 +159,8 @@ class DetailViewController : UIViewController, NetworkCallback {
         applyCancelButton.addTarget(self, action: #selector(applyCancelButtonClickAction), for: .touchUpInside)
 
 
-        
-        datePickerButton.setTitle(responseMessage?.nearestStartDate, for: .normal)
+        print(nearStartEndDate)
+        datePickerButton.setTitle(gsno(nearStartEndDate), for: .normal)
         datePickerButton.addTarget(self, action: #selector(datePickerButtonClickAction), for: .touchUpInside)
         
         addChildViewController(segmentedController)
@@ -143,13 +172,41 @@ class DetailViewController : UIViewController, NetworkCallback {
         self.view.layoutIfNeeded()
     }
     
-
-    
     override func viewDidAppear(_ animated: Bool) {
+        navigationbarSetting()
+    }
+    
+    func navigationbarSetting(){
         self.navigationController?.navigationBar.topItem?.title = name
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
         self.navigationController?.navigationBar.barTintColor = UIColor.white
+    }
+    
+    func scheduleTimeSetting(){
+        //MARK: 가장 가까운 스케줄
+        selectStartDate = gsno(responseMessage?.nearestStartDate)
+        selectEndDate = gsno(responseMessage?.nearestEndDate)
+        var dateStartString = gsno(responseMessage?.nearestStartDate)
+        var dateEndString = gsno(responseMessage?.nearestEndDate)
+    
+        nearStartEndDate = "\(String(describing: dateFormatter.string(from: dateForm.date(from: dateStartString)!))) ~ \(String(describing: dayCutFormatter.string(from: dateForm.date(from: dateEndString)!)))일"
+        
+        //MARK: 농활 스케줄 Array
+        for scheduledate in (responseMessage?.allStartDate)! {
+            var scheduleStartString = gsno(scheduledate.startDate)
+            var scheduleEndString = gsno(scheduledate.endDate)
+            scheduleStartEndDateArray.append("\(String(describing: dateFormatter.string(from: dateForm.date(from: scheduleStartString)!))) ~ \(String(describing: dayCutFormatter.string(from: dateForm.date(from: scheduleEndString)!)))일")
+        }
+    }
+    
+    func refundSetting(){
+        refundAddressLabel.text = gsno(responseMessage?.nhInfo?.addr)
+        refundTitleLabel.text = gsno(responseMessage?.nhInfo?.name)
+        refundStartMonthLabel.text = monthCutFormatter.string(from: dateForm.date(from: selectStartDate)!)
+        refundStartDayLabel.text = dayCutFormatter.string(from: dateForm.date(from: selectStartDate)!)
+        refundEndMonthLabel.text = monthCutFormatter.string(from: dateForm.date(from: selectEndDate)!)
+        refundEndDayLabel.text = dayCutFormatter.string(from: dateForm.date(from: selectEndDate)!)
     }
     
     
@@ -163,8 +220,6 @@ class DetailViewController : UIViewController, NetworkCallback {
         informationVC.friendsInfoData = responseMessage?.friendsInfo
         informationVC.farmerInfoData = responseMessage?.farmerInfo
         informationVC.scheduleData = responseMessage?.schedule
-        informationVC.nearestStartDateData = responseMessage?.nearestStartDate
-        informationVC.allStartDateData = responseMessage?.allStartDate
         
         let qnaVC = self.storyboard?.instantiateViewController(withIdentifier: "QnATableViewController") as! QnATableViewController
         qnaVC.title = "Q&A"
@@ -190,6 +245,18 @@ class DetailViewController : UIViewController, NetworkCallback {
     
     func networkResult(resultData: Any, code: String) {
         if code == "Success To Cancel"{
+            //MARK: Refund Popup dismiss
+            self.refundCenterYConstraint.constant = 700
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.grayBackgroundButton.isHidden = true
+            }
+            datePickerButton.isEnabled = true
+            applyCancelButton.isEnabled = true
+            
+            //MARK: Banner Event
             let banner = NotificationBanner(title: "취소 완료", subtitle: "농활이 취소되었습니다.", style: .danger)
             banner.show()
             banner.autoDismiss = true
@@ -225,17 +292,17 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
     
     //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if responseMessage?.allStartDate == nil {
+        if scheduleStartEndDateArray == nil {
             return 1
         } else{
-            return (responseMessage?.allStartDate?.count)!
+            return (scheduleStartEndDateArray.count)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PopupCell", for: indexPath) as! PopupCell
         let index = responseMessage?.allStartDate![indexPath.row]
-        cell.periodLabel.text = gsno(index?.startDate)
+        cell.periodLabel.text = gsno(scheduleStartEndDateArray[indexPath.row])
         cell.departureLabel.text = "오전 9시 출발"
         cell.leftLabel.text = "\(gino(index?.availPerson))명 남음"
 
@@ -260,6 +327,8 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
         let index = responseMessage?.allStartDate![indexPath.row]
         schIdx = index?.idx
         datePickerButton.setTitle(cell.periodLabel.text, for: .normal)
+        selectStartDate = gsno(index?.startDate)
+        selectEndDate = gsno(index?.endDate)
         datePickerButtonClickAction()
         if let myScheduleActivities = responseMessage?.myScheduleActivities{
             if myScheduleActivities.contains(gino(schIdx)) {
@@ -306,10 +375,15 @@ extension DetailViewController {
             applyVC.name = name
             applyVC.addr = addr
             applyVC.period = period
+            applyVC.chooseSchedule = gsno(datePickerButton.titleLabel?.text)
             applyVC.price = price
             applyVC.img = img
             applyVC.nhIdx = nhIdx
             applyVC.schIdx = schIdx
+            applyVC.startMonth = monthCutFormatter.string(from: dateForm.date(from: selectStartDate)!)
+            applyVC.startDay = dayCutFormatter.string(from: dateForm.date(from: selectStartDate)!)
+            applyVC.endMonth = monthCutFormatter.string(from: dateForm.date(from: selectEndDate)!)
+            applyVC.endDay = dayCutFormatter.string(from: dateForm.date(from: selectEndDate)!)
             
             self.navigationController?.pushViewController(applyVC, animated: true)
         }
@@ -317,8 +391,16 @@ extension DetailViewController {
     
     //MARK: Apply Cancel Button Action
     @objc func applyCancelButtonClickAction(){
-        let model = ApplyModel(self)
-        model.applyCancelNetworking(nhIdx: gino(nhIdx), schIdx: gino(schIdx), token: gsno(ud.string(forKey: "token")))
+        grayBackgroundButton.isHidden = false
+        if refundCenterYConstraint.constant == 700{
+            self.refundCenterYConstraint.constant = 0
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
+        datePickerButton.isEnabled = false
+        applyCancelButton.isEnabled = false
+        refundSetting()
     }
     
     //MARK: Date Choose Button
@@ -346,6 +428,25 @@ extension DetailViewController {
             self.view.layoutIfNeeded()
         }
         self.grayBackgroundButton.isHidden = true
+    }
+    
+    @objc func refundBackButtonAction(){
+        if refundCenterYConstraint.constant == 0{
+            self.refundCenterYConstraint.constant = 700
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.grayBackgroundButton.isHidden = true
+            }
+            datePickerButton.isEnabled = true
+            applyCancelButton.isEnabled = true
+        }
+    }
+    
+    @objc func refundAcceptButtonAction(){
+        let model = ApplyModel(self)
+        model.applyCancelNetworking(nhIdx: gino(nhIdx), schIdx: gino(schIdx), token: gsno(ud.string(forKey: "token")))
     }
 }
 

@@ -147,7 +147,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             header.buttonLabel.text = "계정"
         } else if section == 3 {
             header.buttonLabel.text = "알림"
-        } else {
+        } else if section == 4 {
             header.buttonLabel.text = "지원"
         }
         
@@ -191,9 +191,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
             cell.buttonLabel.text = "푸시알림"
             return cell
-        } else {
+        } else if indexPath.section == 4{
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
             cell.buttonLabel.text = supports[indexPath.row]
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LoginButtonTableViewCell", for: indexPath) as! LoginButtonTableViewCell
+            if UserDefaults.standard.string(forKey: "token") == ""{
+                cell.loginButton.isHidden = false
+                cell.loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+            } else{
+                cell.loginButton.isHidden = true
+            }
             return cell
         }
     }
@@ -244,6 +254,16 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    @objc func loginButtonAction(){
+        let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        guard let loginVC = loginStoryboard.instantiateViewController(
+            withIdentifier : "LoginNavigationController"
+            ) as? LoginNavigationController
+            else{return}
+        loginVC.modalTransitionStyle = .crossDissolve
+        UIApplication.shared.keyWindow?.rootViewController = loginVC
+    }
+    
     
     @objc func action() {
         openGallery()

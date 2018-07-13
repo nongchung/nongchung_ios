@@ -18,14 +18,13 @@ class InformationTableViewController : UIViewController {
     var friendsInfoData : [FriendsInfoVO]?
     var farmerInfoData : FarmerInfoVO?
     var scheduleData : [ScheduleVO]?
-    var nearestStartDateData : String?
-    var allStartDateData : [AllStartDateVO]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customTableView.delegate = self
         customTableView.dataSource = self
         customTableView.separatorInset = UIEdgeInsets(top: 0, left: self.customTableView.frame.width, bottom: 0, right: 0)
+        customTableView.reloadData()
     
     }
     

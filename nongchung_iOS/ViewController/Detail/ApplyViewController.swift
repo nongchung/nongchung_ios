@@ -37,6 +37,11 @@ class ApplyViewController : UIViewController, NetworkCallback {
     var img : String?
     var nhIdx : Int?
     var schIdx : Int?
+    var chooseSchedule : String?
+    var startMonth : String?
+    var startDay : String?
+    var endMonth : String?
+    var endDay : String?
     
     var responseData : ApplyVO?
     
@@ -75,6 +80,10 @@ class ApplyViewController : UIViewController, NetworkCallback {
             doneApplyVC.addr = addr
             doneApplyVC.price = price
             doneApplyVC.responseData = responseData
+            doneApplyVC.startMonth = startMonth
+            doneApplyVC.startDay = startDay
+            doneApplyVC.endMonth = endMonth
+            doneApplyVC.endDay = endDay
             self.present(doneApplyVC, animated: true, completion: nil)
         case "No token":
             let errmsg = resultData as! String
@@ -132,7 +141,7 @@ extension ApplyViewController {
         activityImageView.imageFromUrl(gsno(img), defaultImgPath: gsno(img))
         titleLabel.text = name
         addressLabel.text = addr
-        periodLabel.text = period
+        periodLabel.text = gsno(chooseSchedule) + " (\(gsno(period)))"
         priceLabel.text = "\(gino(price))원"
         
         let attr = NSDictionary(object: UIFont(name: "NanumSquareRoundB", size: 14)!, forKey: kCTFontAttributeName as! NSCopying)
