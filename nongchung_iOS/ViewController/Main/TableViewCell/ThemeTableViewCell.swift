@@ -50,7 +50,7 @@ extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: .gotoTheme, object: nil, userInfo: ["themeIdx":indexPath.row])
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        NotificationCenter.default.post(name: .gotoTheme, object: nil, userInfo: ["themeIdx":indexPath.row])
+//    }
 }

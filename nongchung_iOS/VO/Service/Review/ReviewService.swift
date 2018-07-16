@@ -103,7 +103,7 @@ struct ReviewService: APIService {
                     switch res.result{
                     case .success:
                         if let value = res.result.value {
-                            let message = JSON(value)["mesaage"].string
+                            let message = JSON(value)["message"].string
                             
                             if message == "Success to Review"{
                                 completion()

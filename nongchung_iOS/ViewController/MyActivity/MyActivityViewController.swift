@@ -19,8 +19,11 @@ class MyActivityViewController: UIViewController {
     
     let token = UserDefaults.standard.string(forKey: "token")
     
-    var activityTotal: [MyActivityTotal] = [MyActivityTotal]()
+    //var activityTotal: [MyActivityTotal] = [MyActivityTotal]()
     var activitys: [MyActivity] = [MyActivity]()
+    
+    var tcount: Int?
+    var ttime: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +40,10 @@ class MyActivityViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         myActivityInit()
     }
     
     func myActivityInit() {
-        print(token)
         if token == nil || token == ""{
             noReviewImageView.isHidden = false
         }
@@ -50,10 +51,12 @@ class MyActivityViewController: UIViewController {
             noReviewImageView.isHidden = true
             
             MyActivityService.myActivityInit(token: gsno(token)) { (myActivityTotal, myActivity)  in
-                self.activityTotal = myActivityTotal
+                //self.activityTotal = myActivityTotal
+                self.ttime = myActivityTotal.ttime
+                self.tcount = myActivityTotal.tcount
                 self.activitys = myActivity
-                
-                if self.activityTotal.count == 0{
+                print(self.tcount)
+                if self.activitys.count == 0{
                     self.noReviewImageView.isHidden = false
                 } else{
                     self.noReviewImageView.isHidden = true
@@ -93,7 +96,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
             
             self.navigationController?.pushViewController(reviewWriteVC, animated: true)
         }
-        //MARK: 후기가 있는 경우 (수정)
+            //MARK: 후기가 있는 경우 (수정)
         else {
             guard let reviewEditVC = self.storyboard?.instantiateViewController(
                 withIdentifier : "ReviewEditViewController"
@@ -116,7 +119,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return activityTotal.count
+            return 1
         } else {
             return activitys.count
         }
@@ -125,18 +128,15 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyActivityHeaderTableViewCell", for: indexPath) as! MyActivityHeaderTableViewCell
-            
-            let activityTotalRow = activityTotal[indexPath.row]
-            
-            cell.timeLabel.text = "\(activityTotalRow.ttime ?? 0)"
-            cell.countLabel.text = "\(activityTotalRow.tcount ?? 0)"
+            cell.countLabel.text = String(gino(tcount))
+            cell.timeLabel.text = String(gino(ttime))
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyActivityTableViewCell", for: indexPath) as! MyActivityTableViewCell
             
             let activityRow = activitys[indexPath.row]
-        
+            
             switch activityRow.state {
             //MARK: 신청중 - 입금대기
             case 0:
@@ -147,7 +147,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.titleLabel.text = activityRow.name
                 cell.addressLabel.text = activityRow.addr
                 cell.priceLabel.text = "\(gino(activityRow.price))원"
-                cell.cashImageView.image = #imageLiteral(resourceName: "activity_cash_ing")
+                cell.stateImageView.image = UIImage(named: "activity_ing")
                 cell.stateImageView.image = #imageLiteral(resourceName: "activity_ing")
                 
                 cell.startDate.text = activityRow.startDate
@@ -161,7 +161,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.participantCancelView.isHidden = true
                 
                 cell.selectionStyle = .none
-            
+                
             //MARK: 신청중 - 입금완료
             case 1:
                 cell.reviewView.isHidden = true
@@ -172,7 +172,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.addressLabel.text = activityRow.addr
                 cell.priceLabel.text = "\(gino(activityRow.price))원"
                 cell.cashImageView.image = #imageLiteral(resourceName: "activity_cash_ok")
-                cell.stateImageView.image = #imageLiteral(resourceName: "activity_ing")
+                cell.stateImageView.image = UIImage(named: "activity_ing")
                 
                 cell.startDate.text = activityRow.startDate
                 cell.endDate.text = activityRow.endDate
@@ -206,7 +206,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                     cell.reviewButton.setTitle("후기수정", for: .normal)
                     cell.delegate = self
                 }
-                // 후기를 안 썼을 경우
+                    // 후기를 안 썼을 경우
                 else {
                     cell.reviewButton.setTitle("후기작성", for: .normal)
                     cell.delegate = self
@@ -238,7 +238,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 let person = gino(activityRow.personLimit) - gino(activityRow.currentPerson)
                 cell.cancelPeopleNumLabel.text = "\(person)"
                 cell.selectionStyle = .none
-            
+                
             //MARK: 확정
             case 4:
                 cell.reviewView.isHidden = true

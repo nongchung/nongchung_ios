@@ -324,11 +324,14 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.cellForRow(at: indexPath) as! PopupCell
         let index = responseMessage?.allStartDate![indexPath.row]
         schIdx = index?.idx
+
         datePickerButton.setTitle(cell.periodLabel.text, for: .normal)
         selectStartDate = gsno(index?.startDate)
         selectEndDate = gsno(index?.endDate)
         datePickerButtonClickAction()
         if let myScheduleActivities = responseMessage?.myScheduleActivities{
+            print(schIdx)
+            print(myScheduleActivities)
             if myScheduleActivities.contains(gino(schIdx)) {
                 applyCancelButton.isHidden = false
             }

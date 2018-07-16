@@ -55,7 +55,15 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     
     //MARK: CollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (populNhData?.count)!
+//        if populNhData?.count != 0 || populNhData != nil{
+//            return (populNhData?.count)!
+//        }
+//        else {
+//            return 1
+//        }
+        var pcount = 0
+        pcount = (populNhData?.count)!
+        return pcount
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

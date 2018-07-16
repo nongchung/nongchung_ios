@@ -31,7 +31,7 @@ class ReviewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        increaseSeparatorHeight()
+        //increaseSeparatorHeight()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -64,14 +64,10 @@ extension ReviewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         //        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
         
         guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
+        let navController = UINavigationController(rootViewController: clickVC)
         clickVC.imageArray = self.array
         clickVC.index = indexPath.row
-        
-        let initialViewController = UIStoryboard(name: "Main", bundle:nil).instantiateInitialViewController() as! UIViewController
-        let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
-        appDelegate.window?.rootViewController = initialViewController
-        
-        self.window?.rootViewController?.present(clickVC, animated: true, completion: nil)
+        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
         
     }
 }

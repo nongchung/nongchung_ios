@@ -27,11 +27,14 @@ class MyReviewClickViewController: UIViewController {
         clickCollectionView.dataSource = self
         imageArrayCount = imageArray?.count
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black], for: .normal)
+        self.navigationItem.hidesBackButton = false
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
         
         navigationController?.navigationBar.barTintColor = UIColor.white
+    
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black], for: .normal)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.font : (UIFont(name: "NanumSquareRoundB", size: 18))!, NSAttributedStringKey.foregroundColor: UIColor.black]
+
         
     }
     

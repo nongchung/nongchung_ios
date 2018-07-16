@@ -14,13 +14,14 @@ struct MyActivity: Codable {
     let addr: String?
     let period: String?
     let name: String?
-    let state: Int?
     let price: Int?
-    let currentPerson: Int?
-    let person: Int?
     let personLimit: Int?
     let idx: Int?
     let img: String?
+    let schState: Int?
+    let Astate: Int?
+    let currentPerson: Int?
+    let person: Int?
     let rState: Int?
-    let rIdx: Int?
+    let state: Int?
 }

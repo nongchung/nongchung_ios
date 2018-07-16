@@ -46,14 +46,14 @@ extension PopFarmTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let index = populFarmData![indexPath.row]
-
-        guard let farmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FarmerViewController") as? FarmerViewController else { return }
-        farmVC.nhIdx = index.farmIdx!
-        farmVC.modalTransitionStyle = .crossDissolve
-        
-        let navigationControlr = UINavigationController(rootViewController: farmVC)
-        UIApplication.shared.keyWindow?.rootViewController?.present(navigationControlr, animated: true, completion: nil)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let index = populFarmData![indexPath.row]
+//
+//        guard let farmVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FarmerViewController") as? FarmerViewController else { return }
+//        farmVC.nhIdx = index.farmIdx!
+//        farmVC.modalTransitionStyle = .crossDissolve
+//        
+//        let navigationControlr = UINavigationController(rootViewController: farmVC)
+//        UIApplication.shared.keyWindow?.rootViewController?.present(navigationControlr, animated: true, completion: nil)
+//    }
 }

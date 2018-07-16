@@ -54,11 +54,12 @@ extension MyReviewViewController : UITableViewDelegate, UITableViewDataSource {
         cell.profileImageView.kf.setImage(with: URL(string: gsno(reviews[indexPath.row].farmImg)), placeholder: #imageLiteral(resourceName: "reviwe_profile_image"))
         
         if reviews[indexPath.row].img?.count == 0 {
-            cell.ImageCollectionView.removeFromSuperview()
+            cell.ImageCollectionView.isHidden = true
         } else {
+            cell.ImageCollectionView.isHidden = false
             cell.setCollectionViewDataSourceDelegate(forRow: indexPath.row, imageArray: reviews[indexPath.row].img!)
         }
-        
+        cell.selectionStyle = .none
         return cell
     }
     

@@ -19,6 +19,10 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentLabel: UITextView!
     @IBOutlet weak var titleLable: UILabel!
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     var images: NSArray! = []
     var reviewImage: NSArray! = []

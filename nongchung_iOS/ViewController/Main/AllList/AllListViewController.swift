@@ -26,7 +26,7 @@ class AllListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.isNavigationBarHidden = false
         navigationBarSetting()
         
         allListTableView.delegate = self

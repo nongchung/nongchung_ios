@@ -132,6 +132,8 @@ class MainViewController: UIViewController, NetworkCallback {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         //MARK: TabBar Setting
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.isNavigationBarHidden = true
@@ -154,18 +156,24 @@ class MainViewController: UIViewController, NetworkCallback {
         transition.timingFunction = CAMediaTimingFunction(name:kCAMediaTimingFunctionEaseIn)
         view.layer.add(transition, forKey: kCATransition)
         
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         activityIndicator()
         indicator.startAnimating()
         indicator.backgroundColor = UIColor.white
         
+        let model = MainModel(self)
+        model.home(token: gsno(ud.string(forKey: "token")))
+        print(gsno(ud.string(forKey: "token")))
+        
+        
         //MARK: TabBar Setting
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.isNavigationBarHidden = true
         
-        let model = MainModel(self)
-        model.home(token: gsno(ud.string(forKey: "token")))
+//        let model = MainModel(self)
+//        model.home(token: gsno(ud.string(forKey: "token")))
         
     }
     
@@ -212,6 +220,8 @@ class MainViewController: UIViewController, NetworkCallback {
             populNhData = homeResultData?.populNh
             newNhData = homeResultData?.newNh
             populFarmData = homeResultData?.populFarm
+            
+            print(populNhData?.count)
             
             mainTableView.delegate = self
             mainTableView.dataSource = self

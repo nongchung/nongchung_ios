@@ -10,6 +10,6 @@ import Foundation
 
 struct MyActivityData: Decodable {
     let message: String?
-    let total: [MyActivityTotal]?
+    let total: MyActivityTotal?
     let data: [MyActivity]?
 }

@@ -29,7 +29,6 @@ class MyReviewTableViewCell: UITableViewCell {
         ImageCollectionView.dataSource = self
         ImageCollectionView.tag = row
         array = imageArray
-        print(array)
         
         ImageCollectionView.reloadData()
     }
@@ -56,19 +55,20 @@ extension MyReviewTableViewCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyReviewImageCollectionViewCell", for: indexPath) as! MyReviewImageCollectionViewCell
-        
-        cell.reviewImage.kf.setImage(with: URL(string: array[indexPath.row]), placeholder: #imageLiteral(resourceName: "login_image"))
+        if array.count != 0{
+            cell.reviewImage.kf.setImage(with: URL(string: array[indexPath.row]), placeholder: #imageLiteral(resourceName: "login_image"))
+        }
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
-        let navController = UINavigationController(rootViewController: clickVC)
-        clickVC.imageArray = self.array
-        clickVC.index = indexPath.row
-        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
+//        let navController = UINavigationController(rootViewController: clickVC)
+//        clickVC.imageArray = self.array
+//        clickVC.index = indexPath.row
+//        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
+//    }
 }
 
 
