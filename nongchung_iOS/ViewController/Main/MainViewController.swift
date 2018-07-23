@@ -112,7 +112,6 @@ class MainViewController: UIViewController, NetworkCallback {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        mainTableView.reloadData()
         
         //MARK: Navigationbar remove back button text
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -132,7 +131,13 @@ class MainViewController: UIViewController, NetworkCallback {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator()
+        indicator.startAnimating()
+        indicator.backgroundColor = UIColor.white
 
+        let model = MainModel(self)
+        model.home(token: gsno(ud.string(forKey: "token")))
+        print(gsno(ud.string(forKey: "token")))
         
         //MARK: TabBar Setting
         self.tabBarController?.tabBar.isHidden = false
@@ -159,21 +164,10 @@ class MainViewController: UIViewController, NetworkCallback {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        activityIndicator()
-        indicator.startAnimating()
-        indicator.backgroundColor = UIColor.white
-        
-        let model = MainModel(self)
-        model.home(token: gsno(ud.string(forKey: "token")))
-        print(gsno(ud.string(forKey: "token")))
-        
         
         //MARK: TabBar Setting
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.isNavigationBarHidden = true
-        
-//        let model = MainModel(self)
-//        model.home(token: gsno(ud.string(forKey: "token")))
         
     }
     
@@ -220,8 +214,6 @@ class MainViewController: UIViewController, NetworkCallback {
             populNhData = homeResultData?.populNh
             newNhData = homeResultData?.newNh
             populFarmData = homeResultData?.populFarm
-            
-            print(populNhData?.count)
             
             mainTableView.delegate = self
             mainTableView.dataSource = self

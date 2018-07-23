@@ -185,11 +185,10 @@ extension ApplyViewController {
     }
     
     @objc func applyButtonClickAction(){
-        print("click")
+
         let model = ApplyModel(self)
         model.applyNetworking(nhIdx: gino(nhIdx), schIdx: gino(schIdx), token: gsno(ud.string(forKey: "token")))
-        print(gino(nhIdx))
-        print(gino(schIdx))
+
     }
     
     //MARK: Date PickerView value Change Method

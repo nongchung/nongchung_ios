@@ -41,7 +41,7 @@ class NickNameViewController: UIViewController {
         
         duplicateLabel.isHidden = true
         warningImageView.isHidden = true
-        print(nickname)
+
         
     }
     
@@ -59,13 +59,13 @@ class NickNameViewController: UIViewController {
     func editNickname(nickname: String) {
         ProfileService.editNickname(nickname: nickname) { message in
             if message == "Success to change nickname" {
-                print("닉네임 변경 성공")
+
                 self.navigationController?.popViewController(animated: true)
                 self.duplicateLabel.isHidden = true
                 self.warningImageView.isHidden = true
                 
             } else if message == "duplicate nickname" {
-                print("닉네임 중복")
+
                 self.duplicateLabel.isHidden = false
                 self.warningImageView.isHidden = false
                 

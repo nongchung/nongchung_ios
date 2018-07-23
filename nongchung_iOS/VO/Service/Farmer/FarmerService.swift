@@ -17,28 +17,19 @@ struct FarmerService : APIService {
         let URL = url("/api/home/detail/farm?idx=\(nhIdx)")
        // let token = UserDefaults.standard.string(forKey: "token")
         
-        print(1111)
-        
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers:  nil).responseData() { res in
             switch res.result {
             case .success:
                 if let value = res.result.value {
-                    print(2222)
                     let decoder = JSONDecoder()
                     
                     do {
-                        print(3333)
                         let farmerData = try decoder.decode(FarmerVO.self, from: value)
-                        
-                        print(2352523)
                         if farmerData.message == "Success To Show Farmer Profile" {
-                            print(3332424)
                             completion(farmerData.farmerInfo!, farmerData.nhInfo!)
-                            print("성공")
                         }
                         
                     } catch {
-                        print(4444)
                     }
                     //////////////////
                 }
@@ -49,7 +40,6 @@ struct FarmerService : APIService {
                 break
             }
         }
-        print(111111)
     }
     
 }

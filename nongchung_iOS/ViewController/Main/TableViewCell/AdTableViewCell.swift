@@ -27,7 +27,11 @@ class AdTableViewCell: UITableViewCell {
         AdCollectionView.reloadData()
     }
     override func awakeFromNib() {
-        let timer =  Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
+//        if let flowlayout = AdCollectionView.collectionViewLayout as? UICollectionViewFlowLayout{
+//            let width = UIScreen.main.bounds.size.width
+//            flowlayout.estimatedItemSize = CGSize(width: width, height: contentView.frame.size.height)
+//        }
     }
     
 }
@@ -73,11 +77,7 @@ extension AdTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource,
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.size.width, height: contentView.frame.size.height)
     }
 }

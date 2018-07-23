@@ -14,7 +14,6 @@ import UIKit
 struct ReviewService: APIService {
     //MARK: 농활 상세보기 - 리뷰
     static func reviewInit(scheIdx: Int, completion: @escaping ([ReviewDataVO])->Void) {
-        print("리뷰 서비스 들어감")
         let URL = url("/api/review?nhIdx=\(scheIdx)")
         //let token = UserDefaults.standard.string(forKey: "token")
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseData() { res in
@@ -24,7 +23,6 @@ struct ReviewService: APIService {
                     let decoder = JSONDecoder()
                     do {
                         let reviewData = try decoder.decode(ReviewVO.self, from: value)
-                        print(reviewData)
                         if reviewData.message == "Success to Get Review List" {
                             completion(reviewData.rvListInfo!)
                         } else if reviewData.message == "No Reviews" {
@@ -167,7 +165,6 @@ struct ReviewService: APIService {
                         
                     case .failure(let err):
                         print(err.localizedDescription)
-                        print(234234324234)
                     }
                     
                 })
@@ -196,7 +193,6 @@ struct ReviewService: APIService {
                     
                     do {
                         let reviewData = try decoder.decode(ReviewEditVO.self, from: value)
-                        print(reviewData.message)
                         
                         if reviewData.message == "Sucess To show review INFO" {
                             completion(reviewData.data!)

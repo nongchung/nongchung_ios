@@ -38,13 +38,13 @@ class PopularListTableViewCell: UITableViewCell {
         }
         else if sender.imageView?.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") != nil{
             HeartService.likeAddNetworking(nhIdx: sender.tag) {
-                print("하트 추가 성공")
+
                 sender.setImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal)
             }
         }
         else{
             HeartService.likeDeleteNetworking(nhIdx: sender.tag) {
-                print("하트 삭제 성공")
+
                 sender.setImage(#imageLiteral(resourceName: "main_heart_empty"), for: .normal)
             }
         }
@@ -55,12 +55,6 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     
     //MARK: CollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if populNhData?.count != 0 || populNhData != nil{
-//            return (populNhData?.count)!
-//        }
-//        else {
-//            return 1
-//        }
         var pcount = 0
         pcount = (populNhData?.count)!
         return pcount
@@ -95,4 +89,8 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         let index = populNhData![indexPath.row]
         NotificationCenter.default.post(name: .gotoIntroduce, object: nil, userInfo: ["nhIdx" : index.nhIdx!])
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: UIScreen.main.bounds.size.width-42, height: contentView.frame.size.height-68)
+//    }
 }

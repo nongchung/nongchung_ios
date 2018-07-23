@@ -228,7 +228,7 @@ public class DatePickerViewController: UICollectionViewController, UICollectionV
         //collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 375, height: 400), collectionViewLayout: UICollectionViewFlowLayout())
         collectionView?.register(DatePickerCell.self, forCellWithReuseIdentifier: cellID)
         collectionView?.register(DatePickerMonthHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: monthHeaderID)
-        print("야이색히야")
+
         collectionView?.topAnchor.constraint(equalTo: headerSeparator.bottomAnchor, constant: 0).isActive = true
         collectionView?.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         collectionView?.bottomAnchor.constraint(equalTo: footerSeparator.topAnchor).isActive = true

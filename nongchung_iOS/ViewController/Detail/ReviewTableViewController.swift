@@ -37,7 +37,7 @@ class ReviewTableViewController: UIViewController {
     }
     
     func reviewInit() {
-        print(Int(gsno(nhIdx))!)
+
         ReviewService.reviewInit(scheIdx: Int(gsno(nhIdx))!, completion: { (reviewData) in
             self.reviews = reviewData
             if self.reviews.count == 0{

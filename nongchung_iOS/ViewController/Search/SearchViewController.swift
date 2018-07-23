@@ -199,8 +199,8 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
             searchTableView.reloadData()
         }
         else if code == "Internal Server Error"{
-            let errmsg = resultData as? String
-            print(errmsg!)
+            _ = resultData as? String
+
         }
         else if code == "Success To Get Detail Information"{
             responseMessageToDetail = resultData as? IntroduceVO

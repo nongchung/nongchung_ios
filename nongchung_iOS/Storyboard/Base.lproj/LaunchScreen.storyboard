@@ -16,13 +16,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone 6-7-8 – 17" translatesAutoresizingMaskIntoConstraints="NO" id="UBi-zR-otH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UBi-zR-otH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UMH-Hc-jJz"/>
+                            <constraint firstItem="UBi-zR-otH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Weg-5S-eB1"/>
+                            <constraint firstItem="UBi-zR-otH" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="XcL-Mp-fkX"/>
+                            <constraint firstItem="UBi-zR-otH" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="tXc-Rh-jAq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iPhone 6-7-8 – 17" width="375" height="667"/>
+    </resources>
 </document>

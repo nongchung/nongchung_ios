@@ -136,7 +136,7 @@ class JoinVC2: UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
     }
     
     func networkResult(resultData: Any, code: String) {
-        print(code)
+
         
         //MARK: Duplication Networking Result
         if code == "duplication"{

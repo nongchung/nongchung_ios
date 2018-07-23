@@ -18,7 +18,6 @@ struct MyActivityService : APIService {
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["token" : token]).responseData() { res in
             switch res.result {
             case .success:
-                print(res.result.debugDescription)
                 if let value = res.result.value {
                     let decoder = JSONDecoder()
                     do {
@@ -26,8 +25,6 @@ struct MyActivityService : APIService {
                         
                         if aaa.message == "success to show activity" {
                             completion(aaa.total!, aaa.data!)
-                            print(aaa.total!)
-                            print(aaa.data!)
                         }
                         
                     } catch {

@@ -50,8 +50,7 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     // 이미지 삭제 시
     @objc func deletePhotoImage(_ sender: UIButton!) {
         let mutableImages: NSMutableArray! = NSMutableArray.init(array: images)
-        print(sender.tag)
-        print(images)
+
         mutableImages.removeObject(at: sender.tag)
         
         self.images = NSArray.init(array: mutableImages)
@@ -204,7 +203,7 @@ extension ReviewWriteViewController: YMSPhotoPickerViewControllerDelegate {
             
             self.images = mutableImages.copy() as? NSArray
             self.collectionView.reloadData()
-            print("didFinishPickingImages")
+
         }
     }
 }

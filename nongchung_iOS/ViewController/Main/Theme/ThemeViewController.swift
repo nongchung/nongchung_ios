@@ -30,6 +30,7 @@ class ThemeViewController: UIViewController {
         navigationBarSetting()
         themeTableView.delegate = self
         themeTableView.dataSource = self
+        themeTableView.separatorInset = UIEdgeInsets(top: 0, left: self.view.frame.size.width, bottom: 0, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +95,4 @@ extension ThemeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
-    
 }

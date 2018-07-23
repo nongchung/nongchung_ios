@@ -85,13 +85,12 @@ class ReviewEditViewController: UIViewController {
             self.contentTextView.text = self.content
             self.ratingLabel.text = String(self.star!)
             self.cosmosView.rating = Double(self.star!)
-            
-            print(reviewData)
+
             
             for i in 0 ... reviewData.img!.count-1 {
                 if reviewData.img![i] != ""{
                     let data = try? Data(contentsOf: URL(string: reviewData.img![i])!)
-                    print("1")
+
                     self.images.append(UIImage(data: data!)!)
                 } else{
                     break
@@ -126,12 +125,9 @@ class ReviewEditViewController: UIViewController {
     
     // 네비게이션바의 완료 버튼을 눌렀을 때
     @objc func addTapped(){
-        print(String(gino(rIdx)))
-        print(contentTextView.text)
-        print(images)
-        print(ratingLabel.text)
+
         ReviewService.editImageReview(rIdx: String(gino(rIdx)), content: contentTextView.text, rImages: images, star: gsno(ratingLabel.text)) {
-            print("성공")
+
             self.navigationController?.popViewController(animated: true)
         }
     }

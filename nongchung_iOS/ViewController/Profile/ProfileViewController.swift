@@ -73,23 +73,23 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             self.imagePicker.sourceType = .photoLibrary
             self.imagePicker.delegate = self
             self.imagePicker.allowsEditing = true // crop 기능
-            self.present(self.imagePicker, animated: true, completion: { print("이미지 피커 나옴") })
+            self.present(self.imagePicker, animated: true, completion: {  })
         }
     }
     
     // imagePickerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        print("사용자가 취소함")
+
         self.dismiss(animated: true) {
             self.profileInit()
-            print("이미지 피커 사라짐")
+
         }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let editedImage: UIImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             ProfileService.editProfileImage(image: editedImage) {
-                print("프로필 이미지 변경 완료")
+
             }
             
         }

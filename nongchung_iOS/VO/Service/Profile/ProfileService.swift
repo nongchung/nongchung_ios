@@ -63,18 +63,12 @@ struct ProfileService : APIService {
                     switch res.result{
                     case .success:
                         if let value = res.result.value {
-                            print("들어옴")
                             let message = JSON(value)["mesaage"].string
                             
                             if message == "success To change photo"{
-                                print("성공")
                                 completion()
                             } else if message == "Null value" {
-                                print("null value")
-                                print("실패")
                             } else if message == "token error" {
-                                print("token error")
-                                print("토큰에러")
                             }
                         }
                         break
@@ -111,7 +105,6 @@ struct ProfileService : APIService {
                     let message = JSON(value)["message"].string
                     
                     if message == "Success To change PW" {
-                        print("ok")
                         completion("Success To change PW")
                     } else if message == "fail To change PW from client" {
                         completion("fail To change PW from client")

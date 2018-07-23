@@ -8,7 +8,12 @@
 
 import UIKit
 
-class AdCollectionViewCell: UICollectionViewCell {
+class AdCollectionViewCell: UICollectionViewCell{
+    
     @IBOutlet weak var imageView: UIImageView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+    }
 }

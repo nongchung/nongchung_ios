@@ -55,12 +55,12 @@ class MyActivityViewController: UIViewController {
                 self.ttime = myActivityTotal.ttime
                 self.tcount = myActivityTotal.tcount
                 self.activitys = myActivity
-                print(self.tcount)
                 if self.activitys.count == 0{
                     self.noReviewImageView.isHidden = false
                 } else{
                     self.noReviewImageView.isHidden = true
                 }
+                
                 self.myActivityTableView.reloadData()
             }
         }

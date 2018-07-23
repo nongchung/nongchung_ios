@@ -24,20 +24,6 @@ class ThemeTableViewCell: UITableViewCell {
 
 extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     
-    //MARK: CollectionView Centering
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        var closestCell : UICollectionViewCell = themeCollectionView.visibleCells[0];
-        for cell in themeCollectionView!.visibleCells as [UICollectionViewCell] {
-            let closestCellDelta = abs(closestCell.center.x - themeCollectionView.bounds.size.width/2.0 - themeCollectionView.contentOffset.x)
-            let cellDelta = abs(cell.center.x - themeCollectionView.bounds.size.width/2.0 - themeCollectionView.contentOffset.x)
-            if (cellDelta < closestCellDelta){
-                closestCell = cell
-            }
-        }
-        let indexPath = themeCollectionView.indexPath(for: closestCell)
-        themeCollectionView.scrollToItem(at: indexPath!, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
-    }
-    
     //MARK: CollectionView Delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imageArray.count
@@ -50,7 +36,12 @@ extension ThemeTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        NotificationCenter.default.post(name: .gotoTheme, object: nil, userInfo: ["themeIdx":indexPath.row])
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        NotificationCenter.default.post(name: .gotoTheme, object: nil, userInfo: ["themeIdx":indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: UIScreen.main.bounds.size.width-32, height: contentView.frame.size.height-87.5)
+    }
 }

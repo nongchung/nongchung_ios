@@ -17,7 +17,7 @@ struct AllListService : APIService {
     static func popListLoginInit(idx: Int, completion: @escaping (Int, [AllListDataVO])->Void) {
         let URL = url("/api/home/more/morePopul?idx=\(idx)")
         let token = UserDefaults.standard.string(forKey: "token")
-        print(idx)
+
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["token" : token!]).responseData() { res in
             switch res.result {
             case .success:
@@ -76,7 +76,7 @@ struct AllListService : APIService {
     static func newListLoginInit(idx: Int, completion: @escaping (Int, [AllListDataVO])->Void) {
         let URL = url("/api/home/more/moreNew?idx=\(idx)")
         let token = UserDefaults.standard.string(forKey: "token")
-        print(idx)
+
         Alamofire.request(URL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["token" : token!]).responseData() { res in
             switch res.result {
             case .success:
@@ -104,26 +104,26 @@ struct AllListService : APIService {
     
     //MARK: 새로운 농활 모두보기 - 로그인 안 했을 경우
     static func newListInit(idx: Int, completion: @escaping (Int, [AllListDataVO])->Void) {
-        print("서비스옴")
+
         let URL = url("/api/home/more/moreNew?idx=\(idx)")
         let encodedURL = URL.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         Alamofire.request(encodedURL!, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseData() { res in
-            print("스위치다")
+
             switch res.result {
             case .success:
                 if let value = res.result.value {
                     let decoder = JSONDecoder()
-                    print("드루옴!!")
+
                     do {
-                        print("성공이당!!")
+
                         let allListData = try decoder.decode(AllListVO.self, from: value)
                         if allListData.message == "Success To Get Data" {
-                            print("진짜 성공이당!!")
+
                             completion(allListData.isEnd!, allListData.data!)
                         }
                         
                     } catch {
-                        print("캐치다!!")
+
                         print(error.localizedDescription)
                     }
                     //////////////////
@@ -131,7 +131,7 @@ struct AllListService : APIService {
                 
                 break
             case .failure(let err):
-                print("에러다에러!!")
+
                 print(err.localizedDescription)
                 break
             }
