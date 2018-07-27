@@ -42,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
         /***************************** Push service end ******************************/
         
+        UpdateChecker.run(updateType: .normal)
+        
         //MARK: GoogleMaps
         GMSServices.provideAPIKey("AIzaSyDZF-mdNF_WbtkRbgK-sR9aljrAJd_YhBE")
         

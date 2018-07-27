@@ -29,6 +29,13 @@ class LoginVC: UIViewController, NetworkCallback, UIGestureRecognizerDelegate {
     
     @IBAction func unwindToSplash(segue:UIStoryboardSegue) { }
     
+    @IBAction func closeButtonAction(_ sender: Any) {
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
+    
+    
     //MARK: Outlet Add Action
     func initAddTarget(){
         loginButton.addTarget(self, action: #selector(loginNetworking), for: .touchUpInside)

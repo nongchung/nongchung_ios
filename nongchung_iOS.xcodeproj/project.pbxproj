@@ -123,6 +123,7 @@
 		4C98B4F120EA4DAF0038866E /* NewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E720EA4DAF0038866E /* NewCollectionViewCell.swift */; };
 		4C98B4F220EA4DAF0038866E /* PopularListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E820EA4DAF0038866E /* PopularListCollectionViewCell.swift */; };
 		4C98B4FA20EA4ED60038866E /* DuplicateVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4F920EA4ED60038866E /* DuplicateVO.swift */; };
+		4CA43FE4210B89B100A2B5B1 /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA43FE3210B89B100A2B5B1 /* UpdateChecker.swift */; };
 		4CAB384620F0D5280057F4C0 /* PopupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB384520F0D5280057F4C0 /* PopupCell.swift */; };
 		4CAB386220F0F52B0057F4C0 /* HeartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB384A20F0F52A0057F4C0 /* HeartTableViewCell.swift */; };
 		4CAB386320F0F52B0057F4C0 /* HeartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB384B20F0F52A0057F4C0 /* HeartViewController.swift */; };
@@ -328,6 +329,7 @@
 		4C98B4E720EA4DAF0038866E /* NewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E820EA4DAF0038866E /* PopularListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularListCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4F920EA4ED60038866E /* DuplicateVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateVO.swift; sourceTree = "<group>"; };
+		4CA43FE3210B89B100A2B5B1 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
 		4CAB384520F0D5280057F4C0 /* PopupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupCell.swift; sourceTree = "<group>"; };
 		4CAB384A20F0F52A0057F4C0 /* HeartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartTableViewCell.swift; sourceTree = "<group>"; };
 		4CAB384B20F0F52A0057F4C0 /* HeartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartViewController.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				4C0EA55620E86CF900CB70ED /* AppDelegate.swift */,
 				4C0EA59520E8714C00CB70ED /* Extension.swift */,
 				4C23FB0F20F553B900676796 /* Utility.swift */,
+				4CA43FE3210B89B100A2B5B1 /* UpdateChecker.swift */,
 				4C0EA58B20E86E8C00CB70ED /* Protocol */,
 				4CAB389820F107000057F4C0 /* Service */,
 				4C0EA58A20E86E1D00CB70ED /* VO */,
@@ -1305,6 +1308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA43FE4210B89B100A2B5B1 /* UpdateChecker.swift in Sources */,
 				4C56065D20F7CBEB0063C800 /* ReviewVO.swift in Sources */,
 				4C56065B20F7CBEB0063C800 /* MyReviewDataVO.swift in Sources */,
 				4CDE4BEB20F7D664006FEFCA /* QnaData.swift in Sources */,

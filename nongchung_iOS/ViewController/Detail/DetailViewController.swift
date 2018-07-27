@@ -102,10 +102,25 @@ class DetailViewController : UIViewController, NetworkCallback {
     }
 
     @IBAction func heartButtonAction(_ sender: UIBarButtonItem) {
-        if sender.image == #imageLiteral(resourceName: "main_heart_empty"){
+        if sender.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") == nil{
+            let alert = UIAlertController(title: "농활청춘", message: "로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?", preferredStyle: .alert)
+            let loginAction = UIAlertAction(title: "로그인", style: .default) { (UIAlertAction) in
+                let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+                guard let loginVC = loginStoryboard.instantiateViewController(
+                    withIdentifier : "LoginNavigationController"
+                    ) as? LoginNavigationController
+                    else{return}
+                loginVC.modalTransitionStyle = .crossDissolve
+                UIApplication.shared.keyWindow?.rootViewController = loginVC
+            }
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+            alert.addAction(cancelAction)
+            alert.addAction(loginAction)
+            present(alert, animated: true)
+        }
+        else if sender.image == #imageLiteral(resourceName: "main_heart_empty") && ud.string(forKey: "token") != nil {
             HeartService.likeAddNetworking(nhIdx: gino(nhIdx)) {
                 sender.image = UIImage(named: "main_heart_fill")
-
             }
         }
         else{
@@ -123,7 +138,6 @@ class DetailViewController : UIViewController, NetworkCallback {
         navigationbarSetting()
         scheduleTimeSetting()
         refundSetting()
-        print(responseMessage?.myScheduleActivities)
         refundDismissLabel.addTarget(self, action: #selector(refundBackButtonAction), for: .touchUpInside)
         refundAcceptButton.addTarget(self, action: #selector(refundAcceptButtonAction), for: .touchUpInside)
         

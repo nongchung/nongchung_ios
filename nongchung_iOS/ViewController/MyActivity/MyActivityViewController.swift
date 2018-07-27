@@ -17,9 +17,6 @@ class MyActivityViewController: UIViewController {
     @IBOutlet weak var myActivityTableView: UITableView!
     @IBOutlet var noReviewImageView: UIImageView!
     
-    let token = UserDefaults.standard.string(forKey: "token")
-    
-    //var activityTotal: [MyActivityTotal] = [MyActivityTotal]()
     var activitys: [MyActivity] = [MyActivity]()
     
     var tcount: Int?
@@ -40,18 +37,24 @@ class MyActivityViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        myActivityInit()
+        
+        if UserDefaults.standard.string(forKey: "token") == nil {
+            noReviewImageView.isHidden = false
+        } else {
+            noReviewImageView.isHidden = true
+            myActivityInit()
+        }
     }
     
     func myActivityInit() {
-        if token == nil || token == ""{
+        if UserDefaults.standard.string(forKey: "token") == nil || UserDefaults.standard.string(forKey: "token") == ""{
             noReviewImageView.isHidden = false
+            self.myActivityTableView.reloadData()
         }
         else {
             noReviewImageView.isHidden = true
             
-            MyActivityService.myActivityInit(token: gsno(token)) { (myActivityTotal, myActivity)  in
-                //self.activityTotal = myActivityTotal
+            MyActivityService.myActivityInit(token: gsno(UserDefaults.standard.string(forKey: "token"))) { (myActivityTotal, myActivity)  in
                 self.ttime = myActivityTotal.ttime
                 self.tcount = myActivityTotal.tcount
                 self.activitys = myActivity

@@ -139,11 +139,23 @@
                                         </attributedString>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWD-wK-Bpi">
+                                        <rect key="frame" x="336" y="37" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FWD-wK-Bpi" secondAttribute="height" multiplier="1:1" id="eI1-GB-7kg"/>
+                                        </constraints>
+                                        <state key="normal" image="ic_expand_close"/>
+                                        <connections>
+                                            <action selector="closeButtonAction:" destination="NV0-MP-NEQ" eventType="touchUpInside" id="1bX-8d-5ca"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="oKL-el-2wo" firstAttribute="centerY" secondItem="Zsn-bV-qPa" secondAttribute="centerY" constant="67.5" id="5JD-rr-JkJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="FWD-wK-Bpi" secondAttribute="trailing" constant="15" id="AyV-e1-Jbl"/>
                                     <constraint firstItem="oKL-el-2wo" firstAttribute="centerX" secondItem="Zsn-bV-qPa" secondAttribute="centerX" id="DEE-8p-9cc"/>
+                                    <constraint firstItem="FWD-wK-Bpi" firstAttribute="top" secondItem="Zsn-bV-qPa" secondAttribute="top" constant="37" id="DPS-4a-Ndv"/>
                                     <constraint firstItem="tS6-6V-amy" firstAttribute="leading" secondItem="oKL-el-2wo" secondAttribute="leading" id="ErX-AV-oiN"/>
                                     <constraint firstItem="yKf-nD-n2X" firstAttribute="centerX" secondItem="Zsn-bV-qPa" secondAttribute="centerX" id="FiJ-j5-FBX"/>
                                     <constraint firstItem="yKf-nD-n2X" firstAttribute="top" secondItem="tS6-6V-amy" secondAttribute="bottom" constant="15" id="N2W-eo-zYn"/>
@@ -516,6 +528,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_expand_close" width="24" height="24"/>
         <image name="join2_ok_button" width="288" height="48"/>
         <image name="join_background" width="375" height="667"/>
         <image name="join_next_button" width="288" height="48"/>

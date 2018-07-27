@@ -137,7 +137,7 @@ extension UITableViewCell{
 extension UIViewController : UITextFieldDelegate, UIScrollViewDelegate{
     
     func loginAlert(){
-        let alert = UIAlertController(title: "농활청춘", message: "로그인이 필요합니다. 로그인 하시겠습니까?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "농활청춘", message: "로그인이 필요한 서비스 입니다. 로그인 하시겠습니까?", preferredStyle: .alert)
         let loginAction = UIAlertAction(title: "로그인", style: .default) { (UIAlertAction) in
             let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
             guard let loginVC = loginStoryboard.instantiateViewController(

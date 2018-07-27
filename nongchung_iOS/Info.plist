@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.1</string>
+	<string>0.1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -28,9 +28,15 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>후기 작성 사진 업로드에 사용됩니다.</string>
+	<string>농활청춘에서 사진 및 카메라에 접근합니다.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>농활청춘에서 위치 정보를 사용합니다.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>농활청춘에서 위치 정보를 사용합니다.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>농활청춘에서 위치 정보를 사용합니다.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>후기 작성 사진 업로드에 사용됩니다.</string>
+	<string>농활청춘에서 사진 및 카메라에 접근합니다.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
