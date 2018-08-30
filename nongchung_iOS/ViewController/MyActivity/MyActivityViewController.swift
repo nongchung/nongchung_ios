@@ -13,7 +13,7 @@ import Kingfisher
 
 
 
-class MyActivityViewController: UIViewController {
+class MyActivityViewController: UIViewController, NetworkCallback {
     @IBOutlet weak var myActivityTableView: UITableView!
     @IBOutlet var noReviewImageView: UIImageView!
     
@@ -21,6 +21,10 @@ class MyActivityViewController: UIViewController {
     
     var tcount: Int?
     var ttime: Int?
+    
+    let token = UserDefaults.standard.string(forKey: "token")
+    var nhIdx : Int?
+    var responseMessageToDetail : IntroduceVO?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +79,38 @@ class MyActivityViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = UIColor.white
+        //MARK: Navigationbar remove back button text
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        //MARK: Navigationbar back button image setting
+        let backImage = UIImage(named: "back_icon")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.navigationController?.navigationBar.tintColor = UIColor.black
     }
     
+    func networkResult(resultData: Any, code: String) {
+        if code == "Success To Get Detail Information"{
+            responseMessageToDetail = resultData as? IntroduceVO
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let detailVC = storyBoard.instantiateViewController(
+                withIdentifier : "DetailViewController"
+                ) as? DetailViewController
+                else{return}
+            detailVC.responseMessage = responseMessageToDetail
+            detailVC.segmentedSetting()
+            detailVC.nhIdx = nhIdx
+            detailVC.modalTransitionStyle = .crossDissolve
+            
+            let navigationControlr = UINavigationController(rootViewController: detailVC)
+            self.present(navigationControlr, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
+    }
 }
 
 extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, MyActivityViewCellDelegate {
@@ -156,7 +190,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.startDate.text = activityRow.startDate
                 cell.endDate.text = activityRow.endDate
                 
-                cell.progressParticipantLabel.text = "\(gino(activityRow.person))"
+                cell.progressParticipantLabel.text = "\(gino(activityRow.personLimit)-gino(activityRow.person))"
                 cell.progressCountLabel.text = "\(gino(activityRow.currentPerson))/\(gino(activityRow.personLimit))"
                 // progress bar
                 let progress = Float(gino(activityRow.currentPerson)) / Float(gino(activityRow.personLimit))
@@ -180,7 +214,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.startDate.text = activityRow.startDate
                 cell.endDate.text = activityRow.endDate
                 
-                cell.progressParticipantLabel.text = "\(gino(activityRow.person))"
+                cell.progressParticipantLabel.text = "\(gino(activityRow.personLimit)-gino(activityRow.person))"
                 cell.progressCountLabel.text = "\(gino(activityRow.currentPerson))/\(gino(activityRow.personLimit))"
                 // progress bar
                 let progress = Float(gino(activityRow.currentPerson)) / Float(gino(activityRow.personLimit))
@@ -235,6 +269,7 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 let progress = Float(gino(activityRow.currentPerson)) / Float(gino(activityRow.personLimit))
                 cell.progress.progress = progress
                 cell.participantOkView.isHidden = true
+                cell.participantCancelView.isHidden = false
                 cell.progressCountLabel.isHidden = true
                 cell.progress.progressTintColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
                 
@@ -265,12 +300,18 @@ extension MyActivityViewController: UITableViewDelegate, UITableViewDataSource, 
                 cell.participantCancelView.isHidden = true
                 
                 cell.selectionStyle = .none
-                
             default:
                 break
             }
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = activitys[indexPath.row]
+        let model = IntroduceModel(self)
+        nhIdx = index.nhidx
+        model.introuduceNetworking(idx: gino(nhIdx), token: gsno(token))
     }
     
     

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9yc-lW-dhb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumSquareRoundB.ttf">
+            <string>NanumSquareRoundB</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--찜한 목록-->
+        <scene sceneID="Nca-NW-V2t">
+            <objects>
+                <viewController storyboardIdentifier="HeartViewController" id="nNe-1C-vSH" customClass="HeartViewController" customModule="nongchung_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LS0-gg-oen">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xzk-gm-IBn">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeartTableViewCell" rowHeight="212" id="TUM-Bg-RUq" customClass="HeartTableViewCell" customModule="nongchung_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="212"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TUM-Bg-RUq" id="4UQ-Tx-gDS">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="211.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrs-yU-wR0">
+                                                    <rect key="frame" x="12" y="8" width="351" height="195.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="jrs-yU-wR0" secondAttribute="height" multiplier="9:5" id="IXg-OP-EWp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zug-MJ-Xxh">
+                                                    <rect key="frame" x="12" y="126" width="351" height="77"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZ7-vb-BpK">
+                                                            <rect key="frame" x="8" y="32" width="181.5" height="13.5"/>
+                                                            <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="12"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="20000원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b99-jw-mfb">
+                                                            <rect key="frame" x="8" y="54" width="181.5" height="18"/>
+                                                            <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="kre-Uc-lR8">
+                                                            <rect key="frame" x="8" y="8" width="181.5" height="18"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제주 행복 감귤 농장" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4m-bk-4P1">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="128.5" height="18"/>
+                                                                    <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1박2일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXM-ce-a2s">
+                                                                    <rect key="frame" x="132.5" y="0.0" width="49" height="18"/>
+                                                                    <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="16"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="kre-Uc-lR8" firstAttribute="leading" secondItem="Zug-MJ-Xxh" secondAttribute="leading" constant="8" id="5kK-QN-roa"/>
+                                                        <constraint firstItem="aZ7-vb-BpK" firstAttribute="trailing" secondItem="kre-Uc-lR8" secondAttribute="trailing" id="6kH-l8-dLU"/>
+                                                        <constraint firstAttribute="height" constant="77" id="M8Q-wJ-2vd"/>
+                                                        <constraint firstItem="b99-jw-mfb" firstAttribute="top" secondItem="aZ7-vb-BpK" secondAttribute="bottom" constant="8.5" id="MEM-FR-WB1"/>
+                                                        <constraint firstItem="b99-jw-mfb" firstAttribute="leading" secondItem="kre-Uc-lR8" secondAttribute="leading" id="Yhe-Mc-iUN"/>
+                                                        <constraint firstItem="kre-Uc-lR8" firstAttribute="top" secondItem="Zug-MJ-Xxh" secondAttribute="top" constant="7.7000000000000002" id="c7I-Hk-lae"/>
+                                                        <constraint firstItem="aZ7-vb-BpK" firstAttribute="top" secondItem="O4m-bk-4P1" secondAttribute="bottom" constant="6" id="f9n-hm-Rt0"/>
+                                                        <constraint firstItem="b99-jw-mfb" firstAttribute="trailing" secondItem="kre-Uc-lR8" secondAttribute="trailing" id="faD-dk-zV5"/>
+                                                        <constraint firstAttribute="bottom" secondItem="b99-jw-mfb" secondAttribute="bottom" constant="5" id="gS1-KS-TmB"/>
+                                                        <constraint firstItem="aZ7-vb-BpK" firstAttribute="leading" secondItem="kre-Uc-lR8" secondAttribute="leading" id="raK-nF-6gN"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hl-Hb-8ah">
+                                                    <rect key="frame" x="329" y="17" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="5hl-Hb-8ah" secondAttribute="height" multiplier="1:1" id="1SN-nd-PeH"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="heart_fill"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Zug-MJ-Xxh" firstAttribute="trailing" secondItem="jrs-yU-wR0" secondAttribute="trailing" id="3bV-0b-scp"/>
+                                                <constraint firstAttribute="bottom" secondItem="jrs-yU-wR0" secondAttribute="bottom" constant="8" id="81v-Pa-hGn"/>
+                                                <constraint firstItem="jrs-yU-wR0" firstAttribute="centerY" secondItem="4UQ-Tx-gDS" secondAttribute="centerY" id="9md-dr-fSI"/>
+                                                <constraint firstAttribute="trailing" secondItem="jrs-yU-wR0" secondAttribute="trailing" constant="12" id="PBf-rB-rFG"/>
+                                                <constraint firstItem="Zug-MJ-Xxh" firstAttribute="centerX" secondItem="jrs-yU-wR0" secondAttribute="centerX" id="dfH-cQ-gMK"/>
+                                                <constraint firstItem="5hl-Hb-8ah" firstAttribute="trailing" secondItem="jrs-yU-wR0" secondAttribute="trailing" constant="-10" id="eEH-mY-dCB"/>
+                                                <constraint firstItem="jrs-yU-wR0" firstAttribute="top" secondItem="4UQ-Tx-gDS" secondAttribute="top" constant="8" id="krT-X7-pS7"/>
+                                                <constraint firstItem="5hl-Hb-8ah" firstAttribute="top" secondItem="jrs-yU-wR0" secondAttribute="top" constant="9" id="nGG-MA-rKg"/>
+                                                <constraint firstItem="Zug-MJ-Xxh" firstAttribute="bottom" secondItem="jrs-yU-wR0" secondAttribute="bottom" id="o11-In-aye"/>
+                                                <constraint firstItem="jrs-yU-wR0" firstAttribute="centerX" secondItem="4UQ-Tx-gDS" secondAttribute="centerX" id="pKF-KT-Q7R"/>
+                                                <constraint firstItem="Zug-MJ-Xxh" firstAttribute="leading" secondItem="jrs-yU-wR0" secondAttribute="leading" id="rQe-dr-eYc"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="addressLabel" destination="aZ7-vb-BpK" id="Rg1-7X-8qw"/>
+                                            <outlet property="heartButton" destination="5hl-Hb-8ah" id="2Cb-hV-RwL"/>
+                                            <outlet property="heartImageView" destination="jrs-yU-wR0" id="R2y-A1-wdr"/>
+                                            <outlet property="periodLabel" destination="RXM-ce-a2s" id="dvF-hj-KYv"/>
+                                            <outlet property="priceLabel" destination="b99-jw-mfb" id="fVL-pq-d0X"/>
+                                            <outlet property="titleLabel" destination="O4m-bk-4P1" id="eNz-jF-utK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_zzim1_2" translatesAutoresizingMaskIntoConstraints="NO" id="Cnq-ci-AJt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Xzk-gm-IBn" firstAttribute="leading" secondItem="zlG-Pw-I6a" secondAttribute="leading" id="73l-bK-zdR"/>
+                            <constraint firstItem="Xzk-gm-IBn" firstAttribute="top" secondItem="zlG-Pw-I6a" secondAttribute="top" id="D4t-RD-sGK"/>
+                            <constraint firstItem="Cnq-ci-AJt" firstAttribute="bottom" secondItem="zlG-Pw-I6a" secondAttribute="bottom" id="NaA-VT-vvN"/>
+                            <constraint firstItem="Xzk-gm-IBn" firstAttribute="bottom" secondItem="zlG-Pw-I6a" secondAttribute="bottom" id="RWF-Fb-U9w"/>
+                            <constraint firstItem="Cnq-ci-AJt" firstAttribute="top" secondItem="LS0-gg-oen" secondAttribute="top" id="VVG-Xp-cNd"/>
+                            <constraint firstItem="Cnq-ci-AJt" firstAttribute="trailing" secondItem="zlG-Pw-I6a" secondAttribute="trailing" id="cD0-B9-llk"/>
+                            <constraint firstItem="Cnq-ci-AJt" firstAttribute="leading" secondItem="zlG-Pw-I6a" secondAttribute="leading" id="mxr-vf-6Dg"/>
+                            <constraint firstItem="Xzk-gm-IBn" firstAttribute="trailing" secondItem="zlG-Pw-I6a" secondAttribute="trailing" id="pIq-wM-eW0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zlG-Pw-I6a"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="찜한 목록" id="GOu-lj-ax1"/>
+                    <connections>
+                        <outlet property="heartTableView" destination="Xzk-gm-IBn" id="tvS-Oi-0Fl"/>
+                        <outlet property="noZzimImageView" destination="Cnq-ci-AJt" id="JdO-wA-54S"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHC-xd-OHF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2880.8000000000002" y="883.80809595202402"/>
+        </scene>
+        <!--찜하기-->
+        <scene sceneID="POv-Pp-uUF">
+            <objects>
+                <navigationController storyboardIdentifier="HeartNavVC" automaticallyAdjustsScrollViewInsets="NO" id="9yc-lW-dhb" customClass="HeartNavVC" customModule="nongchung_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="찜하기" image="ic_tapbar_myzzim2" selectedImage="ic_tapbar_myzzim1" id="eWa-Ux-0oT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ngk-k8-6nW">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nNe-1C-vSH" kind="relationship" relationship="rootViewController" id="wuY-bb-4FR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5vS-Nh-Zv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2087" y="886"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heart_fill" width="24" height="24"/>
+        <image name="ic_tapbar_myzzim1" width="20" height="20"/>
+        <image name="ic_tapbar_myzzim2" width="20" height="20"/>
+        <image name="no_zzim1_2" width="375" height="667"/>
+    </resources>
+</document>

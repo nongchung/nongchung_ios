@@ -17,6 +17,9 @@ class ReviewTableViewController: UIViewController {
     
     var nhIdx : String?
     var star : Double?
+    var averageStar : Double = 0.0
+    var totalStar : Double = 0.0
+    var starCount : Int?
     
     var reviews: [ReviewDataVO] = [ReviewDataVO]()
     
@@ -39,12 +42,19 @@ class ReviewTableViewController: UIViewController {
     func reviewInit() {
 
         ReviewService.reviewInit(scheIdx: Int(gsno(nhIdx))!, completion: { (reviewData) in
+
             self.reviews = reviewData
+
             if self.reviews.count == 0{
                 self.noMyWriteImageView.isHidden = false
             }
             else{
                 self.noMyWriteImageView.isHidden = true
+                for i in reviewData{
+                    self.totalStar += i.star!
+                }
+                self.starCount = reviewData.count
+                self.averageStar = self.totalStar / Double(self.starCount!)
             }
             self.customTableView.reloadData()
             
@@ -66,21 +76,37 @@ extension ReviewTableViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewStarTableViewCell", for: indexPath) as! ReviewStarTableViewCell
-            
-            cell.starLabel.text = "\(star!/2)"
-            cell.starImageView.image = UIImage(named: cell.starCalculator(star: star!))
+            cell.starLabel.text = "\(Double(averageStar/2.0).roundTo(places: 1))"
+            cell.starImageView.image = UIImage(named: cell.starCalculator(star: averageStar))
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
             let index = reviews[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReviewTableViewCell", for: indexPath) as! ReviewTableViewCell
+            
             cell.nameLabel.text = index.name
             cell.dateLabel.text = index.startDate
             cell.contentLabel.text = index.content
-            //cell.starImageView.image = UIImage(named: starCalculator(star: index.star!))
-            //cell.starLabel.text
+            cell.profileImageView.imageFromUrl(index.uimg, defaultImgPath: "login_image")
+            cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width / 2
+            cell.profileImageView.layer.masksToBounds = true
+            
+            cell.starImageView.image = UIImage(named: cell.starCalculator(star: index.star!))
+            
+            if index.star! <= 6.0 && index.star! > 4.0 {
+                cell.starLabel.text = "좋았어요!"
+            } else if index.star! <= 10.0 && index.star! > 8.0 {
+                cell.starLabel.text = "강력추천해요!"
+            } else if index.star! <= 4.0 && index.star! > 2.0{
+                cell.starLabel.text = "나쁘지 않았어요!"
+            }
+            else if index.star! <= 2.0 {
+                cell.starLabel.text = "추천하지 않아요ㅠ"
+            }
+            
             if index.rvImages?.count == 0 {
                 cell.imageCollectionView.removeFromSuperview()
             } else {

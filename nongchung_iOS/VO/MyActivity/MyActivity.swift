@@ -24,4 +24,5 @@ struct MyActivity: Codable {
     let person: Int?
     let rState: Int?
     let state: Int?
+    let nhidx : Int?
 }

@@ -10,15 +10,19 @@ import ObjectMapper
 
 class FriendsInfoVO : Mappable{
     
-    var name : String?
-    var nickname : String?
-    var img : String?
+    var womanCount : Int?
+    var manCount : Int?
+    var attendCount : Int?
+    var personLimit : Int?
+    var ageAverage : Double?
     
     required init?(map: Map) {}
     
     func mapping(map: Map) {
-        name <- map["name"]
-        nickname <- map["nickname"]
-        img <- map["img"]
+        womanCount <- map["womanCount"]
+        manCount <- map["manCount"]
+        attendCount <- map["attendCount"]
+        personLimit <- map["personLimit"]
+        ageAverage <- map["ageAverage"]
     }
 }

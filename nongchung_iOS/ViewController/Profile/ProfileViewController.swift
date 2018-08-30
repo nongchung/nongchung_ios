@@ -211,7 +211,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                     loginAlert()
                 } else {
                     
-                    let viewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "MyReviewViewController") as! MyReviewViewController
+                    let viewController = UIStoryboard(name: "More", bundle : nil).instantiateViewController(withIdentifier: "MyReviewViewController") as! MyReviewViewController
                     self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }
@@ -221,7 +221,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 if ud.string(forKey: "token") == nil {
                     loginAlert()
                 } else {
-                    let nicknameViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
+                    let nicknameViewController = UIStoryboard(name: "More", bundle : nil).instantiateViewController(withIdentifier: "NickNameViewController") as! NickNameViewController
                     nicknameViewController.nickname = nickname
                     
                     self.navigationController?.pushViewController(nicknameViewController, animated: true)
@@ -231,7 +231,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 if ud.string(forKey: "token") == nil {
                     loginAlert()
                 } else {
-                    let passwordViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
+                    let passwordViewController = UIStoryboard(name: "More", bundle : nil).instantiateViewController(withIdentifier: "PasswordViewController") as! PasswordViewController
                     self.navigationController?.pushViewController(passwordViewController, animated: true)
                 }
             } else if indexPath.row == 2{ // 로그아웃
@@ -249,10 +249,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             if indexPath.row == 0 { // 공지사항
-                let noticeViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "NoticeTableViewController") as! NoticeTableViewController
+                let noticeViewController = UIStoryboard(name: "More", bundle : nil).instantiateViewController(withIdentifier: "NoticeTableViewController") as! NoticeTableViewController
                 self.navigationController?.pushViewController(noticeViewController, animated: true)
             } else if indexPath.row == 1 { // FAQ
-                let faqViewController = UIStoryboard(name: "Main", bundle : nil).instantiateViewController(withIdentifier: "FAQTableViewController") as! FAQTableViewController
+                let faqViewController = UIStoryboard(name: "More", bundle : nil).instantiateViewController(withIdentifier: "FAQTableViewController") as! FAQTableViewController
                 self.navigationController?.pushViewController(faqViewController, animated: true)
             }
         }

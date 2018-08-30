@@ -10,47 +10,54 @@ import UIKit
 
 class VolunteerCell: UITableViewCell {
 
-    @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var volunteerCollectionView: UICollectionView!
     
-    var volunteerImageData : [FriendsInfoVO]? = nil{
+    @IBOutlet var titleAverageAgeLabel: UILabel!
+    @IBOutlet var titleTotalVolunteerLabel: UILabel!
+    @IBOutlet var averageAgeLabel: UILabel!
+    @IBOutlet var nowApplyPeopleCountLabel: UILabel!
+    @IBOutlet var totalApplyPeopleCountLabel: UILabel!
+    @IBOutlet var progressBar: UIProgressView!
+    @IBOutlet var womanImageview: UIImageView!
+    @IBOutlet var manImageView: UIImageView!
+    @IBOutlet var womanPercentLabel: UILabel!
+    @IBOutlet var manPercentLabel: UILabel!
+    
+    
+    var volunteerData : [FriendsInfoVO]? = nil{
         didSet{
-            volunteerCollectionView.reloadData()
+            averageAgeLabel.text = "\(volunteerData?[0].ageAverage?.roundTo(places: 1) ?? 0)"
+            nowApplyPeopleCountLabel.text = "\(volunteerData?[0].attendCount ?? 0)"
+            totalApplyPeopleCountLabel.text = "/\(volunteerData?[0].personLimit ?? 0)"
+            let womanPercent = Double((volunteerData?[0].womanCount)!) / Double((volunteerData?[0].attendCount)!)
+            print(womanPercent)
+            womanPercentLabel.text = "\(Double(womanPercent*100).rounded())%"
+            let manPercent = Double((volunteerData?[0].manCount)!) / Double((volunteerData?[0].attendCount)!)
+            manPercentLabel.text = "\(Double(manPercent*100).rounded())%"
+            
+
+            progressBar.layer.cornerRadius = 4
+            progressBar.layer.masksToBounds = true
+            if volunteerData?[0].attendCount == 0{
+                progressBar.progress = 0.0
+                progressBar.trackTintColor = #colorLiteral(red: 0.8941176471, green: 0.8941176471, blue: 0.8941176471, alpha: 1)
+                womanPercentLabel.text = "0%"
+                manPercentLabel.text = "0%"
+            } else {
+                progressBar.progress = Float(womanPercent)
+                progressBar.trackTintColor = #colorLiteral(red: 0.4941176471, green: 0.6431372549, blue: 1, alpha: 1)
+            }
         }
-    }
-    func setCollectionViewDataSourceDelegate(forRow row: Int) {
-        volunteerCollectionView.delegate = self
-        volunteerCollectionView.dataSource = self
-        volunteerCollectionView.backgroundColor = UIColor.white
-        volunteerCollectionView.tag = row
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         increaseSeparatorHeight()
+        titleAverageAgeLabel.text = "평균연령"
+        titleTotalVolunteerLabel.text = "총 신청 인원"
+        womanImageview.image = UIImage(named: "intro_woman")
+        manImageView.image = UIImage(named: "intro_man")
+        
     }
-    
-}
-
-extension VolunteerCell : UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if volunteerImageData == nil{
-            return 1
-        } else {
-            return (volunteerImageData?.count)!
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VolunteerCollectionViewCell", for: indexPath) as! VolunteerCollectionViewCell
-        let index = volunteerImageData![indexPath.row]
-        cell.volunteerImageView.layer.masksToBounds = true
-        cell.volunteerImageView.layer.cornerRadius = cell.volunteerImageView.frame.width / 2
-        cell.volunteerImageView.imageFromUrl(index.img, defaultImgPath: "")
-        return cell
-    }
-    
     
 }
 

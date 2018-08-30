@@ -223,9 +223,9 @@ class DetailViewController : UIViewController, NetworkCallback {
     
     
     func segmentedSetting(){
+        
         let headerVC = self.storyboard?.instantiateViewController(withIdentifier: "HeaderViewController") as! HeaderViewController
         headerVC.imageData = responseMessage?.image
-        headerVC.view.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width/5*3)
         
         let informationVC = self.storyboard?.instantiateViewController(withIdentifier: "InformationTableViewController") as! InformationTableViewController
         informationVC.title = "농활소개"
@@ -247,7 +247,7 @@ class DetailViewController : UIViewController, NetworkCallback {
         segmentedController.headerViewController = headerVC
         segmentedController.segmentViewHeight = 48.0
         segmentedController.selectedSegmentViewHeight = 4.0
-        segmentedController.headerViewHeight = headerVC.view.frame.size.height
+        segmentedController.headerViewHeight = 200
         segmentedController.segmentTitleFont = UIFont(name: "NanumSquareRoundB", size: 16)!
         segmentedController.segmentTitleColor = UIColor.black
         segmentedController.selectedSegmentViewColor = #colorLiteral(red: 0.2039215686, green: 0.4392156863, blue: 1, alpha: 1)
@@ -358,16 +358,12 @@ extension DetailViewController {
     func comparableMyActivity(){
         if let myScheduleActivities = responseMessage?.myScheduleActivities{
             if let allStartDate = responseMessage?.allStartDate{
-                print(myScheduleActivities)
-                print(allStartDate[0].idx)
-                print("아")
                 if myScheduleActivities.contains(gino(allStartDate[0].idx)){
                     check = false
                     schIdx = allStartDate[0].idx
                 } else{
                     check = true
                 }
-
             }
         }
         if check == true{

@@ -70,7 +70,6 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         cell.titleLabel.text = index.name
         cell.addressLabel.text = index.addr
         cell.priceLabel.text = "\(index.price!)원"
-        
         cell.heartButton.tag = index.nhIdx!
         cell.heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)
         //MARK: 좋아요 안 했을 때
@@ -81,7 +80,6 @@ extension PopularListTableViewCell: UICollectionViewDelegate, UICollectionViewDa
             cell.heartButton.setImage(#imageLiteral(resourceName: "main_heart_fill"), for: .normal)
         }
 
-        
         return cell
     }
     

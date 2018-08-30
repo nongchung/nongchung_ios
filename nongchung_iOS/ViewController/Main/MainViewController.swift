@@ -26,7 +26,6 @@ class MainViewController: UIViewController, NetworkCallback {
     var adsData : [AdsVO]?
     var populNhData : [PopulNhVO]?
     var newNhData : [NewNhVO]?
-    var populFarmData : [PopulFarmVO]?
     
     //MARK: From Server Data - 농활보기
     var responseMessage : IntroduceVO?
@@ -37,7 +36,6 @@ class MainViewController: UIViewController, NetworkCallback {
     var scheduleData : [ScheduleVO]?
     var nearestStartDateData : String?
     var allStartDateData : [AllStartDateVO]?
-    
     
     var nhIdx : Int?
     let ud = UserDefaults.standard
@@ -213,7 +211,6 @@ class MainViewController: UIViewController, NetworkCallback {
             adsData = homeResultData?.ads
             populNhData = homeResultData?.populNh
             newNhData = homeResultData?.newNh
-            populFarmData = homeResultData?.populFarm
             
             mainTableView.delegate = self
             mainTableView.dataSource = self
@@ -235,7 +232,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
     
     //MARK: TableView Delegate
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -271,16 +268,9 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
             cell.allButton.tag = 2
             cell.allButton.addTarget(self, action: #selector(clickAllButton(sender:)), for: .touchUpInside)
             return cell
-        } else if indexPath.section == 3 {
+        } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeTableViewCell", for: indexPath) as! ThemeTableViewCell
             cell.setCollectionViewDataSourceDelegate(forRow: indexPath.row)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PopFarmTableViewCell", for: indexPath) as! PopFarmTableViewCell
-            cell.setCollectionViewDataSourceDelegate(forRow: indexPath.row)
-            if populFarmData != nil{
-                cell.populFarmData = populFarmData
-            }
             return cell
         }
     }

@@ -22,7 +22,7 @@ class HeaderViewController : UIViewController{
     }
 }
 
-extension HeaderViewController : UICollectionViewDelegate, UICollectionViewDataSource{
+extension HeaderViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if imageData == nil{
             return 1
@@ -40,5 +40,10 @@ extension HeaderViewController : UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let bounds = UIScreen.main.bounds
+        let width = bounds.size.width
+        return CGSize(width: width, height: self.view.frame.size.height)
+    }
     
 }

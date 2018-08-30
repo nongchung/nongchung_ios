@@ -14,6 +14,7 @@ struct ThemeDataVO: Codable {
     let name: String?
     let price: Int?
     let period: String?
-    let fImage: String?
+    let fImg: String?
     let newState: Int?
+    let nhIdx: Int?
 }

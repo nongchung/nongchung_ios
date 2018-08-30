@@ -8,7 +8,14 @@
 
 import UIKit
 import Kingfisher
+import SDWebImage
 
+extension Double {
+    func roundTo(places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
+}
 
 //MARK: 2개 배열 교집합 Bool 리턴
 extension Array where Element: Comparable {
@@ -73,6 +80,7 @@ extension UIImageView {
             if url.isEmpty {
                 self.image = defaultImg
             } else {
+//                self.sd_setImage(with: URL(string: "http://www.domain.com/path/to/image.jpg"), placeholderImage: UIImage(named: "placeholder.png"))
                 self.kf.setImage(with: URL(string: url), placeholder: defaultImg, options: [.transition(ImageTransition.fade(0.5))])
             }
         } else {

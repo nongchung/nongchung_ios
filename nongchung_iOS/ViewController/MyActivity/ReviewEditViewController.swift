@@ -44,7 +44,7 @@ class ReviewEditViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.white
         
         //MARK: Navigationbar remove back button text
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         //MARK: Navigationbar back button image setting
         let backImage = UIImage(named: "back_icon")
@@ -78,19 +78,18 @@ class ReviewEditViewController: UIViewController {
     
     func reviewInit() {
         ReviewService.reviewEditInit(scheIdx: idx!) { (reviewData) in
-            self.star = reviewData.star
+            self.star = Double(reviewData.star! / 2.0).roundTo(places: 1)
             self.content = reviewData.content
             self.rIdx = reviewData.rIdx
             
             self.contentTextView.text = self.content
-            self.ratingLabel.text = String(self.star!)
-            self.cosmosView.rating = Double(self.star!)
-
+            self.ratingLabel.text = String(Double(reviewData.star! / 2.0).roundTo(places: 1))
+            self.cosmosView.rating = Double(reviewData.star! / 2.0).roundTo(places: 1)
             
             for i in 0 ... reviewData.img!.count-1 {
                 if reviewData.img![i] != ""{
                     let data = try? Data(contentsOf: URL(string: reviewData.img![i])!)
-
+                    
                     self.images.append(UIImage(data: data!)!)
                 } else{
                     break
@@ -125,16 +124,17 @@ class ReviewEditViewController: UIViewController {
     
     // 네비게이션바의 완료 버튼을 눌렀을 때
     @objc func addTapped(){
+        let rating = cosmosView.rating * 2.0
 
-        ReviewService.editImageReview(rIdx: String(gino(rIdx)), content: contentTextView.text, rImages: images, star: gsno(ratingLabel.text)) {
-
+        ReviewService.editImageReview(rIdx: String(gino(rIdx)), content: contentTextView.text, rImages: images, star: "\(rating)") {
+            
             self.navigationController?.popViewController(animated: true)
         }
     }
     
     // Star rating bar setting
     private func updateRating() {
-        self.ratingLabel.text = ReviewEditViewController.formatValue(cosmosView.rating)
+        self.ratingLabel.text = ReviewEditViewController.formatValue(cosmosView.rating/2.0)
     }
     
     private class func formatValue(_ value: Double) -> String {
@@ -151,6 +151,7 @@ class ReviewEditViewController: UIViewController {
 }
 
 extension ReviewEditViewController: YMSPhotoPickerViewControllerDelegate {
+    
     func photoPickerViewControllerDidReceivePhotoAlbumAccessDenied(_ picker: YMSPhotoPickerViewController!) {
         let alertController = UIAlertController.init(title: "Allow photo album access?", message: "Need your permission to access photo albumbs", preferredStyle: .alert)
         let dismissAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
@@ -197,11 +198,13 @@ extension ReviewEditViewController: YMSPhotoPickerViewControllerDelegate {
             {
                 let scale = UIScreen.main.scale
                 let targetSize = CGSize(width: (self.cameraCollectionView.bounds.width - 20*2) * scale, height: (self.cameraCollectionView.bounds.height - 20*2) * scale)
-                imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options, resultHandler: { (image, info) in
+                imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
                     mutableImages.append(image!)
                 })
             }
             self.images += mutableImages
+            mutableImages.removeAll()
+            
             self.cameraCollectionView.reloadData()
             print("didFinishPickingImages")
         }

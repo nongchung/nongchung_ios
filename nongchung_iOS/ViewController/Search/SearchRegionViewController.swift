@@ -59,6 +59,7 @@ class SearchRegionViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupNavigationBar()
         buttonSetting()
         doneButton.addTarget(self, action: #selector(doneClickAction), for: .touchUpInside)
@@ -147,6 +148,7 @@ class SearchRegionViewController : UIViewController{
                 //MARK: Button Area List 요소 검색
                 if areaList.index(where: { $0 == sender.tag })
                     .map({ areaList.remove(at: $0) }) != nil {
+                } else {
                 }
             }
             else {

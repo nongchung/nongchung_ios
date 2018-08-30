@@ -11,7 +11,6 @@ import UIKit
 
 class NoticeTableViewController: UITableViewController {
     private func getData() -> [NoticeData?] {
-        var data: [NoticeData?] = []
         
         let first_content = [ContentData(content: "content")]
         let first = NoticeData(title: "슈퍼슈퍼 업데이트", contents: first_content)

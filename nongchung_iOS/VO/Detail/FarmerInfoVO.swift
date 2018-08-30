@@ -13,6 +13,7 @@ class FarmerInfoVO : Mappable{
     var name : String?
     var comment : String?
     var img : String?
+    var farmIdx : Int?
     
     required init?(map: Map) {}
     
@@ -20,5 +21,6 @@ class FarmerInfoVO : Mappable{
         name <- map["name"]
         comment <- map["comment"]
         img <- map["img"]
+        farmIdx <- map["farmIdx"]
     }
 }

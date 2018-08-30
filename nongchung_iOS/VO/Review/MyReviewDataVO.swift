@@ -10,7 +10,7 @@ import Foundation
 
 struct MyReviewDataVO: Codable {
     let content: String?
-    let star: Double?
+    let star: Int?
     let img: [String]?
     let farmImg: String?
     let name: String?

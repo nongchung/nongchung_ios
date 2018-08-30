@@ -78,11 +78,7 @@ class JoinVC2: UIViewController, NetworkCallback, UIGestureRecognizerDelegate{
         
         genderTextField.inputView = genderPickerView
         genderTextField.inputAccessoryView = toolBar
-        
         birthTextField.inputAccessoryView = toolBar
-        
-        self.title = "회원가입"
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,7 +180,7 @@ extension JoinVC2 : UIPickerViewDataSource, UIPickerViewDelegate {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         birthTextField.text = dateFormatter.string(from: sender.date)
     }
-    
+
     //MARK: Gender PickerView Delegate
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

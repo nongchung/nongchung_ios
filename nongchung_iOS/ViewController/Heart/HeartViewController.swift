@@ -12,12 +12,16 @@ import SwiftyJSON
 import Kingfisher
 import NotificationBannerSwift
 
-class HeartViewController: UIViewController {
+class HeartViewController: UIViewController, NetworkCallback {
     
     @IBOutlet weak var heartTableView: UITableView!
     @IBOutlet var noZzimImageView: UIImageView!
     
     var hearts: [Heart] = [Heart]()
+    
+    let token = UserDefaults.standard.string(forKey: "token")
+    var nhIdx : Int?
+    var responseMessageToDetail : IntroduceVO?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +65,29 @@ class HeartViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.backgroundColor = UIColor.white
     }
+    
+    func networkResult(resultData: Any, code: String) {
+        if code == "Success To Get Detail Information"{
+            responseMessageToDetail = resultData as? IntroduceVO
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let detailVC = storyBoard.instantiateViewController(
+                withIdentifier : "DetailViewController"
+                ) as? DetailViewController
+                else{return}
+            detailVC.responseMessage = responseMessageToDetail
+            detailVC.segmentedSetting()
+            detailVC.nhIdx = nhIdx
+            detailVC.modalTransitionStyle = .crossDissolve
+            
+            let navigationControlr = UINavigationController(rootViewController: detailVC)
+            self.present(navigationControlr, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
+    }
 }
 
 
@@ -76,7 +103,6 @@ extension HeartViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func heartButtonClickAction(_ sender: UIButton) {
-        
         let alert = UIAlertController(title: "좋아요를 취소하시겠습니까?", message: "", preferredStyle: .alert)
         let doneButton = UIAlertAction(title: "확인", style: UIAlertActionStyle.destructive) {
             (action: UIAlertAction) in
@@ -96,14 +122,12 @@ extension HeartViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HeartTableViewCell", for: indexPath) as! HeartTableViewCell
         
-        var heart = hearts[indexPath.row].idx
+        let heart = hearts[indexPath.row].idx
         
         cell.heartImageView.kf.setImage(with: URL(string: gsno(hearts[indexPath.row].img)), placeholder: UIImage(named: "woman_select"))
-        //cell.heartImageView?.contentMode = UIViewContentMode.scaleAspectFit
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.imageView?.contentMode = UIViewContentMode.scaleToFill
         cell.addressLabel.text = hearts[indexPath.row].addr
@@ -114,7 +138,13 @@ extension HeartViewController: UITableViewDelegate, UITableViewDataSource {
         cell.heartButton.tag = heart
         
         return cell
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = hearts[indexPath.row]
+        let model = IntroduceModel(self)
+        nhIdx = index.idx
+        model.introuduceNetworking(idx: gino(nhIdx), token: gsno(token))
     }
     
 }

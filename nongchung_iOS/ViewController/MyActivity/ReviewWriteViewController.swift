@@ -24,7 +24,7 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    var images: NSArray! = []
+    var images: [UIImage] = [UIImage]()
     var reviewImage: NSArray! = []
     var isImage: Bool = false
     
@@ -49,11 +49,19 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     
     // 이미지 삭제 시
     @objc func deletePhotoImage(_ sender: UIButton!) {
-        let mutableImages: NSMutableArray! = NSMutableArray.init(array: images)
-
-        mutableImages.removeObject(at: sender.tag)
+        var mutableImages: [UIImage] = images
         
-        self.images = NSArray.init(array: mutableImages)
+        mutableImages.remove(at: sender.tag)
+        
+        //        self.images = NSArray.init(array: mutableImages)
+        //        self.collectionView.performBatchUpdates({
+        //            self.collectionView.deleteItems(at: [IndexPath.init(item: sender.tag, section: 0)])
+        //        }) { (finished) in
+        //            self.collectionView.reloadItems(at: self.collectionView.indexPathsForVisibleItems)
+        //        }
+        
+        
+        images = mutableImages
         self.collectionView.performBatchUpdates({
             self.collectionView.deleteItems(at: [IndexPath.init(item: sender.tag, section: 0)])
         }) { (finished) in
@@ -63,7 +71,8 @@ class ReviewWriteViewController: UIViewController, UITextViewDelegate {
     
     // 네비게이션바의 완료 버튼을 눌렀을 때
     @objc func addTapped(){
-        ReviewService.writeImageReview(rImages: images as! [UIImage], content: contentLabel.text, scheIdx: String(idx!), star: ratingLabel.text!) {
+        let rating = cosmosView.rating * 2.0
+        ReviewService.writeImageReview(rImages: images, content: contentLabel.text, scheIdx: String(idx!), star: "\(rating)") {
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -176,7 +185,7 @@ extension ReviewWriteViewController: YMSPhotoPickerViewControllerDelegate {
     
     func photoPickerViewController(_ picker: YMSPhotoPickerViewController!, didFinishPicking image: UIImage!) {
         picker.dismiss(animated: true) {
-            self.images = [image]
+            self.images += [image]
             self.collectionView.reloadData()
         }
     }
@@ -190,20 +199,21 @@ extension ReviewWriteViewController: YMSPhotoPickerViewControllerDelegate {
             options.resizeMode = .exact
             options.isSynchronous = true
             
-            let mutableImages: NSMutableArray! = []
+            var mutableImages: [UIImage] = [UIImage]()
             
             for asset: PHAsset in photoAssets
             {
                 let scale = UIScreen.main.scale
                 let targetSize = CGSize(width: (self.collectionView.bounds.width - 20*2) * scale, height: (self.collectionView.bounds.height - 20*2) * scale)
-                imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options, resultHandler: { (image, info) in
-                    mutableImages.add(image!)
+                imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
+                    mutableImages.append(image!)
                 })
             }
             
-            self.images = mutableImages.copy() as? NSArray
+            self.images += mutableImages
+            mutableImages.removeAll()
             self.collectionView.reloadData()
-
+            
         }
     }
 }
@@ -217,7 +227,7 @@ extension ReviewWriteViewController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WriteReviewCollectionViewCell", for: indexPath) as! WriteReviewCollectionViewCell
         
-        cell.photoImageView.image =  self.images.object(at: (indexPath as NSIndexPath).item) as? UIImage
+        cell.photoImageView.image =  self.images[indexPath.row]
         cell.deleteButton.tag = (indexPath as NSIndexPath).item
         cell.deleteButton.addTarget(self, action: #selector(ReviewWriteViewController.deletePhotoImage(_:)), for: .touchUpInside)
         

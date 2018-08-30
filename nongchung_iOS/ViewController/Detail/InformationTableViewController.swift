@@ -27,13 +27,10 @@ class InformationTableViewController : UIViewController {
         customTableView.reloadData()
     
     }
-    
-    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-        print(scrollView.contentOffset.y)
-    }
+
     @objc func farmerButtonClickAction(_ sender: UIButton) {
         guard let farmerVC = self.storyboard?.instantiateViewController(withIdentifier: "FarmerViewController") as? FarmerViewController else { return }
-        farmerVC.nhIdx = Int(gsno(nhInfoData?.nhIdx))
+        farmerVC.farmIdx = gino(farmerInfoData?.farmIdx)
         self.navigationController?.pushViewController(farmerVC, animated: true)
         
     }
@@ -61,12 +58,12 @@ extension InformationTableViewController : UITableViewDelegate, UITableViewDataS
             cell.priceLabel.text = "\((nhInfoData?.price)!)원"
             cell.periodLabel.text = nhInfoData?.period
             cell.starImageView.image = UIImage(named: cell.starCalculator(star: (nhInfoData?.star)!))
+
             return cell
         case 1:
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "VolunteerCell", for: indexPath) as! VolunteerCell
-            cell.volunteerImageData = friendsInfoData
-            cell.setCollectionViewDataSourceDelegate(forRow: indexPath.row)
+            cell.volunteerData = friendsInfoData
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "FarmerCell", for: indexPath) as! FarmerCell

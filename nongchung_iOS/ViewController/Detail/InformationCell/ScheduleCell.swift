@@ -45,6 +45,7 @@ extension ScheduleCell : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
         let index = scheduleData![indexPath.row]
+        cell.selectionStyle = .none
         cell.timeLabel.text = index.time
         cell.activityLabel.text = index.activity
         cell.scheduleImageView.image = UIImage(named: "intro_schedule_circle_icon")

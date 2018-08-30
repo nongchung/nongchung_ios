@@ -14,7 +14,7 @@ import Kingfisher
 class FarmerViewController: UIViewController {
     @IBOutlet weak var farmerTableView: UITableView!
     
-    var nhIdx: Int?
+    var farmIdx: Int?
     
         var farmName: String?
         var farmAddr: String?
@@ -47,7 +47,7 @@ class FarmerViewController: UIViewController {
     
     
     func farmerInit() {
-        FarmerService.farmerInit(nhIdx: nhIdx!) { (farmerInfoData, farmerData) in
+        FarmerService.farmerInit(idx: gino(farmIdx)) { (farmerInfoData, farmerData) in
                         self.farmName = farmerInfoData.farmName
                         self.farmAddr = farmerInfoData.farmAddr
                         self.comment = farmerInfoData.farmerComment
@@ -88,7 +88,7 @@ extension FarmerViewController: UITableViewDelegate, UITableViewDataSource {
             cell.profileImageView.imageFromUrl(gsno(farmerImg), defaultImgPath: "intro_profile_circle")
             
             return cell
-        } else {
+        } else if indexPath.section == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "FarmerTableViewCell", for: indexPath) as! FarmerTableViewCell
             
             let index = nongwhal[indexPath.row]
@@ -99,6 +99,8 @@ extension FarmerViewController: UITableViewDelegate, UITableViewDataSource {
             cell.mainImageView.imageFromUrl(gsno(index.farmImg), defaultImgPath: "intro_image1")
             
             return cell
+        } else {
+            return UITableViewCell()
         }
     }
 }

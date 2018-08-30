@@ -9,15 +9,9 @@
 import UIKit
 
 class ScheduleTableViewCell : UITableViewCell {
-    
-    
-
     @IBOutlet var scheduleTopLineImageView: UIImageView!
     @IBOutlet var scheduleImageView: UIImageView!
     @IBOutlet var scheduleBottomLineImageView: UIImageView!
     @IBOutlet var timeLabel: UILabel!
     @IBOutlet var activityLabel: UILabel!
-    
-    
-    
 }

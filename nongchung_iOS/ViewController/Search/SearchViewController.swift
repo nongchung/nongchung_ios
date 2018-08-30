@@ -51,6 +51,8 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
         tap.delegate = self
         self.view.addGestureRecognizer(tap)
         
+
+        
         searchTableView.delegate = self
         searchTableView.dataSource = self
         searchTableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -88,6 +90,13 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
             let glassIconView = textFieldInsideSearchBar.leftView as? UIImageView {
             glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
             glassIconView.tintColor = #colorLiteral(red: 0.9490196078, green: 0.337254902, blue: 0.1254901961, alpha: 1)
+        }
+        
+        //MARK : SearchBar TextField Setting
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.black]
+        if let textfield = self.searchBar.value(forKey: "searchField") as? UITextField {
+            textfield.layer.cornerRadius = 19
+            textfield.layer.masksToBounds = true
         }
     }
     
@@ -186,6 +195,7 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
     }
     
     func networkResult(resultData: Any, code: String) {
+        print(code)
         if code == "Success To Get Search"{
             responseMessage = resultData as? SearchVO
             searchData = (responseMessage?.data)!
@@ -204,8 +214,8 @@ class SearchViewController : UIViewController, NetworkCallback , UIGestureRecogn
         }
         else if code == "Success To Get Detail Information"{
             responseMessageToDetail = resultData as? IntroduceVO
-            
-            guard let detailVC = self.storyboard?.instantiateViewController(
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let detailVC = storyBoard.instantiateViewController(
                 withIdentifier : "DetailViewController"
                 ) as? DetailViewController
                 else{return}
@@ -237,11 +247,16 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource, UIS
         return searchData.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchFiliteredDataCell") as? SearchFiliteredDataCell else {
             return UITableViewCell()
         }
         let index = searchData[indexPath.row]
+        cell.selectionStyle = .none
         cell.resultTitleLabel.text = index.name
         cell.addressLabel.text = index.addr
         cell.priceLabel.text = "\(gino(index.price))원"
@@ -256,18 +271,6 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource, UIS
         let model = IntroduceModel(self)
         nhIdx = index.idx
         model.introuduceNetworking(idx: gino(nhIdx), token: gsno(token))
-//        guard let detailVC = self.storyboard?.instantiateViewController(
-//            withIdentifier : "DetailViewController"
-//            ) as? DetailViewController
-//            else{return}
-//        detailVC.responseMessage = responseMessage
-//        detailVC.segmentedSetting()
-//        detailVC.nhIdx = index.idx
-//        detailVC.modalTransitionStyle = .crossDissolve
-//
-//        let navigationControlr = UINavigationController(rootViewController: detailVC)
-//        self.present(navigationControlr, animated: true, completion: nil)
-
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

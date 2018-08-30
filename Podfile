@@ -12,6 +12,7 @@ target 'nongchung_iOS' do
   pod 'Kingfisher'
   pod 'ObjectMapper'
   pod 'AlamofireObjectMapper'
+  pod 'SDWebImage'
 
   # Google Maps Pods
   pod 'GoogleMaps'

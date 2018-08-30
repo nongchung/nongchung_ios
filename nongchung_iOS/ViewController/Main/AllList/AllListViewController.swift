@@ -9,7 +9,7 @@
 import UIKit
 import ESPullToRefresh
 
-class AllListViewController: UIViewController {
+class AllListViewController: UIViewController, NetworkCallback {
 
     var allList: [AllListDataVO] = [AllListDataVO]()
     var isEnd: Int?
@@ -17,6 +17,10 @@ class AllListViewController: UIViewController {
     let ud = UserDefaults.standard
     var idx: Int = 6
     var count: Int = 1
+    
+    let token = UserDefaults.standard.string(forKey: "token")
+    var nhIdx : Int?
+    var responseMessageToDetail : IntroduceVO?
 
     @IBOutlet weak var allListTableView: UITableView!
     
@@ -96,6 +100,8 @@ class AllListViewController: UIViewController {
             //MARK: 인기 농활 모두보기
             case "인기" :
                 AllListService.popListLoginInit(idx: idx) { (isEnd, allListData) in
+                    print("aaaaa")
+                    print(isEnd)
                     self.isEnd = isEnd
                     self.allList += allListData
                     self.allListTableView.reloadData()
@@ -111,6 +117,30 @@ class AllListViewController: UIViewController {
                 print("error")
             }
         }
+    }
+    
+    func networkResult(resultData: Any, code: String) {
+        print(code)
+        if code == "Success To Get Detail Information"{
+            responseMessageToDetail = resultData as? IntroduceVO
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let detailVC = storyBoard.instantiateViewController(
+                withIdentifier : "DetailViewController"
+                ) as? DetailViewController
+                else{return}
+            detailVC.responseMessage = responseMessageToDetail
+            detailVC.segmentedSetting()
+            detailVC.nhIdx = nhIdx
+            detailVC.modalTransitionStyle = .crossDissolve
+            
+            let navigationControlr = UINavigationController(rootViewController: detailVC)
+            self.present(navigationControlr, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func networkFailed() {
+        simpleAlert(title: "네트워크 오류", msg: "인터넷 연결을 확인해주세요.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,11 +161,11 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllListTableViewCell", for: indexPath) as! AllListTableViewCell
-        
+        cell.selectionStyle = .none
         cell.mainImageView.kf.setImage(with: URL(string: allList[indexPath.row].img!), placeholder: #imageLiteral(resourceName: "login_image"))
         cell.titleLabel.text = allList[indexPath.row].name
         cell.addressLabel.text = allList[indexPath.row].addr
-        cell.priceLabel.text = String(gino(allList[indexPath.row].price))
+        cell.priceLabel.text = "\(gino(allList[indexPath.row].price))원"
         
         cell.heartButton.tag = allList[indexPath.row].nhIdx!
         cell.heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)
@@ -155,7 +185,9 @@ extension AllListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = allList[indexPath.row]
-
+        let model = IntroduceModel(self)
+        nhIdx = index.nhIdx
+        model.introuduceNetworking(idx: gino(nhIdx), token: gsno(token))
     }
     
     //MARK: 좋아요 통신

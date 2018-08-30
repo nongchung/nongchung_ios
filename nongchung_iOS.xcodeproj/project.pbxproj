@@ -114,12 +114,10 @@
 		4C98B4C320EA323E0038866E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4C220EA323E0038866E /* SearchViewController.swift */; };
 		4C98B4E920EA4DAF0038866E /* PopularListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4DE20EA4DAF0038866E /* PopularListTableViewCell.swift */; };
 		4C98B4EA20EA4DAF0038866E /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4DF20EA4DAF0038866E /* ThemeTableViewCell.swift */; };
-		4C98B4EB20EA4DAF0038866E /* PopFarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E020EA4DAF0038866E /* PopFarmTableViewCell.swift */; };
 		4C98B4EC20EA4DAF0038866E /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E120EA4DAF0038866E /* NewTableViewCell.swift */; };
 		4C98B4ED20EA4DAF0038866E /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E220EA4DAF0038866E /* AdTableViewCell.swift */; };
 		4C98B4EE20EA4DAF0038866E /* AdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E420EA4DAF0038866E /* AdCollectionViewCell.swift */; };
 		4C98B4EF20EA4DAF0038866E /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E520EA4DAF0038866E /* ThemeCollectionViewCell.swift */; };
-		4C98B4F020EA4DAF0038866E /* PopFarmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E620EA4DAF0038866E /* PopFarmCollectionViewCell.swift */; };
 		4C98B4F120EA4DAF0038866E /* NewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E720EA4DAF0038866E /* NewCollectionViewCell.swift */; };
 		4C98B4F220EA4DAF0038866E /* PopularListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4E820EA4DAF0038866E /* PopularListCollectionViewCell.swift */; };
 		4C98B4FA20EA4ED60038866E /* DuplicateVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C98B4F920EA4ED60038866E /* DuplicateVO.swift */; };
@@ -152,6 +150,13 @@
 		4CAB38AB20F2156E0057F4C0 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */; };
 		4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */; };
 		4CAB38B520F294840057F4C0 /* ApplyVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAB38B420F294840057F4C0 /* ApplyVO.swift */; };
+		4CD5F9202134274F00E863FF /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD5F91F2134274F00E863FF /* More.storyboard */; };
+		4CD5F922213427E100E863FF /* MoreNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD5F921213427E100E863FF /* MoreNavVC.swift */; };
+		4CD5F92421342B4400E863FF /* Heart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD5F92321342B4400E863FF /* Heart.storyboard */; };
+		4CD5F92621342B6C00E863FF /* HeartNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD5F92521342B6C00E863FF /* HeartNavVC.swift */; };
+		4CD5F92821342BD400E863FF /* MyActivity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD5F92721342BD400E863FF /* MyActivity.storyboard */; };
+		4CD5F92A21342C0100E863FF /* MyActivityNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD5F92921342C0100E863FF /* MyActivityNavVC.swift */; };
+		4CD5F92C21342C3900E863FF /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD5F92B21342C3900E863FF /* Search.storyboard */; };
 		4CD7D3B620F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B520F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift */; };
 		4CD7D3BE20F8EE1500F1DDF0 /* ReviewEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B720F8EE0E00F1DDF0 /* ReviewEditViewController.swift */; };
 		4CD7D3BF20F8EE1500F1DDF0 /* MyActivityHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD7D3B820F8EE0F00F1DDF0 /* MyActivityHeaderTableViewCell.swift */; };
@@ -320,12 +325,10 @@
 		4C98B4C220EA323E0038866E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4C98B4DE20EA4DAF0038866E /* PopularListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularListTableViewCell.swift; sourceTree = "<group>"; };
 		4C98B4DF20EA4DAF0038866E /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
-		4C98B4E020EA4DAF0038866E /* PopFarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopFarmTableViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E120EA4DAF0038866E /* NewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E220EA4DAF0038866E /* AdTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E420EA4DAF0038866E /* AdCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E520EA4DAF0038866E /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
-		4C98B4E620EA4DAF0038866E /* PopFarmCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopFarmCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E720EA4DAF0038866E /* NewCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4E820EA4DAF0038866E /* PopularListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularListCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C98B4F920EA4ED60038866E /* DuplicateVO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuplicateVO.swift; sourceTree = "<group>"; };
@@ -358,6 +361,13 @@
 		4CAB38AA20F2156E0057F4C0 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		4CAB38AE20F227D50057F4C0 /* DoneApplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneApplyViewController.swift; sourceTree = "<group>"; };
 		4CAB38B420F294840057F4C0 /* ApplyVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyVO.swift; sourceTree = "<group>"; };
+		4CD5F91F2134274F00E863FF /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		4CD5F921213427E100E863FF /* MoreNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreNavVC.swift; sourceTree = "<group>"; };
+		4CD5F92321342B4400E863FF /* Heart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Heart.storyboard; sourceTree = "<group>"; };
+		4CD5F92521342B6C00E863FF /* HeartNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartNavVC.swift; sourceTree = "<group>"; };
+		4CD5F92721342BD400E863FF /* MyActivity.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyActivity.storyboard; sourceTree = "<group>"; };
+		4CD5F92921342C0100E863FF /* MyActivityNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityNavVC.swift; sourceTree = "<group>"; };
+		4CD5F92B21342C3900E863FF /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		4CD7D3B520F8E2E800F1DDF0 /* LoginButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonTableViewCell.swift; sourceTree = "<group>"; };
 		4CD7D3B720F8EE0E00F1DDF0 /* ReviewEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewEditViewController.swift; sourceTree = "<group>"; };
 		4CD7D3B820F8EE0F00F1DDF0 /* MyActivityHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivityHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -509,6 +519,10 @@
 				4C56063920F78D6A0063C800 /* Splash.storyboard */,
 				4C0EA59020E86F2D00CB70ED /* Login.storyboard */,
 				4C0EA55A20E86CF900CB70ED /* Main.storyboard */,
+				4CD5F92B21342C3900E863FF /* Search.storyboard */,
+				4CD5F92721342BD400E863FF /* MyActivity.storyboard */,
+				4CD5F92321342B4400E863FF /* Heart.storyboard */,
+				4CD5F91F2134274F00E863FF /* More.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -845,7 +859,6 @@
 				4C98B4DE20EA4DAF0038866E /* PopularListTableViewCell.swift */,
 				4C98B4E120EA4DAF0038866E /* NewTableViewCell.swift */,
 				4C98B4DF20EA4DAF0038866E /* ThemeTableViewCell.swift */,
-				4C98B4E020EA4DAF0038866E /* PopFarmTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -857,7 +870,6 @@
 				4C98B4E820EA4DAF0038866E /* PopularListCollectionViewCell.swift */,
 				4C98B4E720EA4DAF0038866E /* NewCollectionViewCell.swift */,
 				4C98B4E520EA4DAF0038866E /* ThemeCollectionViewCell.swift */,
-				4C98B4E620EA4DAF0038866E /* PopFarmCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -883,6 +895,7 @@
 			children = (
 				4CAB384B20F0F52A0057F4C0 /* HeartViewController.swift */,
 				4CAB384A20F0F52A0057F4C0 /* HeartTableViewCell.swift */,
+				4CD5F92521342B6C00E863FF /* HeartNavVC.swift */,
 			);
 			path = Heart;
 			sourceTree = "<group>";
@@ -897,6 +910,7 @@
 				4CD7D3B720F8EE0E00F1DDF0 /* ReviewEditViewController.swift */,
 				4CD7D3BD20F8EE1500F1DDF0 /* ReviewWriteViewController.swift */,
 				4CD7D3BC20F8EE1400F1DDF0 /* WriteReviewCollectionViewCell.swift */,
+				4CD5F92921342C0100E863FF /* MyActivityNavVC.swift */,
 			);
 			path = MyActivity;
 			sourceTree = "<group>";
@@ -904,6 +918,7 @@
 		4CAB385220F0F52B0057F4C0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				4CD5F921213427E100E863FF /* MoreNavVC.swift */,
 				4CAB385320F0F52B0057F4C0 /* NoticeTableViewController.swift */,
 				4CAB385420F0F52B0057F4C0 /* ProfileTableViewCell.swift */,
 				4CAB385520F0F52B0057F4C0 /* PushViewController.swift */,
@@ -1146,7 +1161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C7DC5F620EE08DA00CCA950 /* NanumSquareRoundEB.ttf in Resources */,
+				4CD5F9202134274F00E863FF /* More.storyboard in Resources */,
 				4C0EA59120E86F2D00CB70ED /* Login.storyboard in Resources */,
+				4CD5F92821342BD400E863FF /* MyActivity.storyboard in Resources */,
 				4CD7D3F720F9466B00F1DDF0 /* img_3.png in Resources */,
 				4CD7D3FB20F9466B00F1DDF0 /* img_5.png in Resources */,
 				4CD7D3F820F9466B00F1DDF0 /* img_7.png in Resources */,
@@ -1156,6 +1173,7 @@
 				4C0EA56420E86CFB00CB70ED /* LaunchScreen.storyboard in Resources */,
 				4CD7D3FC20F9466B00F1DDF0 /* img_8.png in Resources */,
 				4CD7D3F420F9466B00F1DDF0 /* img_1.png in Resources */,
+				4CD5F92421342B4400E863FF /* Heart.storyboard in Resources */,
 				4CD7D3F920F9466B00F1DDF0 /* img_6.png in Resources */,
 				4C7DC5F820EE08DA00CCA950 /* NanumSquareRoundR.ttf in Resources */,
 				4C0EA56120E86CFB00CB70ED /* Assets.xcassets in Resources */,
@@ -1164,6 +1182,7 @@
 				4C7DC5F920EE08DA00CCA950 /* NanumSquareRoundL.ttf in Resources */,
 				4C0EA55C20E86CF900CB70ED /* Main.storyboard in Resources */,
 				4C7DC5F720EE08DA00CCA950 /* NanumSquareRoundB.ttf in Resources */,
+				4CD5F92C21342C3900E863FF /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1236,6 +1255,7 @@
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SJSegmentedScrollView/SJSegmentedScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1252,6 +1272,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SJSegmentedScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1332,6 +1353,7 @@
 				4C30130D20EB4A86001B2728 /* MainVO.swift in Sources */,
 				4C98B4C320EA323E0038866E /* SearchViewController.swift in Sources */,
 				4C56065120F7CB730063C800 /* MyActivity.swift in Sources */,
+				4CD5F92A21342C0100E863FF /* MyActivityNavVC.swift in Sources */,
 				4C23FAE620F4CC2D00676796 /* SearchVO.swift in Sources */,
 				BA84841920E904B800BC706E /* MainViewController.swift in Sources */,
 				4C56063D20F78D8A0063C800 /* SplashViewController.swift in Sources */,
@@ -1359,6 +1381,7 @@
 				4C98B4F120EA4DAF0038866E /* NewCollectionViewCell.swift in Sources */,
 				4CAB386D20F0F52B0057F4C0 /* PasswordViewController.swift in Sources */,
 				4C98B4F220EA4DAF0038866E /* PopularListCollectionViewCell.swift in Sources */,
+				4CD5F922213427E100E863FF /* MoreNavVC.swift in Sources */,
 				4C23FAE320F4CA7700676796 /* SearchModel.swift in Sources */,
 				4CAB38AF20F227D50057F4C0 /* DoneApplyViewController.swift in Sources */,
 				4C98B4B520EA1F370038866E /* JoinModel.swift in Sources */,
@@ -1387,7 +1410,6 @@
 				4C0EA59420E86FA300CB70ED /* LoginVC.swift in Sources */,
 				4C56069020F7D1DB0063C800 /* AllListVO.swift in Sources */,
 				4CAB384620F0D5280057F4C0 /* PopupCell.swift in Sources */,
-				4C98B4F020EA4DAF0038866E /* PopFarmCollectionViewCell.swift in Sources */,
 				4C7DC5EA20EDEADC00CCA950 /* IntroduceVO.swift in Sources */,
 				4CAB387B20F0F5460057F4C0 /* Heart.swift in Sources */,
 				4CAB38A720F138F80057F4C0 /* ApplyModel.swift in Sources */,
@@ -1437,9 +1459,9 @@
 				4C56063820F78BA30063C800 /* APNsVO.swift in Sources */,
 				4C0EA58F20E86EBF00CB70ED /* NetworkModel.swift in Sources */,
 				4C98B4C020EA29550038866E /* TabBarController.swift in Sources */,
-				4C98B4EB20EA4DAF0038866E /* PopFarmTableViewCell.swift in Sources */,
 				4CAB387020F0F52B0057F4C0 /* NoticeExpansionTableViewCell.swift in Sources */,
 				4CDE4BEC20F7D664006FEFCA /* QnAExpansionTableViewCell.swift in Sources */,
+				4CD5F92621342B6C00E863FF /* HeartNavVC.swift in Sources */,
 				4C56068720F7D02A0063C800 /* ThemeService.swift in Sources */,
 				4CAB386320F0F52B0057F4C0 /* HeartViewController.swift in Sources */,
 				4C98B4B120EA1F180038866E /* JoinVC2.swift in Sources */,

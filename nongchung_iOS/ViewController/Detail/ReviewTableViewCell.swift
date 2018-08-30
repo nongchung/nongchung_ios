@@ -56,18 +56,14 @@ extension ReviewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
-        //        let navController = UINavigationController(rootViewController: clickVC)
-        //        clickVC.imageArray = self.array
-        //        clickVC.index = indexPath.row
-        //        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
-        
-        guard let clickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
-        let navController = UINavigationController(rootViewController: clickVC)
-        clickVC.imageArray = self.array
-        clickVC.index = indexPath.row
-        self.window?.rootViewController?.present(navController, animated:true, completion: nil)
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let storyBoard = UIStoryboard(name: "More", bundle: nil)
+//        guard let clickVC = storyBoard.instantiateViewController(withIdentifier: "MyReviewClickViewController") as? MyReviewClickViewController else { return }
+//        let navController = UINavigationController(rootViewController: clickVC)
+//        clickVC.imageArray = self.array
+//        clickVC.index = indexPath.row
+//        
+//        self.window?.inputViewController?.presentedViewController?.present(navController, animated: true, completion: nil)
+//        
+//    }
 }
