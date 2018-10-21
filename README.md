@@ -21,3 +21,5 @@ App Store : <https://goo.gl/ZEysLm>
 
 ## # 스크린샷
 
+<img src = "/image/농활청춘_1.png">
+<img src = "/image/농활청춘_2.png">
